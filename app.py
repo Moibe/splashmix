@@ -24,7 +24,8 @@ input1, gender, personaje, result = inputs.inputs_selector(globales.seto)
 nombre_posicion = gr.Label(label="Posición", visible=globales.posicion_marker)
 
 enviar_btn=gr.Button("Enviar", variant="primary"),
-despejar_btn=gr.Button("Borrar", variant="secondary"),  
+despejar_btn=gr.Button("Borrar", variant="secondary")
+string_script = "() => window.location.href = 'https://app.splashmix.ink/logout'" 
 
 def welcome(usuario_firebase): 
     print("Esto es una prueba de welcome:", usuario_firebase)
@@ -62,7 +63,7 @@ with gr.Blocks(theme=globales.tema, head=firehead.head, js=fire.js, css="footer 
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
             inputs=[usuario_firebase],
             outputs=[],
-            js=f"() => window.location.href = {locations.dev_logout}"
+            js=string_script
             )
     compra.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección

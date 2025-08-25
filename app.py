@@ -5,6 +5,7 @@ import funciones
 import sulkuFront
 import gradio as gr
 import firehead, fire, fuego
+import locations
 
 def iniciar():    
     app_path = globales.app_path
@@ -61,7 +62,7 @@ with gr.Blocks(theme=globales.tema, head=firehead.head, js=fire.js, css="footer 
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
             inputs=[usuario_firebase],
             outputs=[],
-            js="() => window.location.href = 'https://app.splashmix.ink/logout'"
+            js=f"() => window.location.href = {locations.dev_logout}"
             )
     compra.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección

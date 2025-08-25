@@ -4,7 +4,7 @@ import gradio as gr
 #Ambiente.py
 app_path = ambiente.app_path
 server_port=ambiente.server_port
-version = "2.12.8 " + ambiente.emoji
+version = "2.12.9 " + ambiente.emoji
 firebase_auth = ambiente.firebase_auth 
 
 nombre_diccionario = "datos_superheroe"

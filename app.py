@@ -4,7 +4,7 @@ import globales
 import funciones
 import sulkuFront
 import gradio as gr
-import firehead, fire, fuego, aire, tierra, magma 
+import firehead, fire, fuego
 
 def iniciar():    
     app_path = globales.app_path

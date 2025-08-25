@@ -25,7 +25,7 @@ nombre_posicion = gr.Label(label="Posición", visible=globales.posicion_marker)
 
 enviar_btn=gr.Button("Enviar", variant="primary"),
 despejar_btn=gr.Button("Borrar", variant="secondary")
-string_script = "() => window.location.href = 'https://app.splashmix.ink/logout'" 
+script_logout = locations.dev_logout
 
 def welcome(usuario_firebase): 
     print("Esto es una prueba de welcome:", usuario_firebase)

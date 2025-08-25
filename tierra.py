@@ -1,6 +1,6 @@
 js = f"""
 function funcion() {{
-    console.log("Ésto es un console log normal desde magma.js @ PRECARGA")  
+    console.log("Ésto es un console log normal desde tierra . js @ PRECARGA")  
     localStorage.setItem('estadoUsuario', 'Desconectado');
     //localStorage.removeItem('uid');
     //localStorage.removeItem('email');

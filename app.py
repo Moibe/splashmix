@@ -56,13 +56,12 @@ with gr.Blocks(theme=globales.tema, head=firehead.head, js=fire.js, css="footer 
             )        
     
     result.change(sulkuFront.actualizador_navbar, [usuario_firebase, result, lbl_console], acordeon2)
-    #gender.select(tester, input1, input1, js=fuego.js) #Ésto recarga los créditos por si no se logró al inicio.
-    
+
     btn_logout.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
             inputs=[usuario_firebase],
             outputs=[],
-            js=tierra.js
+            js="() => window.location.href = 'https://app.splashmix.ink/logout'"
             )
     compra.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección

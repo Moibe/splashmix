@@ -63,7 +63,7 @@ with gr.Blocks(theme=globales.tema, head=firehead.head, js=fire.js, css="footer 
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
             inputs=[usuario_firebase],
             outputs=[],
-            js=string_script
+            js=script_logout
             )
     compra.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección

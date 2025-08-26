@@ -5,7 +5,7 @@ import funciones
 import sulkuFront
 import gradio as gr
 import firehead, fire, fuego
-import locations
+import tools
 
 def iniciar():    
     app_path = globales.app_path
@@ -15,7 +15,6 @@ def iniciar():
 #Credit Related Elements
 html_credits = gr.HTML(visible=globales.credits_visibility)
 lbl_console = gr.Label(label="AI Terminal " + globales.version +  " messages", value="Hola", container=True)
-#btn_buy = gr.Button("Get Credits", visible=True, size='lg')
 
 #Customizable Inputs and Outputs
 input1, gender, personaje, result = inputs.inputs_selector(globales.seto)    
@@ -25,7 +24,8 @@ nombre_posicion = gr.Label(label="Posición", visible=globales.posicion_marker)
 
 enviar_btn=gr.Button("Enviar", variant="primary"),
 despejar_btn=gr.Button("Borrar", variant="secondary")
-script_logout = locations.dev_logout
+script_logout, script_buy = tools.defineBotones()
+
 
 def welcome(usuario_firebase): 
     print("Esto es una prueba de welcome:", usuario_firebase)

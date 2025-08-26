@@ -24,7 +24,7 @@ nombre_posicion = gr.Label(label="Posición", visible=globales.posicion_marker)
 
 enviar_btn=gr.Button("Enviar", variant="primary"),
 despejar_btn=gr.Button("Borrar", variant="secondary")
-script_logout, script_buy = tools.defineBotones()
+script_logout, script_buy = tools.defineBotones(globales.firebase_auth)
 
 
 def welcome(usuario_firebase): 

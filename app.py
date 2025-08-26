@@ -69,7 +69,7 @@ with gr.Blocks(theme=globales.tema, head=firehead.head, js=fire.js, css="footer 
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
             inputs=[usuario_firebase],
             outputs=[],
-            js="() => window.location.href = 'https://app.splashmix.ink/buy'" #Quizá aquí en el futuro necesite un reload con params.
+            js=script_buy #Quizá aquí en el futuro necesite un reload con params.
             )
     main.load(sulkuFront.precarga, usuario_firebase, [usuario_firebase, acordeon, btn_logout, acordeon2], js=fuego.js) if globales.acceso != "libre" else None
 iniciar()

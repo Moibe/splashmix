@@ -4,7 +4,8 @@ import globales
 import funciones
 import sulkuFront
 import gradio as gr
-import firehead, fire, fuego, aire, tierra, magma 
+import firehead, fire, fuego
+import tools
 
 def iniciar():    
     app_path = globales.app_path
@@ -14,7 +15,6 @@ def iniciar():
 #Credit Related Elements
 html_credits = gr.HTML(visible=globales.credits_visibility)
 lbl_console = gr.Label(label="AI Terminal " + globales.version +  " messages", value="Hola", container=True)
-#btn_buy = gr.Button("Get Credits", visible=True, size='lg')
 
 #Customizable Inputs and Outputs
 input1, gender, personaje, result = inputs.inputs_selector(globales.seto)    
@@ -23,7 +23,9 @@ input1, gender, personaje, result = inputs.inputs_selector(globales.seto)
 nombre_posicion = gr.Label(label="Posición", visible=globales.posicion_marker)
 
 enviar_btn=gr.Button("Enviar", variant="primary"),
-despejar_btn=gr.Button("Borrar", variant="secondary"),  
+despejar_btn=gr.Button("Borrar", variant="secondary")
+script_logout, script_buy = tools.defineBotones(globales.firebase_auth)
+
 
 def welcome(usuario_firebase): 
     print("Esto es una prueba de welcome:", usuario_firebase)
@@ -56,19 +58,18 @@ with gr.Blocks(theme=globales.tema, head=firehead.head, js=fire.js, css="footer 
             )        
     
     result.change(sulkuFront.actualizador_navbar, [usuario_firebase, result, lbl_console], acordeon2)
-    #gender.select(tester, input1, input1, js=fuego.js) #Ésto recarga los créditos por si no se logró al inicio.
-    
+
     btn_logout.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
             inputs=[usuario_firebase],
             outputs=[],
-            js=tierra.js
+            js=script_logout
             )
     compra.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
             inputs=[usuario_firebase],
             outputs=[],
-            js="() => window.location.href = 'https://app.splashmix.ink/buy'" #Quizá aquí en el futuro necesite un reload con params.
+            js=script_buy #Quizá aquí en el futuro necesite un reload con params.
             )
     main.load(sulkuFront.precarga, usuario_firebase, [usuario_firebase, acordeon, btn_logout, acordeon2], js=fuego.js) if globales.acceso != "libre" else None
 iniciar()

@@ -1,5 +1,5 @@
-import gradio as gr
 import random
+import gradio as gr
 
 def random_response(message, history):
     return random.choice(["Hi!", "Hello!", "Greetings!"])

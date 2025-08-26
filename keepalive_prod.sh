@@ -1,5 +1,5 @@
 #!/bin/bash
-pid=$(lsof -i :7800 | awk 'NR==2 {print $2}')
+pid=$(lsof -i :7878 | awk 'NR==2 {print $2}')
 #Revisar si la búsqueda del proceso está vacía.
 if [ -z "$pid" ]; then
   #Si está vacía entonces:

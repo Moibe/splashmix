@@ -262,7 +262,6 @@ def renombra_imagen(hero, resultado):
 def reducirQuota(tipo_api, usuario_proveedor):
             if tipo_api == "quota":
                 fireWhale.incrementar_campo_numerico('quota', usuario_proveedor, 'segundos', amount=-globales.process_cost)
-            #No debitas la cuota si no era gratis, solo aplica para Zero.
 
 def defineBotones(env):
     script = "() => window.location.href = " 
@@ -270,11 +269,11 @@ def defineBotones(env):
     if env == 'dev':
         base_url = "'https://app.targetvox.com/"
         script_logout = script + base_url + "logout'" 
-        script_buy = script + base_url + "/buy'"
+        script_buy = script + base_url + "buy'"
         
     else:
         base_url = "'https://app.splashmix.ink"
-        script_logout = script + base_url + "/logout'"
-        script_buy = script + base_url + "/buy'"
+        script_logout = script + base_url + "logout'"
+        script_buy = script + base_url + "buy'"
 
     return script_logout, script_buy

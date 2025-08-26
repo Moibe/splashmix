@@ -265,19 +265,16 @@ def reducirQuota(tipo_api, usuario_proveedor):
             #No debitas la cuota si no era gratis, solo aplica para Zero.
 
 def defineBotones(env):
-    print("Estoy en define botones y env es: ", env)
-
     script = "() => window.location.href = " 
 
     if env == 'dev':
         base_url = "'https://app.targetvox.com/"
         script_logout = script + base_url + "logout'" 
-        script_buy = script + base_url + "/buy"
-        print("Script logout es: ", script_logout)
-        print("Script buy es: ", script_buy)
+        script_buy = script + base_url + "/buy'"
+        
     else:
         base_url = "'https://app.splashmix.ink"
         script_logout = script + base_url + "/logout'"
-        script_buy = script + base_url + "/buy"
+        script_buy = script + base_url + "/buy'"
 
     return script_logout, script_buy

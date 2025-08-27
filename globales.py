@@ -4,7 +4,7 @@ import gradio as gr
 #Ambiente.py
 app_path = ambiente.app_path
 server_port=ambiente.server_port
-version = "2.12.10 " + ambiente.emoji
+version = ambiente.version
 firebase_auth = ambiente.firebase_auth 
 
 nombre_diccionario = "datos_superheroe"
@@ -38,4 +38,4 @@ credits_visibility = False
 
 posicion_marker = False
 
-proveedores = ['iri', 'moibe', 'ss', 'bw', 'sun']
+proveedores = ['irina', 'moibe', 'sosa', 'buzzword', 'sun']

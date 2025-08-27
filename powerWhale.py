@@ -5,7 +5,7 @@ from firebase_admin import firestore
 from firebase_admin import auth
 
 cred = credentials.Certificate('config_flux.json')
-app_name = 'flux-ia'
+app_name = 'flux-ia-182'
 
 if not firebase_admin.get_app(app_name):
     firebase_admin.initialize_app(cred, name=app_name)

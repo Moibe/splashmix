@@ -10,7 +10,6 @@ else:
     cred = credentials.Certificate('config_dev.json')
     
 firebase_admin.initialize_app(cred)
-
 db = firestore.client()
 
 def obtenDatosUIDFirebase(uid):

@@ -1,12 +1,13 @@
-import random
-import globales
-import bridges
-import importlib
-import fireWhale
 import os 
 import time
+import random
 import bridges
+import globales
+import importlib
+import fireWhale
+import powerWhale
 import gradio as gr
+
 from huggingface_hub import HfApi
 
 def theme_selector():
@@ -22,7 +23,6 @@ def theme_selector():
         
     ]
     tema = random.choice(temas_posibles)
-    #print("Tema random: ", tema)
     return tema
 
 def eligeAPI(opcion):
@@ -261,7 +261,7 @@ def renombra_imagen(hero, resultado):
 
 def reducirQuota(tipo_api, usuario_proveedor):
             if tipo_api == "quota":
-                fireWhale.incrementar_campo_numerico('quota', usuario_proveedor, 'segundos', amount=-globales.process_cost)
+                powerWhale.incrementar_campo_numerico('quota', usuario_proveedor, 'segundos', amount=-globales.process_cost)
 
 def defineBotones(env):
     script = "() => window.location.href = " 

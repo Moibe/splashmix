@@ -74,6 +74,9 @@ def precarga(uid):
                     respuesta = kraken.crear_cliente_stripe(email, uid, site)
                     print("Respuesta de Kraken es: ")
                     print(respuesta)
+                    print("El tipo de la respuesta de Kraken es: ", type(respuesta))
+                    time.sleep(18)
+                    #Aquí contempla el caso de que Kraken esté apagado (se apaga después de 48 horas sin usar.)
                     fireWhale.editaDato('usuarios', uid, 'cus', respuesta['customer_id'])
                     print("cus agregado")
             else: #Si no existe en FIREBASE AUTH, es un usuario inválido. Future: ¿Debería regresarlo a login? 

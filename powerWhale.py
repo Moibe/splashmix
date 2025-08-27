@@ -7,7 +7,7 @@ from firebase_admin import auth
 cred = credentials.Certificate('config_flux.json')
 #app_name = 'powerWhale_app'
 
-if not firebase_admin.get_app(a):
+if not firebase_admin.get_app('default'):
     firebase_admin.initialize_app(cred)
 
 db_flux = firestore.client()

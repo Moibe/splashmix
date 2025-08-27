@@ -11,7 +11,7 @@ else:
     cred = credentials.Certificate('config_dev.json')
     #app_name = 'fireWhale_app'
 
-if not firebase_admin.get_app():    
+if not firebase_admin.get_app('default'):    
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()

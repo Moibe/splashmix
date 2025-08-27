@@ -12,5 +12,6 @@ bridges.py
 config.json
 config_dev.json
 config_prod.json
+config_flux.json
 ambiente.py
 

@@ -18,7 +18,6 @@ print("app_name is: ", app_name )
 firebase_admin.initialize_app(cred, name=app_name)
 
 app_instance = firebase_admin.get_app(name=app_name)
-print("app instance is: ", app_instance)
 db = firestore.client(app=app_instance)
 print("Db is: ", db)
 

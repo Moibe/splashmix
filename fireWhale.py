@@ -1,17 +1,15 @@
 import globales
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
 from firebase_admin import auth
-
-
+from firebase_admin import firestore
+from firebase_admin import credentials
 
 if globales.firebase_auth == 'prod':
     cred = credentials.Certificate('config_prod.json')
-    app_name = 'splashmix-88e15'
+    app_name = 'splashmix-ai'
 else: 
     cred = credentials.Certificate('config_dev.json')
-    app_name = 'splashmix-ai'
+    app_name = 'splashmix-88e15'
 
 if not firebase_admin.get_app(app_name):    
     firebase_admin.initialize_app(cred)

@@ -12,7 +12,7 @@ else:
     app_name = 'splashmix.ink'
 
 if not firebase_admin.get_app(app_name):    
-    firebase_admin.initialize_app(cred, app_name)
+    firebase_admin.initialize_app(cred, name=app_name)
 
 db = firestore.client(app=app_name)
 

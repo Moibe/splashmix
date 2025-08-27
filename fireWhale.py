@@ -6,12 +6,14 @@ from firebase_admin import auth
 
 if globales.firebase_auth == 'prod':
     cred = credentials.Certificate('config_prod.json')
-    
+    #app_name = 'fireWhale_app'
 else: 
-    cred = credentials.Certificate('config_dev.json')    
+    cred = credentials.Certificate('config_dev.json')
+    #app_name = 'fireWhale_app'
 
-   
-firebase_admin.initialize_app(cred)
+if not firebase_admin.get_app('(default)'):    
+    firebase_admin.initialize_app(cred)
+
 db = firestore.client()
 
 def obtenDatosUIDFirebase(uid):

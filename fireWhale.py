@@ -12,9 +12,9 @@ else:
     app_name = 'splashmix-88e15'
 
 if not firebase_admin.get_app(app_name):    
-    firebase_admin.initialize_app(cred)
+    firebase_admin.initialize_app(cred, app_name)
 
-db = firestore.client()
+db = firestore.client(app=app_name)
 
 def obtenDatosUIDFirebase(uid):
     """

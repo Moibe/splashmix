@@ -4,14 +4,15 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 from firebase_admin import auth
 
+app_name = 'splashmix-ai'
+
 if globales.firebase_auth == 'prod':
     cred = credentials.Certificate('config_prod.json')
-    #app_name = 'fireWhale_app'
+    
 else: 
     cred = credentials.Certificate('config_dev.json')
-    #app_name = 'fireWhale_app'
 
-if not firebase_admin.get_app('(default)'):    
+if not firebase_admin.get_app(app_name):    
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()

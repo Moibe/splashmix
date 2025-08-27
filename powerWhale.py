@@ -5,12 +5,12 @@ from firebase_admin import firestore
 from firebase_admin import auth
 
 cred = credentials.Certificate('config_flux.json')
-#app_name = 'powerWhale_app'
+app_name = 'flux-ia'
 
-if not firebase_admin.get_app('(default)'):
-    firebase_admin.initialize_app(cred)
+if not firebase_admin.get_app(app_name):
+    firebase_admin.initialize_app(cred, name=app_name)
 
-db_flux = firestore.client()
+db_flux = firestore.client(app=app_name)
 
 def obtenDato(coleccion, dato, info):
     

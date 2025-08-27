@@ -5,14 +5,17 @@ from firebase_admin import firestore
 from firebase_admin import auth
 
 cred = credentials.Certificate('config_flux.json')
-    
-firebase_admin.initialize_app(cred)
-db = firestore.client()
+app_name = 'powerWhale_app'
+
+if not firebase_admin.get_app(app_name):
+    firebase_admin.initialize_app(cred, name=app_name)
+
+db_flux = firestore.client(app=app_name)
 
 def obtenDato(coleccion, dato, info):
     
     #Primero debemos definir la referencia al documento, o sea a la hoja de usuario.
-    doc_ref = db.collection(coleccion).document(dato) 
+    doc_ref = db_flux.collection(coleccion).document(dato) 
 
     #Éste es el documento que tiene los datos de ella.
     documento = doc_ref.get()
@@ -36,7 +39,7 @@ def obtenDato(coleccion, dato, info):
 def editaDato(coleccion, dato, info, contenido):
 
     #Primero debemos definir la referencia al documento, o sea a la hoja de usuario.
-    doc_ref = db.collection(coleccion).document(dato)
+    doc_ref = db_flux.collection(coleccion).document(dato)
     
     doc_ref.update({
         # 'quote': quote,
@@ -46,7 +49,7 @@ def editaDato(coleccion, dato, info, contenido):
 def creaDato(coleccion, dato, info, contenido):
 
     #Primero debemos definir la referencia al documento, o sea a la hoja de usuario.
-    doc_ref = db.collection(coleccion).document(dato)
+    doc_ref = db_flux.collection(coleccion).document(dato)
     
     doc_ref.set({
         # 'quote': quote,
@@ -66,7 +69,7 @@ def creaDatoMultiple(coleccion, dato, data_dict):
                           Ej: {'nombre': 'Juan', 'edad': 30, 'activo': True}
     """
     # Primero definimos la referencia al documento
-    doc_ref = db.collection(coleccion).document(dato)
+    doc_ref = db_flux.collection(coleccion).document(dato)
     
     try:
         # Usamos .set() y le pasamos el diccionario completo.
@@ -92,7 +95,7 @@ def incrementar_campo_numerico(collection_name, document_id, field_name, amount=
         field_name (str): El nombre del campo numérico a incrementar.
         amount (int/float): La cantidad por la cual incrementar (puede ser negativo para decrementar).
     """
-    doc_ref = db.collection(collection_name).document(document_id)
+    doc_ref = db_flux.collection(collection_name).document(document_id)
 
     try:
         # Usamos .set() con merge=True para comportamiento de "upsert".

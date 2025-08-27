@@ -6,10 +6,10 @@ from firebase_admin import credentials
 
 if globales.firebase_auth == 'prod':
     cred = credentials.Certificate('config_prod.json')
-    app_name = 'splashmix-ai'
+    app_name = 'splashmix-prod'
 else: 
     cred = credentials.Certificate('config_dev.json')
-    app_name = 'splashmix.ink'
+    app_name = 'splashmix-dev'
 
 print("Cred is: ", cred)
 print("app_name is: ", app_name )
@@ -34,7 +34,7 @@ def obtenDatosUIDFirebase(uid):
         bool: True si el usuario con ese UID existe, False en caso contrario.
     """
     try:
-        user = auth.get_user(uid) #Obtengo el objeto con todos los datos.
+        user = auth.get_user(uid, app=app_instance) #Obtengo el objeto con todos los datos.
         print("Ésto es el user obtenido de la comprobación: ", user)
         email = user.email
         displayName = user.display_name
@@ -126,7 +126,7 @@ def verificar_token(id_token):
     """Verifica el token de ID de Firebase."""
     try:
         # Verifica el token y decodifica la información del usuario
-        decoded_token = auth.verify_id_token(id_token)
+        decoded_token = auth.verify_id_token(id_token, app=app_instance)
         uid = decoded_token['uid']
         return uid  # Retorna el UID del usuario si el token es válido
     except auth.InvalidIdTokenError as e:

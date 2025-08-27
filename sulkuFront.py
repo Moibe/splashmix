@@ -58,7 +58,6 @@ def precarga(uid):
                     mensaje2 = f"💶Creditos Disponibles: {tokens}."
                 else: #Si no se encontró significa que el usuario no existe en Firestore y deberíamos crear uno nuevo.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.
-                    #fireWhale.creaDato('usuarios', uid)
                     print("Camino 2: Usuario Nuevo:")
                     datos_perfil = {
                     'diplayName': displayName,
@@ -79,7 +78,7 @@ def precarga(uid):
                     #Aquí contempla el caso de que Kraken esté apagado (se apaga después de 48 horas sin usar.)
                     fireWhale.editaDato('usuarios', uid, 'cus', respuesta['customer_id'])
                     print("cus agregado")
-            else: #Si no existe en FIREBASE AUTH, es un usuario inválido. Future: ¿Debería regresarlo a login? 
+            else: #Si no existe en FIREBASE AUTH, es un usuario inválido. FutureImportante: ¿Debería regresarlo a login? 
                 print("No hay email ni displayname?")
                 mensaje = "Usuario inválido."
                 mensaje2 = "Recarga la página si no puedes ver tus créditos." #Future,¿éste mensaje puede ser un link a login más que un texto?

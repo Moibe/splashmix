@@ -9,7 +9,7 @@ if globales.firebase_auth == 'prod':
     app_name = 'splashmix-ai'
 else: 
     cred = credentials.Certificate('config_dev.json')
-    app_name = 'splashmix-88e15'
+    app_name = 'splashmix-web'
 
 if not firebase_admin.get_app(app_name):    
     firebase_admin.initialize_app(cred, app_name)

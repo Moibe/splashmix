@@ -73,14 +73,14 @@ def precarga(uid):
                     respuesta = kraken.crear_cliente_stripe(email, uid, site)
                     print("Respuesta de Kraken es: ")
                     print(respuesta)
-                    print("El tipo de la respuesta de Kraken es: ", type(respuesta))
                     if 'error' in respuesta:
                         #Aquí hubo un error de Kraken, principalmente por no estar disponible, por ende no podrá crear el usuario. 
                         #Podrías ignorarlo si al momento de hacer pagos lo vuelve intentar crear.
-                        print("Kraken está apagado...")
+                        print("Kraken está apagado, prendiendo...")
                         pass
                     else: #Si no hubo error continua con el proceso normal. 
-                        pass    
+                        pass #Al parecer si le da tiempo suficiente de prender. 
+                        #Checar si al hacer compra se vuelve a crear el usuario.    
                     fireWhale.editaDato('usuarios', uid, 'cus', respuesta['customer_id'])
                     print("cus agregado")
             else: #Si no existe en FIREBASE AUTH, es un usuario inválido. FutureImportante: ¿Debería regresarlo a login? 

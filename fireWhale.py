@@ -159,7 +159,3 @@ def incrementar_campo_numerico(collection_name, document_id, field_name, amount=
         print(f"✔️ Campo '{field_name}' en el documento '{document_id}' actualizado/creado e incrementado en {amount}.")
     except Exception as e:
         print(f"❌ Error al operar en el campo '{field_name}' del documento '{document_id}': {e}")
-
-def inhabilitaUsuarioProveedor(servidor):
-
-    editaDato('quota', servidor, 'segundos', -5) 

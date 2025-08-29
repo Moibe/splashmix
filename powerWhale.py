@@ -111,4 +111,4 @@ def incrementar_campo_numerico(collection_name, document_id, field_name, amount=
 
 def inhabilitaUsuarioProveedor(servidor):
 
-    editaDato('quota', servidor, 'segundos', -5) 
+    editaDato("power", servidor, 'segundos', -5) 

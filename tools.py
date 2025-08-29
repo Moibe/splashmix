@@ -261,7 +261,7 @@ def renombra_imagen(hero, resultado):
 
 def reducirQuota(tipo_api, usuario_proveedor):
             if tipo_api == "quota":
-                powerWhale.incrementar_campo_numerico('quota', usuario_proveedor, 'segundos', amount=-globales.process_cost)
+                powerWhale.incrementar_campo_numerico("power", usuario_proveedor, 'segundos', amount=-globales.process_cost)
 
 def defineBotones(env):
     script = "() => window.location.href = " 

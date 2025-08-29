@@ -82,7 +82,7 @@ def revisorCuotas():
 
     for indice, elemento in enumerate(proveedores_poder):
         print(elemento) 
-        quota_disponible = fireWhale.obtenDato("quota", elemento, "segundos")
+        quota_disponible = powerWhale.obtenDato("power", elemento, "segundos")
         print(f"Servidor: {elemento}: segundos: {quota_disponible}.")
         if quota_disponible > globales.process_margin: 
             #Si la quota_disponible es mayor que lo que nos costará el proceso, selecciona ese servidor. 

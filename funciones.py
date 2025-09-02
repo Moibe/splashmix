@@ -46,8 +46,6 @@ def perform(input1, gender, personaje, usuario):
 def mass(input1, gender, hero, api, usuario_proveedor):
     #Aquí es donde se usará el server elegido.
     token_usuario = getattr(bridges, usuario_proveedor)
-    print("Token usuario es:", token_usuario)
-    time.sleep(12)
     client = gradio_client.Client(api, hf_token=token_usuario)
     
     #Adquisición Databank Particular para ese objeto y género....

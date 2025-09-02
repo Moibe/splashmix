@@ -11,15 +11,12 @@ else:
     cred = credentials.Certificate('config_dev.json')
     app_name = 'splashmix-dev'
 
-# print("Cred is: ", cred)
-# print("app_name is: ", app_name )
-
 #if not firebase_admin.get_app(name=app_name):    
 firebase_admin.initialize_app(cred, name=app_name)
 
 app_instance = firebase_admin.get_app(name=app_name)
 db = firestore.client(app=app_instance)
-print("Db is: ", db)
+# print("Db is: ", db)
 
 
 def obtenDatosUIDFirebase(uid):

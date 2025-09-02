@@ -24,7 +24,7 @@ def perform(input1, gender, personaje, usuario):
     if tokens >= globales.costo_work: #Lo hará solo si tiene el crédito suficiente.
         try:
             #La API se elige ahora afuera de mass.
-            api, tipo_api, usuario_proveedor = tools.eligeAPI(globales.seleccion_api)             
+            api, tipo_api, usuario_proveedor = tools.eligeAPI(globales.seleccion_api) #Aquí ya elegiste al usuario proveedor pero no haz elegido su hf token.             
             resultado = mass(input1, gender, personaje, api, usuario_proveedor)
             #Importante: La cuota solo se debita aquí, después de hacer el client.predict.
             tools.reducirQuota(tipo_api, usuario_proveedor) #Si estamos en sistema de quotas. Aplica un IF.
@@ -46,6 +46,8 @@ def perform(input1, gender, personaje, usuario):
 def mass(input1, gender, hero, api, usuario_proveedor):
     #Aquí es donde se usará el server elegido.
     token_usuario = getattr(bridges, usuario_proveedor)
+    print("Token usuario es:", token_usuario)
+    time.sleep(12)
     client = gradio_client.Client(api, hf_token=token_usuario)
     
     #Adquisición Databank Particular para ese objeto y género....

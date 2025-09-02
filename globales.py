@@ -15,7 +15,7 @@ max_size = 20
 
 #Quota o Costo
 api_zero = ("Moibe/InstantID2", "quota") #Indíca la url del api y su tipo.
-api_cost = ("Moibe/InstantID2-B", "costo")
+api_cost = ("Moibe/InstantID2-Turbo", "costo")
 
 interface_api_name = "/generate_image" #El endpoint al que llamará client.
 

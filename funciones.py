@@ -31,7 +31,7 @@ def perform(input1, gender, personaje, usuario):
         except Exception as e:           
             if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        
                 fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
-            print("Por titulizar mensaje de API...")    
+            print("Excepción de mass...")    
             resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
             return resultado, info_window          
     else:
@@ -93,6 +93,7 @@ def mass(input1, gender, hero, api, usuario_proveedor):
         return result
 
     except Exception as e:
+        print("Excepción de client.predict...")
         #La no detección de un rostro es mandado aquí?! Siempre? SI SIEMPRE, porque instantID es diferente y no reporta ese error integramente, pero aquí llega. 
         mensaje = tools.titulizaExcepDeAPI(e)        
         return mensaje

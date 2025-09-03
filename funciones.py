@@ -36,10 +36,9 @@ def perform(input1, gender, personaje, usuario):
             resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
 
             #SI EL ERROR ES UN RUNTIME_ERROR: 
-            print("Llegada al IF de la segunda vuelta...")
-            if resultado == "RUNTIME_ERROR":
-                print("Resultado es:", resultado)
-                time.sleep(2)
+            print("Llegada al IF de la segunda vuelta, donde resultado es: ", resultado)
+            time.sleep(4)
+            if resultado == "RUNTIME_ERROR":                                
                 #Segundo intento
                 try:
                     resultado = mass(input1, gender, personaje, globales.api_zero_backup, usuario_proveedor)

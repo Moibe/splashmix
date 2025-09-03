@@ -16,8 +16,6 @@ firebase_admin.initialize_app(cred, name=app_name)
 
 app_instance = firebase_admin.get_app(name=app_name)
 db = firestore.client(app=app_instance)
-# print("Db is: ", db)
-
 
 def obtenDatosUIDFirebase(uid):
     """

@@ -28,13 +28,28 @@ def perform(input1, gender, personaje, usuario):
             resultado = mass(input1, gender, personaje, api, usuario_proveedor)
             #Importante: La cuota solo se debita aquí, después de hacer el client.predict.
             tools.reducirQuota(tipo_api, usuario_proveedor) #Si estamos en sistema de quotas. Aplica un IF.
+        
         except Exception as e:           
             if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        
                 fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
             print("Excepción de mass...")    
             resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
-            return resultado, info_window          
-    else:
+
+            #SI EL ERROR ES UN RUNTIME_ERROR: 
+            if resultado == "RUNTIME_ERROR":
+                #Segundo intento
+                try:
+                    resultado = mass(input1, gender, personaje, globales.api_zero_backup, usuario_proveedor)
+                    tools.reducirQuota(tipo_api, usuario_proveedor)
+                except Exception as e:           
+                    if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        
+                        fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
+                    print("Excepción de mass...")    
+                    resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
+            
+            else: #O sea si el error de la excepción no fue RUNTIME_ERROR (aun siendo error.)
+                return resultado, info_window          
+    else: #Aquí es si no fue error y ya salimos del try más externo, es el else de si tuviste suficientes tokens.
         #Si no hubo autorización.
         resultado, info_window = sulkuFront.noCredit()
         return resultado, info_window

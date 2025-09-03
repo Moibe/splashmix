@@ -2,7 +2,7 @@ result_ok = "Image Ready." #Future que el texto de result ok, sea globales para 
 out_of_credits = "Out of credits, please recharge more."
 
 PAUSED = "AI Engine Paused, ready soon."
-RUNTIME_ERROR= "Error building AI environment, please contact me."
+RUNTIME_ERROR= "Error building AI environment, please contact support or try again later. No credits where debited."
 STARTING = "Neural network loading new trainings, please wait 6 minutes and try again."
 HANDSHAKE_ERROR = "Connection error try again."
 NO_FILE = "No file, please add a valid archive."

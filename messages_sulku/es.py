@@ -4,7 +4,7 @@ result_ok = "¡Arte lista!" #Future que el texto de result ok, sea globales para
 out_of_credits = "Necesitas adquirir créditos, puedes recargar fácilmente ⬆️ arriba, en el botón de 'Recargar Créditos ⚡' ."
 
 PAUSED = "La red neuronal está pausada, pronto estará lista."
-RUNTIME_ERROR= "Error construyendo el ambiente de IA, por favor contactame. Moibe."
+RUNTIME_ERROR= "Error construyendo el ambiente de IA, por favor contacta a soporte o vuelve a intentar en un rato. No te fueron debitados créditos."
 STARTING = f"Estoy actualizando los entrenamientos de las redes neuronales, por favor esperar {globales.neural_wait} minutos."
 HANDSHAKE_ERROR = "Error de conexión, intenta de nuevo."
 NO_FILE = "No hay archivo, por favor agrega uno válido."

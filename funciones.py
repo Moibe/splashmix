@@ -34,11 +34,11 @@ def perform(input1, gender, personaje, usuario):
                 fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
             print("Excepción de mass...")    
             resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
-
+            
             #SI EL ERROR ES UN RUNTIME_ERROR: 
-            print("Llegada al IF de la segunda vuelta, donde e es: ", resultado)
-            time.sleep(5)
-            if resultado == "RUNTIME_ERROR":                                
+            print("Llegada al IF de la segunda vuelta, donde e es: ", e)
+            time.sleep(6)
+            if "RUNTIME_ERROR" in resultado:                                 
                 #Segundo intento
                 try:
                     resultado = mass(input1, gender, personaje, globales.api_zero_backup, usuario_proveedor)
@@ -63,7 +63,6 @@ def perform(input1, gender, personaje, usuario):
 def mass(input1, gender, hero, api, usuario_proveedor):
 
     print("Estoy dentro de mass y api es: ", api)
-    time.sleep(3)
     #Aquí es donde se usará el server elegido.
     token_usuario = getattr(bridges, usuario_proveedor)
     client = gradio_client.Client(api, hf_token=token_usuario)

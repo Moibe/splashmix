@@ -37,7 +37,7 @@ def perform(input1, gender, personaje, usuario):
             
             #SI EL ERROR ES UN RUNTIME_ERROR: 
             print("Llegada al IF de la segunda vuelta, donde e es: ", e)
-            if "RUNTIME_ERROR" in resultado:
+            if "RUNTIME_ERROR" in str(e):
                 print("Estoy dentro del IF del segundo intento...")                                 
                 #Segundo intento
                 try:

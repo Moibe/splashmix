@@ -1,9 +1,10 @@
-import requests
 import json # Used for pretty-printing the JSON response
+import requests
+import ambiente
 
 def crear_cliente_stripe(email: str, firebase_user: str = None, site: str = None) -> dict:
     """
-    Consumes the API at https://moibe-stripe-kraken.hf.space/creaCliente to create a Stripe client.
+    Consumes the API Kraken to create a Stripe client.
     Correctly sends data as 'application/x-www-form-urlencoded' as per API spec.
 
     Args:
@@ -15,7 +16,7 @@ def crear_cliente_stripe(email: str, firebase_user: str = None, site: str = None
         dict: The JSON response from the API if the request was successful,
               or a dictionary with error information if it failed.
     """
-    api_url = "https://moibe-stripe-kraken.hf.space/creaCliente/" # Asegúrate de que tenga la barra final si es necesario, la especificación la muestra.
+    api_url = f"https://moibe-stripe-kraken-{ambiente.firebase_auth}.hf.space/creaCliente/" # Asegúrate de que tenga la barra final si es necesario, la especificación la muestra.
 
     # Prepara los datos a enviar en el cuerpo de la petición.
     # Solo incluimos los campos si tienen un valor (no son None o cadena vacía).

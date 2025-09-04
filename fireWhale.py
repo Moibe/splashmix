@@ -1,17 +1,21 @@
 import globales
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
 from firebase_admin import auth
+from firebase_admin import firestore
+from firebase_admin import credentials
 
 if globales.firebase_auth == 'prod':
     cred = credentials.Certificate('config_prod.json')
+    app_name = 'splashmix-prod'
 else: 
     cred = credentials.Certificate('config_dev.json')
-    
-firebase_admin.initialize_app(cred)
+    app_name = 'splashmix-dev'
 
-db = firestore.client()
+#if not firebase_admin.get_app(name=app_name):    
+firebase_admin.initialize_app(cred, name=app_name)
+
+app_instance = firebase_admin.get_app(name=app_name)
+db = firestore.client(app=app_instance)
 
 def obtenDatosUIDFirebase(uid):
     """
@@ -25,7 +29,7 @@ def obtenDatosUIDFirebase(uid):
         bool: True si el usuario con ese UID existe, False en caso contrario.
     """
     try:
-        user = auth.get_user(uid) #Obtengo el objeto con todos los datos.
+        user = auth.get_user(uid, app=app_instance) #Obtengo el objeto con todos los datos.
         print("Ésto es el user obtenido de la comprobación: ", user)
         email = user.email
         displayName = user.display_name
@@ -117,7 +121,7 @@ def verificar_token(id_token):
     """Verifica el token de ID de Firebase."""
     try:
         # Verifica el token y decodifica la información del usuario
-        decoded_token = auth.verify_id_token(id_token)
+        decoded_token = auth.verify_id_token(id_token, app=app_instance)
         uid = decoded_token['uid']
         return uid  # Retorna el UID del usuario si el token es válido
     except auth.InvalidIdTokenError as e:
@@ -150,7 +154,3 @@ def incrementar_campo_numerico(collection_name, document_id, field_name, amount=
         print(f"✔️ Campo '{field_name}' en el documento '{document_id}' actualizado/creado e incrementado en {amount}.")
     except Exception as e:
         print(f"❌ Error al operar en el campo '{field_name}' del documento '{document_id}': {e}")
-
-def inhabilitaUsuarioProveedor(servidor):
-
-    editaDato('quota', servidor, 'segundos', -5) 

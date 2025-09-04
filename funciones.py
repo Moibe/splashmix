@@ -24,17 +24,36 @@ def perform(input1, gender, personaje, usuario):
     if tokens >= globales.costo_work: #Lo hará solo si tiene el crédito suficiente.
         try:
             #La API se elige ahora afuera de mass.
-            api, tipo_api, usuario_proveedor = tools.eligeAPI(globales.seleccion_api)             
+            api, tipo_api, usuario_proveedor = tools.eligeAPI(globales.seleccion_api) #Aquí ya elegiste al usuario proveedor pero no haz elegido su hf token.             
             resultado = mass(input1, gender, personaje, api, usuario_proveedor)
             #Importante: La cuota solo se debita aquí, después de hacer el client.predict.
             tools.reducirQuota(tipo_api, usuario_proveedor) #Si estamos en sistema de quotas. Aplica un IF.
+        
         except Exception as e:           
             if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        
                 fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
-            print("Por titulizar mensaje de API...")    
+            print("Excepción de mass...")    
             resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
-            return resultado, info_window          
-    else:
+            
+            #SI EL ERROR ES UN RUNTIME_ERROR: 
+            print("Llegada al IF de la segunda vuelta, donde e es: ", e)
+            if "RUNTIME_ERROR" in str(e):
+                print("Estoy dentro del IF del segundo intento...")                                 
+                #Segundo intento
+                try:
+                    resultado = mass(input1, gender, personaje, globales.api_zero_backup, usuario_proveedor)
+                    tools.reducirQuota(tipo_api, usuario_proveedor)
+                except Exception as e:           
+                    if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        
+                        fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
+                    print("Excepción de mass...")    
+                    resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
+            
+            else: #O sea si el error de la excepción no fue RUNTIME_ERROR (aun siendo error.)
+                print("No caí en el if del segundo intento, estoy en el else.")
+                time.sleep(7)
+                return resultado, info_window          
+    else: #Aquí es si no fue error y ya salimos del try más externo, es el else de si tuviste suficientes tokens.
         #Si no hubo autorización.
         resultado, info_window = sulkuFront.noCredit()
         return resultado, info_window
@@ -44,6 +63,8 @@ def perform(input1, gender, personaje, usuario):
     return resultado, info_window
 
 def mass(input1, gender, hero, api, usuario_proveedor):
+
+    print("Estoy dentro de mass y api es: ", api)
     #Aquí es donde se usará el server elegido.
     token_usuario = getattr(bridges, usuario_proveedor)
     client = gradio_client.Client(api, hf_token=token_usuario)
@@ -93,6 +114,7 @@ def mass(input1, gender, hero, api, usuario_proveedor):
         return result
 
     except Exception as e:
+        print("Excepción de client.predict...")
         #La no detección de un rostro es mandado aquí?! Siempre? SI SIEMPRE, porque instantID es diferente y no reporta ese error integramente, pero aquí llega. 
         mensaje = tools.titulizaExcepDeAPI(e)        
         return mensaje

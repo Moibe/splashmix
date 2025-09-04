@@ -36,7 +36,12 @@ def welcome(usuario_firebase):
 with gr.Blocks(theme=globales.tema, head=firehead.head, js=fire.js, css="footer {visibility: hidden}") as main:
     
     usuario_firebase = gr.Textbox(visible=False) #Espacio para almacenar el usuario de firebase 
-    acheteemeele = gr.HTML(visible=False)
+    acheteemeele = gr.HTML("""
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-585LHZXF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+                           """, visible=False)
 
     with gr.Row(variant='compact', show_progress=False):
         with gr.Column():

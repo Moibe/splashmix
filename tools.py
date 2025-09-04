@@ -1,12 +1,13 @@
-import random
-import globales
-import bridges
-import importlib
-import fireWhale
 import os 
 import time
+import random
 import bridges
+import globales
+import importlib
+import fireWhale
+import powerWhale
 import gradio as gr
+
 from huggingface_hub import HfApi
 
 def theme_selector():
@@ -22,7 +23,6 @@ def theme_selector():
         
     ]
     tema = random.choice(temas_posibles)
-    #print("Tema random: ", tema)
     return tema
 
 def eligeAPI(opcion):
@@ -82,14 +82,18 @@ def revisorCuotas():
 
     for indice, elemento in enumerate(proveedores_poder):
         print(elemento) 
-        quota_disponible = fireWhale.obtenDato("quota", elemento, "segundos")
+        quota_disponible = powerWhale.obtenDato("power", elemento, "segundos")
         print(f"Servidor: {elemento}: segundos: {quota_disponible}.")
         if quota_disponible > globales.process_margin: 
             #Si la quota_disponible es mayor que lo que nos costará el proceso, selecciona ese servidor. 
             print(f"Servidor seleccionado: {elemento}, que tiene {quota_disponible} segundos disponibles.")
             if indice == total_elementos - 1: #Si el seleccionado es el último elemento, revisar si sus segundos quedaron al limite para hacer el encendido preventivo.
                 print("¡Estamos en el último elemento, revisión de límite para encendido preventivo.")
-                if quota_disponible < globales.process_margin:
+                print("If cuota disponible < globales.process_margin") #If cuota disponible después de la resta!
+                print(f"Quota Disponible = {quota_disponible} y process margin = {globales.process_margin}")
+                time.sleep(6)
+                if quota_disponible - globales.process_cost < globales.process_margin:
+                    print("Entré a init api...")
                     initAPI(globales.api_cost) 
                    #proveedor, segundos disponibles.
             return elemento        
@@ -99,7 +103,7 @@ def revisorCuotas():
     return 'costo' #Regresa 'costo' si ninguno de los elementos tiene cuota disponible. 
 
 def initAPI(api):
-    
+    print("Estoy en initAPI...")
     global result_from_initAPI
     try:
         repo_id = api[0]
@@ -261,7 +265,7 @@ def renombra_imagen(hero, resultado):
 
 def reducirQuota(tipo_api, usuario_proveedor):
             if tipo_api == "quota":
-                fireWhale.incrementar_campo_numerico('quota', usuario_proveedor, 'segundos', amount=-globales.process_cost)
+                powerWhale.incrementar_campo_numerico("power", usuario_proveedor, 'segundos', amount=-globales.process_cost)
 
 def defineBotones(env):
     script = "() => window.location.href = " 

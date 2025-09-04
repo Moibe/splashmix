@@ -37,8 +37,8 @@ def perform(input1, gender, personaje, usuario):
             
             #SI EL ERROR ES UN RUNTIME_ERROR: 
             print("Llegada al IF de la segunda vuelta, donde e es: ", e)
-            time.sleep(6)
-            if "RUNTIME_ERROR" in resultado:                                 
+            if "RUNTIME_ERROR" in resultado:
+                print("Estoy dentro del IF del segundo intento...")                                 
                 #Segundo intento
                 try:
                     resultado = mass(input1, gender, personaje, globales.api_zero_backup, usuario_proveedor)
@@ -50,6 +50,8 @@ def perform(input1, gender, personaje, usuario):
                     resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
             
             else: #O sea si el error de la excepción no fue RUNTIME_ERROR (aun siendo error.)
+                print("No caí en el if del segundo intento, estoy en el else.")
+                time.sleep(7)
                 return resultado, info_window          
     else: #Aquí es si no fue error y ya salimos del try más externo, es el else de si tuviste suficientes tokens.
         #Si no hubo autorización.

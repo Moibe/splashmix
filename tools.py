@@ -89,11 +89,9 @@ def revisorCuotas():
             print(f"Servidor seleccionado: {elemento}, que tiene {quota_disponible} segundos disponibles.")
             if indice == total_elementos - 1: #Si el seleccionado es el último elemento, revisar si sus segundos quedaron al limite para hacer el encendido preventivo.
                 print("¡Estamos en el último elemento, revisión de límite para encendido preventivo.")
-                print("If cuota disponible < globales.process_margin") #If cuota disponible después de la resta!
+                #print("If cuota disponible < globales.process_margin") #If cuota disponible después de la resta!
                 print(f"Quota Disponible = {quota_disponible} y process margin = {globales.process_margin}")
-                time.sleep(6)
                 if quota_disponible - globales.process_cost < globales.process_margin:
-                    print("Entré a init api...")
                     initAPI(globales.api_cost) 
                    #proveedor, segundos disponibles.
             return elemento        

@@ -82,9 +82,8 @@ def precarga(uid):
                         pass #Al parecer si le da tiempo suficiente de prender. 
                         #Checar si al hacer compra se vuelve a crear el usuario.    
                     fireWhale.editaDato('usuarios', uid, 'cus', respuesta['customer_id'])
-                    print("cus agregado")
+                    # print("cus agregado")
             else: #Si no existe en FIREBASE AUTH, es un usuario inválido. FutureImportante: ¿Debería regresarlo a login? 
-                print("No hay email ni displayname?")
                 mensaje = "Usuario inválido."
                 mensaje2 = "Recarga la página si no puedes ver tus créditos." #Future,¿éste mensaje puede ser un link a login más que un texto?
         except Exception as e:
@@ -157,9 +156,9 @@ def evaluaResultadoUsuario(resultado, personaje):
 
 def actualizador_navbar(usuario, result, info_window):
     
-    print("Ésto es usuario: ", usuario)
-    print("Ésto es result: ", result)
-    print("Ésto es info_window: ", info_window)
+    # print("Ésto es usuario: ", usuario)
+    # print("Ésto es result: ", result)
+    # print("Ésto es info_window: ", info_window)
     
     #Controla si se abre el botón de recargar créditos.
     if "no-credits" in result:
@@ -173,9 +172,6 @@ def actualizador_navbar(usuario, result, info_window):
         #Debita uno de la cuota de ese usuario y despliegalo.
         fireWhale.incrementar_campo_numerico('usuarios', usuario, 'tokens', amount=-globales.costo_work)
         tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #A pesar de la maniobra para obtener y restar, para poder desplegarlo de todas formas necesitaremos hacer otra lectura de firebase.
-        # print("Estos son los tokens que tiene actualmente el usuario:", tokens)
-        # tokens = tokens - globales.costo_work #debitas
-        # fireWhale.editaDato('usuarios', usuario, 'tokens', tokens) #editas
         print(f"Después de debitar tienes {tokens} tokens.")
     else: 
         #Lo demás debería ser un error.

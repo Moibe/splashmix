@@ -33,7 +33,7 @@ def welcome(usuario_firebase):
     return gr.Button(value="Cerrar Sesión", size='md', variant=random.choice(botones))
 
 #fire provee las partes de javascript que se requieren para correr el chequeo de firebase.
-with gr.Blocks(theme=globales.tema, head=firehead.head, js=fire.js, css="footer {visibility: hidden}") as main:
+with gr.Blocks(theme=globales.tema, title="Splashmix App", head=firehead.head, js=fire.js, css="footer {visibility: hidden}") as main:
     
     usuario_firebase = gr.Textbox(visible=False) #Espacio para almacenar el usuario de firebase 
     acheteemeele = gr.HTML("""

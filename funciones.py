@@ -50,8 +50,7 @@ def perform(input1, gender, personaje, usuario):
                     resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
             
             else: #O sea si el error de la excepción no fue RUNTIME_ERROR (aun siendo error.)
-                print("No caí en el if del segundo intento, estoy en el else.")
-                time.sleep(7)
+                #print("No caí en el if del segundo intento, estoy en el else.")
                 return resultado, info_window          
     else: #Aquí es si no fue error y ya salimos del try más externo, es el else de si tuviste suficientes tokens.
         #Si no hubo autorización.

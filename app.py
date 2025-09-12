@@ -76,5 +76,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             outputs=[],
             js=script_buy #Quizá aquí en el futuro necesite un reload con params.
             )
-    main.load(sulkuFront.precarga, usuario_firebase, [usuario_firebase, acordeon, btn_logout, acordeon2], js=fuego.js) if globales.acceso != "libre" else None
+    main.load(sulkuFront.precarga, usuario_firebase, [usuario_firebase, acordeon, btn_logout, acordeon2], js=fuego.js)
 iniciar()

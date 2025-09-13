@@ -28,7 +28,6 @@ script_logout, script_buy = tools.defineBotones(globales.firebase_auth)
 
 
 def welcome(usuario_firebase): 
-    print("Esto es una prueba de welcome:", usuario_firebase)
     botones = ['huggingface', 'primary', 'secondary', 'stop']
     return gr.Button(value="Cerrar Sesión", size='md', variant=random.choice(botones))
 

@@ -3,7 +3,6 @@ import random
 import globales
 import importlib
 import splashmix.configuracion
-import time
 
 def creadorObjeto(objetoACrear, databank):
     #Regresa un objeto creación con sus características.

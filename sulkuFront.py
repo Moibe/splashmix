@@ -6,6 +6,7 @@ import gradio as gr
 from firebase_admin import firestore
 mensajes, sulkuMessages = tools.get_mensajes(globales.mensajes_lang) #import modulo_correspondiente
 import time
+import ga4Analiticas
 
 result_from_displayTokens = None 
 result_from_initAPI = None    
@@ -65,6 +66,7 @@ def precarga(uid):
                     'fecha_registro': firestore.SERVER_TIMESTAMP # Para un timestamp del servidor
                     }
                     fireWhale.creaDatoMultiple('usuarios', uid, datos_perfil)
+                    ga4Analiticas.send_ga4_signup_event()
                     mensaje = f"🐙Usuario: {email} "
                     mensaje2 = f"💶Creditos Disponibles: 5." #Analizar si está bien dejarlo fijo y todo funciona bien.
                     #Una vez creado, crea de una vez su usuario de Stripe.

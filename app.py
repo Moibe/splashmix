@@ -1,3 +1,4 @@
+import tools
 import inputs
 import random
 import globales
@@ -5,7 +6,7 @@ import funciones
 import sulkuFront
 import gradio as gr
 import firehead, fire, fuego
-import tools
+
 
 def iniciar():    
     app_path = globales.app_path

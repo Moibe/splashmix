@@ -4,7 +4,7 @@ import globales
 import requests
 
 
-def send_ga4_signup_event(s):
+def send_ga4_signup_event():
     """
     Función para enviar un evento de SIGN-UP a GA4 usando Measurement Protocol.
     

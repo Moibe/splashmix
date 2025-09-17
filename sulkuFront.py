@@ -33,7 +33,7 @@ def displayTokens(usuario):
 
 def precarga(arreglo):
     #gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None)
-
+    print("Ésto es el arreglo completo: ", arreglo)
     uid = arreglo[0]
     gaClient = arreglo[1]
     print("Estoy en precarga y el valor de uid es: ", uid)

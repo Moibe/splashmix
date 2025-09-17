@@ -13,7 +13,7 @@ function funcion() {{
     }}
     console.log("En resultado que se está enviando es:", window.gaClientID)
     console.log(usuario_firebase)
-    arreglo = [usuario_firebase, window.gaClientID]
+    arreglo = [window.gaClientID, usuario_firebase]
     console.log("El arreglo que se está enviando es:" )
     console.log(arreglo)   
     return arreglo     

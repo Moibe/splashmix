@@ -68,8 +68,8 @@ def precarga(arreglo):
                     'tokens': 5,
                     'fecha_registro': firestore.SERVER_TIMESTAMP # Para un timestamp del servidor
                     }
-                    fireWhale.creaDatoMultiple('usuarios', uid, datos_perfil)
-                    ga4Analiticas.send_ga4_signup_event()
+                    fireWhale.creaDatoMultiple('usuarios', uid, datos_perfil) #Ésta es la creación del usuario en Firestore.
+                    ga4Analiticas.send_ga4_signup_event(gaClient)
                     mensaje = f"🐙Usuario: {email} "
                     mensaje2 = f"💶Creditos Disponibles: 5." #Analizar si está bien dejarlo fijo y todo funciona bien.
                     #Una vez creado, crea de una vez su usuario de Stripe.

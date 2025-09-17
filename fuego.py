@@ -11,7 +11,8 @@ function funcion() {{
     }} else {{
     console.log("Resultado no está vacío, si hay user de firebase, no se redirecciona a login.");
     }}
-
+    console.log("En resultado que se está enviando es:")
+    console.log(resultado)
     return resultado       
     }}
 

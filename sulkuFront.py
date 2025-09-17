@@ -34,8 +34,8 @@ def displayTokens(usuario):
 def precarga(arreglo):
     #gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None)
     print("Ésto es el arreglo completo: ", arreglo)
-    uid = arreglo.uid
-    gaClient = arreglo.gaClient
+    uid = arreglo['uid']
+    gaClient = arreglo['gaClient']
     print("Estoy en precarga y el valor de uid es: ", uid)
     print("Gaclient es: ", gaClient)
     #uid = 'uQDteq2ezQP6S1KNh1mf80wMYPg1' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.

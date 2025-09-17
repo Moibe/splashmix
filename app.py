@@ -56,7 +56,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     with gr.Row():
         demo = gr.Interface(
             fn=funciones.perform,
-            inputs=[input1, gender, personaje, usuario_firebase], 
+            inputs=[input1, gender, personaje, usuario_firebase['uid']], 
             outputs=[result, lbl_console], 
             flagging_mode=globales.flag,
             js=fuego.js,        

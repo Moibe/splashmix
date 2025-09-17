@@ -52,8 +52,7 @@ def precarga(arreglo):
             print(f"Email: {email}, displayName: {displayName}.")
             
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
-                #Camino 1: Si hubo un usuario.
-                print("Camino 1") 
+                print("Camino 1: Si hubo un usuario.") 
                 tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
                 if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                 #La lógica de crear un usuario nuevo debería estar afuera, aquí.

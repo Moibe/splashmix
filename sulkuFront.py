@@ -92,7 +92,9 @@ def precarga(arreglo):
                 mensaje2 = "Recarga la página si no puedes ver tus créditos." #Future,¿éste mensaje puede ser un link a login más que un texto?
         except Exception as e:
             f"Excepción: {e}"
-            
+
+        print("Punto justo antes de enviar los valores obtenidos...")
+        time.sleep(1)    
         return uid, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False)  
 
 def visualizar_creditos(nuevos_creditos, usuario):

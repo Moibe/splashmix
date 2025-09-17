@@ -16,6 +16,8 @@ btn_buy = gr.Button("Get Credits", visible=False, size='lg')
 
 def perform(input1, gender, personaje, usuario):
 
+    print("Si entré a perform...")
+
     gender = gender or "superhero" #default es superhero.
     #Los tokens se checan dentro de perform para estar seguros de que cuenta con los tokens para ejecutar esa operación en particular.
     tokens = fireWhale.obtenDato('usuarios', usuario['uid'], 'tokens')

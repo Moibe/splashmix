@@ -290,3 +290,24 @@ def process_request_with_cookie(name, request: gr.Request):
         return f"Hello, {name}! Your cookie value is: {user_cookie}"
     else:
         return f"Hello, {name}! No 'my_cookie_name' cookie found."
+    
+def obtener_gclid_exacto(cadena):
+    """
+    Toma un string con el formato "GA1.1.###.###" y regresa las últimas dos cifras.
+
+    Args:
+        cadena (str): El string de entrada.
+
+    Returns:
+        str: Las dos últimas cifras unidas por un punto, o None si el formato es incorrecto.
+    """
+    # 1. Dividir el string en partes usando el punto como delimitador
+    partes = cadena.split('.')
+    
+    # 2. Verificar que el formato tiene al menos 4 partes (GA1, 1, cifra, cifra)
+    if len(partes) >= 4:
+        # 3. Unir las dos últimas partes con un punto y retornarlas
+        return f"{partes[-2]}.{partes[-1]}"
+    else:
+        # Retornar None si el formato no es el esperado
+        return None

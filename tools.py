@@ -279,3 +279,14 @@ def defineBotones(env):
         script_buy = script + base_url + "buy'"
 
     return script_logout, script_buy
+
+
+def process_request_with_cookie(name, request: gr.Request):
+    """
+    Processes a request and attempts to retrieve a cookie.
+    """
+    user_cookie = request.cookies.get("my_cookie_name")
+    if user_cookie:
+        return f"Hello, {name}! Your cookie value is: {user_cookie}"
+    else:
+        return f"Hello, {name}! No 'my_cookie_name' cookie found."

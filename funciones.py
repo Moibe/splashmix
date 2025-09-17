@@ -18,7 +18,7 @@ def perform(input1, gender, personaje, usuario):
 
     gender = gender or "superhero" #default es superhero.
     #Los tokens se checan dentro de perform para estar seguros de que cuenta con los tokens para ejecutar esa operación en particular.
-    tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens')
+    tokens = fireWhale.obtenDato('usuarios', usuario['uid'], 'tokens')
     
     #1: Reglas sobre autorización si se tiene el crédito suficiente.
     if tokens >= globales.costo_work: #Lo hará solo si tiene el crédito suficiente.

@@ -4,6 +4,7 @@ head = """
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>  
     <script>
     console.log("Hola estoy en HEAD.js de firehead.py @ BLOCKS")  
+    console.log("Más texto desde firehead........")
     </script>
 
 <!-- Google Tag Manager -->
@@ -15,8 +16,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-585LHZXF');
 </script>
 <!-- End Google Tag Manager --> 
-<script>
-document.documentElement.setAttribute('translate', 'no');
-console.log("Más texto desde firehead........")
-</script>    
+
 """

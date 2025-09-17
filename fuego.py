@@ -13,6 +13,6 @@ function funcion() {{
     }}
     console.log("En resultado que se está enviando es:", window.gaClientID)
     console.log(resultado)
-    return resultado, window.gaClientID       
+    return window.gaClientID       
     }}
 """

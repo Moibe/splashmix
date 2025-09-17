@@ -31,10 +31,10 @@ def displayTokens(usuario):
     
     result_from_displayTokens = display
 
-def precarga(uid, gaclient):
+def precarga(uid):
     #gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None)
     print("Estoy en precarga y el valor de uid es: ", uid)
-    print("Gaclient es: ", gaclient)
+    
     #uid = 'uQDteq2ezQP6S1KNh1mf80wMYPg1' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.
         
     if uid == None:

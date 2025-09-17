@@ -11,6 +11,8 @@ def send_ga4_signup_event(gaCliente):
     Args:
         
     """
+
+    print("Estoy en send sign up y gaCliente es: ", gaCliente)
     url = f"https://www.google-analytics.com/mp/collect?measurement_id={globales.ga4ID}&api_secret={bridges.ga4Key}"
     
     payload = {

@@ -94,7 +94,7 @@ def precarga(arreglo):
             f"Excepción: {e}"
 
         print("Punto justo antes de enviar los valores obtenidos...")
-        time.sleep(19)    
+        time.sleep(8)    
         return uid, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False)  
 
 def visualizar_creditos(nuevos_creditos, usuario):

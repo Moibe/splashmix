@@ -36,7 +36,8 @@ def welcome(usuario_firebase):
 with gr.Blocks(theme=globales.tema, title="Splashmix App", head=firehead.head, js=fire.js, css="footer {visibility: hidden}") as main:
     
     print("Cuando arranca grBlocks???")
-    usuario_firebase = gr.JSON(visible=False) #Espacio para almacenar el usuario de firebase 
+    arreglo = gr.JSON(visible=False) #Espacio para almacenar el usuario de firebase 
+    usuario_firebase = gr.Text(visible=False)
     acheteemeele = gr.HTML("""
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-585LHZXF"
@@ -77,5 +78,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             outputs=[],
             js=script_buy #Quizá aquí en el futuro necesite un reload con params.
             )
-    main.load(sulkuFront.precarga, usuario_firebase, [usuario_firebase, acordeon, btn_logout, acordeon2], js=fuego.js)
+    main.load(sulkuFront.precarga, arreglo, [usuario_firebase, acordeon, btn_logout, acordeon2], js=fuego.js)
 iniciar()

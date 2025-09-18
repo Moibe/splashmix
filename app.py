@@ -37,12 +37,13 @@ with gr.Blocks(theme=globales.tema, title="Splashmix App", head=firehead.head, j
     
     arreglo = gr.JSON(visible=False) #Espacio para almacenar el usuario de firebase 
     usuario_firebase = gr.Text(visible=False)
-    acheteemeele = gr.HTML(f"""
+    texto = f"""
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-585LHZXF"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-                           """, visible=False)
+                           """
+    acheteemeele = gr.HTML(texto, visible=False)
 
     with gr.Row(variant='compact', show_progress=False):
         with gr.Column():

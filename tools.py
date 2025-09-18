@@ -4,7 +4,6 @@ import random
 import bridges
 import globales
 import importlib
-import fireWhale
 import powerWhale
 import gradio as gr
 

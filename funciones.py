@@ -3,6 +3,7 @@ import random
 import bridges
 import globales
 import fireWhale
+import powerWhale
 import sulkuFront
 import gradio as gr
 import gradio_client
@@ -36,7 +37,7 @@ def perform(input1, gender, personaje, usuario):
         
         except Exception as e:           
             if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        
-                fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
+                powerWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
             # print("Excepción de mass...")    
             resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
             
@@ -50,7 +51,7 @@ def perform(input1, gender, personaje, usuario):
                     tools.reducirQuota(tipo_api, usuario_proveedor)
                 except Exception as e:           
                     if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        
-                        fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
+                        powerWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
                     print("Excepción de mass...")    
                     resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
             

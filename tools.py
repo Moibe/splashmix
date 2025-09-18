@@ -134,7 +134,7 @@ def titulizaExcepDeAPI(e):
         resultado = "HANDSHAKE_ERROR"
     elif "File None does not exist on local filesystem and is not a valid URL." in str(e):
         resultado = "NO_FILE"
-    elif "The upstream Gradio app has raised an exception: Error" in str(e):
+    elif "Error" in str(e):
         print("Si entré a la detección 182 de la excepción: ")
         resultado = "NO_FACE"
     elif "too many values to unpack (expected 2)" in str(e): #No es lo ideal pero instantid no envía mensaje tan específico, FUTURE: tendrías que modificarlo haya y no se si lo valga. 

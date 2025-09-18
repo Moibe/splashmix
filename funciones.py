@@ -31,7 +31,7 @@ def perform(input1, gender, personaje, usuario):
             #Importante, la quota si se debita porque el proceso la consume aunque marque error (excepto quota).
             #Pero está bien debitarla porque así saca del cíclo a ese server, si no se quedaría.
             if "QUOTA" in resultado: #Si el error fue de cuota hay que eliminar a ese servidor hasta su renovación.
-                fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
+                powerWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
             else: 
                 tools.reducirQuota(tipo_api, usuario_proveedor) #Si estamos en sistema de quotas. Aplica un IF.
         

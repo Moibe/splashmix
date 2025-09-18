@@ -160,7 +160,6 @@ def recortadorQuota(texto_quota):
     # Encontrar el índice de final (antes de "<a")
     indice_final = texto_quota.find("<a")
     print("Índice final es: ", indice_final)
-    time.sleep(17)
 
     if indice_final == -1: #Significa que no encontró el texto "<a" entonces buscará Sign-Up.
         indice_final = texto_quota.find("Sign-up")
@@ -170,7 +169,7 @@ def recortadorQuota(texto_quota):
     subcadena = texto_quota[indice_inicio:indice_final]
 
     #Y si el objetivo es nunca desplegar el texto Hugging Face, éste es el plan de escape final.
-    if "Hugging" in subcadena: 
+    if "requested vs." in subcadena: 
         nuevo_mensaje = "Your quota is exceeded, try again in few hours please."
         return nuevo_mensaje
     else:

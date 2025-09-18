@@ -152,6 +152,8 @@ def titulizaExcepDeAPI(e):
     return resultado
     
 def recortadorQuota(texto_quota):
+    print("Esto es texto_quota:" , texto_quota)
+    time.sleep(18)
     # Encontrar el índice de inicio (después de "exception:")
     indice_inicio = texto_quota.find("exception:") + len("exception:")
     # Encontrar el índice de final (antes de "<a")

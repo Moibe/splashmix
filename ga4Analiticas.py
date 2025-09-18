@@ -24,7 +24,7 @@ def send_ga4_signup_event(gaCliente):
                 "name": "user_signup",
                 "params": {
                     "debug_mode": True,
-                    "method": "Google"
+                    "method": "google"
                 }
             }
         ]

@@ -153,14 +153,18 @@ def titulizaExcepDeAPI(e):
     
 def recortadorQuota(texto_quota):
     print("Esto es texto_quota:" , texto_quota)
-    time.sleep(18)
+    
     # Encontrar el índice de inicio (después de "exception:")
     indice_inicio = texto_quota.find("exception:") + len("exception:")
+    print("Índice inicio es: ", indice_inicio)
     # Encontrar el índice de final (antes de "<a")
     indice_final = texto_quota.find("<a")
-    
+    print("Índice final es: ", indice_final)
+    time.sleep(17)
+
     if indice_final == -1: #Significa que no encontró el texto "<a" entonces buscará Sign-Up.
         indice_final = texto_quota.find("Sign-up")
+        print("Al encontrar indice_final fue buscando SignUp: ", indice_final)
     
     #Extraer la subcadena
     subcadena = texto_quota[indice_inicio:indice_final]

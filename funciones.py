@@ -34,7 +34,7 @@ def perform(input1, gender, personaje, usuario):
         except Exception as e:           
             if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        
                 fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
-            print("Excepción de mass...")    
+            # print("Excepción de mass...")    
             resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
             
             #SI EL ERROR ES UN RUNTIME_ERROR: 

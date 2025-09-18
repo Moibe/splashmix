@@ -39,5 +39,3 @@ credits_visibility = False
 posicion_marker = False
 
 proveedores = ['moibe', 'irina', 'sosa', 'buzzword', 'sun', 'servidoria', 'desarrolloia']
-
-ga4ID = "G-PHPJCWFF9L"

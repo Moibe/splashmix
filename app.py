@@ -1,5 +1,6 @@
 import tools
 import inputs
+import ambiente
 import globales
 import funciones
 import sulkuFront
@@ -10,7 +11,7 @@ import firehead, fire, fuego
 def iniciar():    
     app_path = globales.app_path
     main.queue(max_size=globales.max_size)
-    main.launch(root_path=app_path, server_port=globales.server_port)
+    main.launch(root_path=app_path, server_port=ambiente.server_port)
 
 #Credit Related Elements
 html_credits = gr.HTML(visible=globales.credits_visibility)

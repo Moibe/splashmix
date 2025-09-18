@@ -27,7 +27,12 @@ def perform(input1, gender, personaje, usuario):
             api, tipo_api, usuario_proveedor = tools.eligeAPI(globales.seleccion_api) #Aquí ya elegiste al usuario proveedor pero no haz elegido su hf token.             
             resultado = mass(input1, gender, personaje, api, usuario_proveedor)
             #Importante: La cuota solo se debita aquí, después de hacer el client.predict.
-            tools.reducirQuota(tipo_api, usuario_proveedor) #Si estamos en sistema de quotas. Aplica un IF.
+            #Importante, la quota si se debita porque el proceso la consume aunque marque error (excepto quota).
+            #Pero está bien debitarla porque así saca del cíclo a ese server, si no se quedaría.
+            if "QUOTA" in resultado: #Si el error fue de cuota hay que eliminar a ese servidor hasta su renovación.
+                fireWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
+            else: 
+                tools.reducirQuota(tipo_api, usuario_proveedor) #Si estamos en sistema de quotas. Aplica un IF.
         
         except Exception as e:           
             if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        

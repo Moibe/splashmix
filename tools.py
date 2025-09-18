@@ -129,7 +129,8 @@ def titulizaExcepDeAPI(e):
     elif "The read operation timed out" in str(e): #IMPORTANTE, ESTO TAMBIÉN SUCEDE CUANDO LA DESPIERTAS Y ES INSTANTÁNEO.
         resultado = "STARTING"
     elif "GPU quota" in str(e): 
-        resultado = recortadorQuota(str(e)) #Cuando se trata de quota regresa el resultado completo convertido a string.
+        resultado = "QUOTA"
+        #resultado = recortadorQuota(str(e)) #Cuando se trata de quota regresa el resultado completo convertido a string.
     elif "handshake operation timed out" in str(e):
         resultado = "HANDSHAKE_ERROR"
     elif "File None does not exist on local filesystem and is not a valid URL." in str(e):

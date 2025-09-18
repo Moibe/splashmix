@@ -68,13 +68,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     btn_logout.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
-            inputs=[usuario_firebase],
+            inputs=[],
             outputs=[],
             js=script_logout
             )
     compra.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
-            inputs=[usuario_firebase],
+            inputs=[],
             outputs=[],
             js=script_buy #Quizá aquí en el futuro necesite un reload con params.
             )

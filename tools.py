@@ -170,7 +170,7 @@ def recortadorQuota(texto_quota):
 
     #Y si el objetivo es nunca desplegar el texto Hugging Face, éste es el plan de escape final.
     if "requested vs." in subcadena: 
-        nuevo_mensaje = "Your quota is exceeded, try again in few hours please."
+        nuevo_mensaje = "QUOTA"
         return nuevo_mensaje
     else:
         print(subcadena)

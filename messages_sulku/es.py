@@ -12,4 +12,5 @@ NO_FACE = "No fue posible detectar una cara en la imagen. Por favor sube una fot
 NO_POSITION = "Falta el cálculo de la posición, por favor contáctame, no te fueron debitados créditos."
 UNAUTHORIZED = "401 intenta otra vez, no te fueron debitados créditos."
 GENERAL = "Error en la red, no te fueron debitados créditos, intenta otra vez."
+QUOTA = "Intermitencia de la IA, no te fueron debitados créditos, intenta otra vez."
 ELSE = "Error. No te fueron debitados créditos."

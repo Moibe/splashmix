@@ -10,4 +10,5 @@ NO_FACE = "Unable to detect a face in the image. Please upload a different photo
 NO_POSITION = "Missing body position calculation, please contact me, no credits were debited."
 UNAUTHORIZED = "401 Please try again, no credits were debited."
 GENERAL = "Network error, no credits were debited, try again."
+QUOTA = "AI intermitence, no credits were debited, please try again."
 ELSE = "Error. No credits were debited."

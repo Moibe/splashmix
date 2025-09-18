@@ -33,11 +33,12 @@ def displayTokens(usuario):
 
 def precarga(arreglo):
     #gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None)
-    print("Ésto es el arreglo completo: ", arreglo)
+    
     uid = arreglo['uid']
     gaClient = arreglo['gaClient']
-    print("Estoy en precarga y el valor de uid es: ", uid)
-    print("Gaclient es: ", gaClient)
+    # print("Estoy en precarga y el valor de uid es: ", uid)
+    # print("Gaclient es: ", gaClient)
+
     #uid = 'uQDteq2ezQP6S1KNh1mf80wMYPg1' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.
         
     if uid == None:
@@ -52,9 +53,9 @@ def precarga(arreglo):
             print(f"Email: {email}, displayName: {displayName}.")
             
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
-                print("Camino 1: Si hubo un usuario.") 
                 tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
                 if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
+                    print("Camino 1: Si hubo un usuario.") 
                 #La lógica de crear un usuario nuevo debería estar afuera, aquí.
                     print(f"Tokens: {tokens}.")
                     mensaje = f"🐙Usuario: {email} "
@@ -92,9 +93,7 @@ def precarga(arreglo):
                 mensaje2 = "Recarga la página si no puedes ver tus créditos." #Future,¿éste mensaje puede ser un link a login más que un texto?
         except Exception as e:
             f"Excepción: {e}"
-
-        print("Punto justo antes de enviar los valores obtenidos...")
-        time.sleep(8)    
+  
         return uid, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False)  
 
 def visualizar_creditos(nuevos_creditos, usuario):

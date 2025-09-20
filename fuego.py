@@ -7,7 +7,7 @@ function funcion() {{
     // Verificar si resultado está vacío
     if (!usuario_firebase || usuario_firebase === "" || usuario_firebase === "null" || usuario_firebase === "undefined") {{
     console.log("Resultado está vacío o es null/undefined, redireccionando...");
-    arreglo = {{gaClient: window.gaClientID, uid: None}}
+    arreglo = {{gaClient: window.gaClientID, uid: null}}
     return arreglo;
     }} else {{
     console.log("Resultado no está vacío, si hay user de firebase, no se redirecciona a login.");

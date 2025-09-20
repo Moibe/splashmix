@@ -36,7 +36,7 @@ def precarga(arreglo):
     
     #Habrá casos en que regrese null porque entro a la app directo pero no había nadie logueado.
     print(f"En estos casos arreglo es: {arreglo} y su tipo es {type(arreglo)}.")
-    time.sleep(10)
+    
     uid = arreglo['uid']
     gaClient = arreglo['gaClient']
 

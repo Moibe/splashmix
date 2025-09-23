@@ -38,7 +38,7 @@ def precarga(arreglo):
     print(f"En estos casos arreglo es: {arreglo} y su tipo es {type(arreglo)}.")
     
     uid = arreglo['uid']
-    gaClient = arreglo['gaClient']
+    gaClient = arreglo.get('gaClient', '')
 
     #uid = 'uQDteq2ezQP6S1KNh1mf80wMYPg1' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.
         

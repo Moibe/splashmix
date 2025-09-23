@@ -279,7 +279,7 @@ def defineBotones(env):
         script_buy = script + base_url + "buy'"
         
     else:
-        base_url = "'https://app.splashmix.ink"
+        base_url = "'https://app.splashmix.ink/"
         script_logout = script + base_url + "logout'"
         script_buy = script + base_url + "buy'"
 

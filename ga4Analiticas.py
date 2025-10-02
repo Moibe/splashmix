@@ -18,8 +18,9 @@ def send_ga4_signup_event(gaCliente):
     gclid_exacto = tools.obtener_gclid_exacto(gaCliente)
     print("Glid exacto: ", gclid_exacto)
     print(f"Ambiente: {ambiente.ga4ID}, ga4Key: {bridges.ga4Key}")
-    time.sleep(18)
     url = f"https://www.google-analytics.com/mp/collect?measurement_id={ambiente.ga4ID}&api_secret={bridges.ga4Key}"
+    print("Url total: ", url)
+    time.sleep(17)
     
     payload = {
         "client_id": gclid_exacto, # Aquí deberías usar el Client ID o User ID del usuario

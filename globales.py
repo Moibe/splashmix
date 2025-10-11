@@ -38,4 +38,4 @@ credits_visibility = False
 
 posicion_marker = False
 
-proveedores = ['servidoria', 'desarrolloia', 'irina', 'moibe', 'sosa', 'buzzword', 'sun']
+proveedores = ['irina', 'moibe', 'servidoria', 'desarrolloia', 'sun', 'sosa', 'buzzword']

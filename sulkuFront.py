@@ -5,7 +5,6 @@ import fireWhale
 import gradio as gr
 from firebase_admin import firestore
 mensajes, sulkuMessages = tools.get_mensajes(globales.mensajes_lang) #import modulo_correspondiente
-import time
 import ga4Analiticas
 
 result_from_displayTokens = None 
@@ -39,13 +38,13 @@ def precarga(arreglo):
     uid = arreglo['uid']
     gaClient = arreglo.get('gaClient', '')
 
-    #uid = 'uQDteq2ezQP6S1KNh1mf80wMYPg1' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.
+    #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.
             
     if uid == None:
         #Aquí tenemos que hacer el redireccionamiento si no hay uid.
         mensaje = 'Necesitas loguearte al sistema.'
         mensaje2 = ''
-        gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=True)
+        
         return uid, gr.Accordion(label=mensaje, open=True), gr.Button(value="Login 👋🏻"), gr.Accordion(label=mensaje2, open=False)
     
     else: #Si si hubo uid continuas el camino normal. 
@@ -57,6 +56,7 @@ def precarga(arreglo):
                 tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
                 if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                     print("Camino 1: Si hubo un usuario.") 
+                    
                 #La lógica de crear un usuario nuevo debería estar afuera, aquí.
                     print(f"Tokens: {tokens}.")
                     mensaje = f"🐙Usuario: {email} "
@@ -64,7 +64,8 @@ def precarga(arreglo):
                 else: #Si no se encontró significa que el usuario no existe en Firestore y deberíamos crear uno nuevo.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.
                     print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.
-                    
+                    gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=True)
+                    print("Ok banner...")
                     datos_perfil = {
                     'diplayName': displayName,
                     'email': email,

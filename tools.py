@@ -276,7 +276,8 @@ def defineBotones(env):
     script = "() => window.location.href = " 
 
     if env == 'dev':
-        base_url = "'https://app.targetvox.com/"
+        #base_url = "'http://127.0.0.1:7800/" #devolocal
+        base_url = "'https://app.targetvox.com/"  #devonline 
         script_logout = script + base_url + "logout'" 
         script_buy = script + base_url + "buy'"
         

@@ -4,7 +4,7 @@ lbl_credits = "Credits Available"
 
 #Bienvenida
 lbl_info_welcome = """
-You have 5 free images, use them wisely, try out all the features from our app, Happy little strokes!.
+You have 5 free images, use them wisely, try out all the features from our app, then you can buy more credits, happy little strokes 🎨!.
 """
 
 #labels: En cada app solo pon los de esa app.

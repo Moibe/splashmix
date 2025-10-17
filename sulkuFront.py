@@ -32,7 +32,6 @@ def displayTokens(usuario):
     result_from_displayTokens = display
 
 def precarga(arreglo):
-    gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None)
     
     #Habrá casos en que regrese null porque entro a la app directo pero no había nadie logueado.
     print(f"En estos casos arreglo es: {arreglo} y su tipo es {type(arreglo)}.")
@@ -64,6 +63,7 @@ def precarga(arreglo):
                 else: #Si no se encontró significa que el usuario no existe en Firestore y deberíamos crear uno nuevo.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.
                     print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.
+                    gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=True)
                     datos_perfil = {
                     'diplayName': displayName,
                     'email': email,
@@ -114,7 +114,7 @@ def noCredit():
     return path, info_window 
 
 def aError(excepcion):
-    print("La excepción es:", excepcion)
+    #print("La excepción es:", excepcion)
     info_window = manejadorExcepciones(excepcion)
     path = 'images/error.png'      
     return path, info_window

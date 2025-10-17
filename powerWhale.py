@@ -30,7 +30,7 @@ def obtenDato(coleccion, dato, info):
         return resultado
         pass #El documento si existe.        
     else:
-        print("No existe el documento, es un nuevo usuario.")
+        #print("No existe el documento, es un nuevo usuario.")
         return None
         #No crees nada pero avisa que no existe.
         #creaDato(coleccion, dato, 'tokens', 5) #porque agregará 5 tokens.

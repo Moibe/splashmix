@@ -38,7 +38,7 @@ def crear_cliente_stripe(email: str, firebase_user: str = None, site: str = None
 
     try:
         # Realiza la petición POST a la API, usando 'data=payload'
-        print(f"Attempting to send data to API as x-www-form-urlencoded: {payload}")
+        #print(f"Attempting to send data to API as x-www-form-urlencoded: {payload}")
         response = requests.post(api_url, data=payload) # <--- ¡Cambiado de 'json=data' a 'data=payload'!
 
         # Raise an HTTPError for bad responses (4xx or 5xx status codes).
@@ -49,7 +49,7 @@ def crear_cliente_stripe(email: str, firebase_user: str = None, site: str = None
         return response.json()
 
     except requests.exceptions.HTTPError as e:
-        print(f"HTTP Error: {e}")
+        #print(f"HTTP Error: {e}")
         error_details = {"error": "HTTP Error", "status_code": e.response.status_code if e.response else "N/A"}
         if e.response and e.response.text:
             try:

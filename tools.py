@@ -119,7 +119,7 @@ def initAPI(api):
 
 def titulizaExcepDeAPI(e): 
     #Resume una excepción a un título manejable.
-    print("Antes de titulizar la excepción es: ", e)
+    print(f"Antes de titulizar la excepción es: xxx{e}xxx")
 
     if "RUNTIME_ERROR" in str(e):
         resultado = "RUNTIME_ERROR" #api mal construida tiene error.

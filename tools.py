@@ -134,9 +134,6 @@ def titulizaExcepDeAPI(e):
         resultado = "HANDSHAKE_ERROR"
     elif "File None does not exist on local filesystem and is not a valid URL." in str(e):
         resultado = "NO_FILE"
-    elif "Error" in str(e):
-        print("Si entré a la detección 182 de la excepción: ")
-        resultado = "NO_FACE"
     elif "too many values to unpack (expected 2)" in str(e): #No es lo ideal pero instantid no envía mensaje tan específico, FUTURE: tendrías que modificarlo haya y no se si lo valga. 
         resultado = "NO_FACE" 
     #A partir de aquí son casos propios de cada aplicación.
@@ -146,6 +143,9 @@ def titulizaExcepDeAPI(e):
         resultado = "NO_POSITION"
     elif "401" in str(e):
         resultado = "UNAUTHORIZED"
+    elif "Error" in str(e):
+        print("Si entré a la detección 182 de la excepción: ") #Se atraviesa con ésta antes de llegar a la de 401.
+        resultado = "GENERAL"
     else: 
         resultado = "GENERAL"
 

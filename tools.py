@@ -143,6 +143,9 @@ def titulizaExcepDeAPI(e):
         resultado = "NO_POSITION"
     elif "401" in str(e):
         resultado = "UNAUTHORIZED"
+    elif str(e) == "Error":
+        print("Si entré a la detección 182 de la excepción: ") #Se atraviesa con ésta antes de llegar a la de 401.
+        resultado = "GENERAL"
     elif "Error" in str(e):
         print("Si entré a la detección 182 de la excepción: ") #Se atraviesa con ésta antes de llegar a la de 401.
         resultado = "GENERAL"

@@ -57,24 +57,22 @@ def precarga(arreglo):
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
                 #tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
                 documento_completo = fireWhale.obtenDocumento('usuarios', uid)
-                if documento_completo:
+                if documento_completo: #Si el documento existió...
                     print("El documento existió.")
-                    tokens = documento_completo.get('tokens', 0)
+                    tokens = documento_completo.get('tokens', None)
                     compro = documento_completo.get('compro', False)
-
-                print("El documento no existió. Por lo tanto tokens fue:")
-                print(tokens)
-
-                if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
-                    print("Camino 1: Si hubo un usuario.") 
-                    display_banner = True
-                    if compro is False:
-                        gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
-                #La lógica de crear un usuario nuevo debería estar afuera, aquí.
-                    print(f"Tokens: {tokens}.")
-                    mensaje = f"🐙Usuario: {email} "
-                    mensaje2 = f"💶Creditos Disponibles: {tokens}."
-                else: #Si no se encontró significa que el usuario no existe en Firestore y deberíamos crear uno nuevo.
+                    #Y los tokens existieron....
+                    if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
+                        print("Camino 1: Si hubo un usuario.") 
+                        display_banner = True
+                        if compro is False:
+                            gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
+                        #La lógica de crear un usuario nuevo debería estar afuera, aquí.
+                        print(f"Tokens: {tokens}.")
+                        mensaje = f"🐙Usuario: {email} "
+                        mensaje2 = f"💶Creditos Disponibles: {tokens}."
+                
+                else: #Si no se encontró el documento significa que el usuario no existe en Firestore y deberíamos crear uno nuevo.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.
                     print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.                    
                     datos_perfil = {

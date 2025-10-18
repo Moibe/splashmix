@@ -57,9 +57,13 @@ def precarga(arreglo):
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
                 #tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
                 documento_completo = fireWhale.obtenDocumento('usuarios', uid)
-                tokens = documento_completo.get('tokens', 0)
-                compro = documento_completo.get('compro', False)
-                print("El valor de compró es es: ", compro)
+                if documento_completo:
+                    print("El documento existió.")
+                    tokens = documento_completo.get('tokens', 0)
+                    compro = documento_completo.get('compro', False)
+
+                print("El documento no existió. Por lo tanto tokens fue:")
+                print(tokens)
 
                 if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                     print("Camino 1: Si hubo un usuario.") 

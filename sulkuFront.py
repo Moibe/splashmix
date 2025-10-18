@@ -6,6 +6,7 @@ import gradio as gr
 from firebase_admin import firestore
 mensajes, sulkuMessages = tools.get_mensajes(globales.mensajes_lang) #import modulo_correspondiente
 import ga4Analiticas
+import time
 
 result_from_displayTokens = None 
 result_from_initAPI = None    
@@ -32,13 +33,14 @@ def displayTokens(usuario):
 
 def precarga(arreglo):
     
+    
     #Habrá casos en que regrese null porque entro a la app directo pero no había nadie logueado.
     print(f"En estos casos arreglo es: {arreglo} y su tipo es {type(arreglo)}.")
     
     uid = arreglo['uid']
     gaClient = arreglo.get('gaClient', '')
 
-    #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.
+    uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.
             
     if uid == None:
         #Aquí tenemos que hacer el redireccionamiento si no hay uid.
@@ -47,25 +49,31 @@ def precarga(arreglo):
         
         return uid, gr.Accordion(label=mensaje, open=True), gr.Button(value="Login 👋🏻"), gr.Accordion(label=mensaje2, open=False)
     
-    else: #Si si hubo uid continuas el camino normal. 
+    else: #Si si hubo uid continuas el camino normal.       
+        
         try:
             email, displayName = fireWhale.obtenDatosUIDFirebase(uid)
             print(f"Email: {email}, displayName: {displayName}.")
             
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
-                tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
+                #tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
+                documento_completo = fireWhale.obtenDocumento('usuarios', uid)
+                print(f"Éste es el documento completo: {documento_completo}.")
+                tokens = documento_completo['tokens']
+                print(f"Ésto es compró: {documento_completo['compro']}")
+
                 if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                     print("Camino 1: Si hubo un usuario.") 
-                    
+                    display_banner = True
+                    gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
+                    print("Ok banner...")
                 #La lógica de crear un usuario nuevo debería estar afuera, aquí.
                     print(f"Tokens: {tokens}.")
                     mensaje = f"🐙Usuario: {email} "
                     mensaje2 = f"💶Creditos Disponibles: {tokens}."
                 else: #Si no se encontró significa que el usuario no existe en Firestore y deberíamos crear uno nuevo.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.
-                    print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.
-                    gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=True)
-                    print("Ok banner...")
+                    print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.                    
                     datos_perfil = {
                     'diplayName': displayName,
                     'email': email,

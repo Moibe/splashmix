@@ -70,6 +70,36 @@ def obtenDato(coleccion, dato, info):
         #No crees nada pero avisa que no existe.
         #creaDato(coleccion, dato, 'tokens', 5) #porque agregará 5 tokens.
 
+def obtenDocumento(coleccion, dato):
+    """
+    Obtiene todos los datos de un documento de Firestore como un diccionario.
+
+    Args:
+        coleccion (str): El nombre de la colección.
+        dato (str): El ID del documento a obtener.
+
+    Returns:
+        dict or None: El diccionario completo del documento si existe, o None si no existe.
+    """
+    # Define la referencia al documento
+    doc_ref = db.collection(coleccion).document(dato) 
+
+    # 1. Obtiene el documento (una sola lectura)
+    documento = doc_ref.get()
+    
+    # 2. Verifica si el documento existe
+    if documento.exists:
+        # Convierte el snapshot del documento a un diccionario
+        diccionario = documento.to_dict()
+        
+        print("✔️ Documento encontrado. Esto es el diccionario completo: ", diccionario)
+        
+        # 3. Retorna el diccionario completo
+        return diccionario
+    else:
+        print(f"❌ Documento '{dato}' no existe en la colección '{coleccion}'.")
+        return None
+
 def editaDato(coleccion, dato, info, contenido):
 
     #Primero debemos definir la referencia al documento, o sea a la hoja de usuario.

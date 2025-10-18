@@ -11,12 +11,14 @@ import splashmix.prompter as prompter
 import splashmix.splash_tools as splash_tools
 import splashmix.configuracion as configuracion
 mensajes, sulkuMessages = tools.get_mensajes(globales.mensajes_lang)
+import time 
 
 btn_buy = gr.Button("Get Credits", visible=False, size='lg')
 
 def perform(input1, gender, personaje, usuario):
 
     #print("En Perform Usuario es: ", usuario)
+        
     gender = gender or "superhero" #default es superhero.
     #Los tokens se checan dentro de perform para estar seguros de que cuenta con los tokens para ejecutar esa operación en particular.
     tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens')

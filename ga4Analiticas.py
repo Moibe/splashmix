@@ -3,9 +3,6 @@ import tools
 import bridges
 import requests
 import ambiente
-import time 
-
-
 
 def send_ga4_signup_event(gaCliente):
     """
@@ -16,8 +13,6 @@ def send_ga4_signup_event(gaCliente):
     """
 
     gclid_exacto = tools.obtener_gclid_exacto(gaCliente)
-    # print("Glid exacto: ", gclid_exacto)
-    # print(f"Ambiente: {ambiente.ga4ID}, ga4Key: {bridges.ga4Key}")
     url = f"https://www.google-analytics.com/mp/collect?measurement_id={ambiente.ga4ID}&api_secret={bridges.ga4Key}"
     # print("Url total: ", url)
     

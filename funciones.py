@@ -11,7 +11,6 @@ import splashmix.prompter as prompter
 import splashmix.splash_tools as splash_tools
 import splashmix.configuracion as configuracion
 mensajes, sulkuMessages = tools.get_mensajes(globales.mensajes_lang)
-import time 
 
 btn_buy = gr.Button("Get Credits", visible=False, size='lg')
 
@@ -54,7 +53,7 @@ def perform(input1, gender, personaje, usuario):
                 except Exception as e:           
                     if "401" in str(e): #Inhabilitará el server si tiene un 401, para evitar el problema con otros usuarios.        
                         powerWhale.inhabilitaUsuarioProveedor(usuario_proveedor)
-                    print("Excepción de mass...")    
+                    #print("Excepción de mass...")    
                     resultado, info_window  = sulkuFront.aError(excepcion = tools.titulizaExcepDeAPI(e))
             
             else: #O sea si el error de la excepción no fue RUNTIME_ERROR (aun siendo error.)

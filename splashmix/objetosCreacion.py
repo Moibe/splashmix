@@ -1,9 +1,8 @@
 import random
 import importlib
-import splashmix.configuracion as configuracion
 import splashmix.splash_tools as splash_tools
-import splashmix.static_databanks as static_databanks
-import time
+import splashmix.configuracion as configuracion
+#import splashmix.static_databanks as static_databanks
 
 #DATA GENERAL: 
 folder_data = "data."

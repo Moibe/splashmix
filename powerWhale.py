@@ -75,7 +75,7 @@ def creaDatoMultiple(coleccion, dato, data_dict):
         # Esto sobrescribirá el documento si ya existe con los nuevos datos.
         doc_ref.set(data_dict)
         
-        print(f"✔️ Documento '{dato}' creado/sobrescrito en la colección '{coleccion}' con los siguientes datos:")
+        #print(f"✔️ Documento '{dato}' creado/sobrescrito en la colección '{coleccion}' con los siguientes datos:")
         for key, value in data_dict.items():
             print(f"  - {key}: {value}")
             

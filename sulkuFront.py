@@ -3,10 +3,9 @@ import tools
 import globales
 import fireWhale
 import gradio as gr
+import ga4Analiticas
 from firebase_admin import firestore
 mensajes, sulkuMessages = tools.get_mensajes(globales.mensajes_lang) #import modulo_correspondiente
-import ga4Analiticas
-import time
 
 result_from_displayTokens = None 
 result_from_initAPI = None    
@@ -40,7 +39,7 @@ def precarga(arreglo):
     uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
 
-    uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.
+    #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev.
             
     if uid == None:
         #Aquí tenemos que hacer el redireccionamiento si no hay uid.

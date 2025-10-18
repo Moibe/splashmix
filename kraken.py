@@ -67,5 +67,5 @@ def crear_cliente_stripe(email: str, firebase_user: str = None, site: str = None
         print(f"An unexpected Request Error occurred: {e}")
         return {"error": "Unknown Request Error", "details": str(e)}
     except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        #print(f"An unexpected error occurred: {e}")
         return {"error": "Unexpected Error", "details": str(e)}

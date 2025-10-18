@@ -57,7 +57,6 @@ def precarga(arreglo):
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
                 #tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
                 documento_completo = fireWhale.obtenDocumento('usuarios', uid)
-                print(f"Éste es el documento completo: {documento_completo}.")
                 tokens = documento_completo.get('tokens', 0)
                 compro = documento_completo.get('compro', False)
                 print("El valor de compró es es: ", compro)

@@ -152,7 +152,8 @@ def verificar_token(id_token):
     try:
         # Verifica el token y decodifica la información del usuario
         decoded_token = auth.verify_id_token(id_token, app=app_instance)
-        uid = decoded_token['uid']
+        #uid = decoded_token['uid']
+        uid = decoded_token.get('uid')
         return uid  # Retorna el UID del usuario si el token es válido
     except auth.InvalidIdTokenError as e:
         print(f"Token inválido: {e}")

@@ -37,7 +37,7 @@ def precarga(arreglo):
     #Habrá casos en que regrese null porque entro a la app directo pero no había nadie logueado.
     print(f"En estos casos arreglo es: {arreglo} y su tipo es {type(arreglo)}.")
     
-    uid = arreglo['uid']
+    uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
 
     uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Asumimos que ya lo traemos de auth y que aún no se guarda en firestore.
@@ -59,14 +59,15 @@ def precarga(arreglo):
                 #tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
                 documento_completo = fireWhale.obtenDocumento('usuarios', uid)
                 print(f"Éste es el documento completo: {documento_completo}.")
-                tokens = documento_completo['tokens']
-                print(f"Ésto es compró: {documento_completo['compro']}")
+                tokens = documento_completo.get('tokens', 0)
+                compro = documento_completo.get('compro', False)
+                print("El valor de compró es es: ", compro)
 
                 if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                     print("Camino 1: Si hubo un usuario.") 
                     display_banner = True
-                    gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
-                    print("Ok banner...")
+                    if compro is False:
+                        gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
                 #La lógica de crear un usuario nuevo debería estar afuera, aquí.
                     print(f"Tokens: {tokens}.")
                     mensaje = f"🐙Usuario: {email} "
@@ -78,7 +79,8 @@ def precarga(arreglo):
                     'diplayName': displayName,
                     'email': email,
                     'tokens': 5,
-                    'fecha_registro': firestore.SERVER_TIMESTAMP # Para un timestamp del servidor
+                    'fecha_registro': firestore.SERVER_TIMESTAMP, # Para un timestamp del servidor
+                    'compro': False
                     }
                     fireWhale.creaDatoMultiple('usuarios', uid, datos_perfil) #Ésta es la creación del usuario en Firestore.
                     ga4Analiticas.send_ga4_signup_event(gaClient)
@@ -97,7 +99,8 @@ def precarga(arreglo):
                     else: #Si no hubo error continua con el proceso normal. 
                         pass #Al parecer si le da tiempo suficiente de prender. 
                         #Checar si al hacer compra se vuelve a crear el usuario.    
-                    fireWhale.editaDato('usuarios', uid, 'cus', respuesta['customer_id'])
+                    customer_id = respuesta.get('customer_id')
+                    fireWhale.editaDato('usuarios', uid, 'cus', customer_id)
                     # print("cus agregado")
             else: #Si no existe en FIREBASE AUTH, es un usuario inválido. FutureImportante: ¿Debería regresarlo a login? 
                 mensaje = "Usuario inválido."

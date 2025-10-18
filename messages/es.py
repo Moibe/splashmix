@@ -4,8 +4,7 @@ lbl_credits = "Creditos Disponibles"
 
 #Bienvenida
 lbl_info_welcome = """
-Tienes 5 imagenes de regalo, usalas sabiamente, prueba todas las características de 
-nuestra app, si quieres después puedes comprar más créditos, felices trazos! 🎨
+Tienes 5 imágenes de regalo, prueba con diferentes fotos y diseños, si quieres después puedes comprar más créditos, felices trazos! 🎨
 """
 
 #labels: En cada app solo pon los de esa app.

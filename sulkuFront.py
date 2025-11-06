@@ -67,13 +67,13 @@ def precarga(arreglo):
                     #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                         print("Camino 1: Si hubo un usuario.") 
-                        display_banner = True
+                        display_banner = False
                         display_credits = True
                         if compro is False: #o sea si no ha comprado.
                             #Si no ha comprado, no le muestres cuantos créditos tiene.
-                            print("Entró a compro is false")
+                            #Por alguna razón está como al revés, o aquí llega si no ha comprado :S 
                             display_credits = False
-                            display_banner = False
+                            display_banner = True
                             #Configura el banner de mensajes y promociones solo para usuarios que no han comprado.
                             gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
                         #La lógica de crear un usuario nuevo debería estar afuera, aquí.

@@ -54,18 +54,24 @@ def precarga(arreglo):
             email, displayName = fireWhale.obtenDatosUIDFirebase(uid)
             print(f"Email: {email}, displayName: {displayName}.")
             
+            #Encontró un usuairo de firebase auth.
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
                 #tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
                 documento_completo = fireWhale.obtenDocumento('usuarios', uid)
+                #El usuario sii está en firestore.
                 if documento_completo: #Si el documento existió...
-                    print("El documento existió.")
                     tokens = documento_completo.get('tokens', None)
                     compro = documento_completo.get('compro', False)
                     #Y los tokens existieron....
+                    #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                         print("Camino 1: Si hubo un usuario.") 
                         display_banner = True
+                        display_credits = True
                         if compro is False:
+                            #Si no hay comprado, no le muestres cuantos créditos tiene.
+                            display_credits = False
+                            #Configura el banner de mensajes y promociones solo para usuarios que no han comprado.
                             gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
                         #La lógica de crear un usuario nuevo debería estar afuera, aquí.
                         print(f"Tokens: {tokens}.")
@@ -108,7 +114,7 @@ def precarga(arreglo):
         except Exception as e:
             f"Excepción: {e}"
   
-        return uid, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False)  
+        return uid, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False, visible=display_credits)  
 
 def visualizar_creditos(nuevos_creditos, usuario):
 

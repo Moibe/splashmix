@@ -58,9 +58,7 @@ def precarga(arreglo):
             #Encontró un usuairo de firebase auth.
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
                 #tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
-                print("Voy a obtener documento para el uid: ", uid)
                 documento_completo = fireWhale.obtenDocumento('usuarios', uid)
-                print("Documento completo es: ", documento_completo)
                 #El usuario sii está en firestore.
                 if documento_completo: #Si el documento existió...
                     tokens = documento_completo.get('tokens', None)
@@ -118,7 +116,6 @@ def precarga(arreglo):
         except Exception as e:
             f"Excepción: {e}"
         print("Display credits es: ", display_credits)
-        time.sleep(1)
         return uid, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False, visible=display_credits)  
 
 def visualizar_creditos(nuevos_creditos, usuario):

@@ -62,7 +62,7 @@ def precarga(arreglo):
                 #El usuario sii está en firestore.
                 if documento_completo: #Si el documento existió...
                     tokens = documento_completo.get('tokens', None)
-                    compro = documento_completo.get('compro', False)
+                    compro = documento_completo.get('compro', True)
                     #Y los tokens existieron....
                     #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.

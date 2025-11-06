@@ -1,3 +1,4 @@
+import time
 import kraken
 import tools
 import globales
@@ -39,14 +40,14 @@ def precarga(arreglo):
     uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
 
-    uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev.
-            
+    #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev.
+    uid = '6CFpq0b5GAUfD4VoknXRbEG3vR73'
     if uid == None:
         #Aquí tenemos que hacer el redireccionamiento si no hay uid.
         mensaje = 'Necesitas loguearte al sistema.'
         mensaje2 = ''
         
-        return uid, gr.Accordion(label=mensaje, open=True, visible=True), gr.Button(value="Login 👋🏻"), gr.Accordion(label=mensaje2, open=False)
+        return uid, gr.Accordion(label=mensaje, open=True), gr.Button(value="Login 👋🏻"), gr.Accordion(label=mensaje2, open=False)
     
     else: #Si si hubo uid continuas el camino normal.       
         
@@ -57,11 +58,14 @@ def precarga(arreglo):
             #Encontró un usuairo de firebase auth.
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
                 #tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
+                print("Voy a obtener documento para el uid: ", uid)
                 documento_completo = fireWhale.obtenDocumento('usuarios', uid)
+                print("Documento completo es: ", documento_completo)
                 #El usuario sii está en firestore.
                 if documento_completo: #Si el documento existió...
                     tokens = documento_completo.get('tokens', None)
                     compro = documento_completo.get('compro', False)
+                    print("Adquiriendo compro es: ", compro)
                     #Y los tokens existieron....
                     #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
@@ -70,7 +74,8 @@ def precarga(arreglo):
                         display_credits = True
                         if compro is False:
                             #Si no hay comprado, no le muestres cuantos créditos tiene.
-                            display_credits = False
+                            print("Entró a compro is false")
+                            display_credits = True
                             #Configura el banner de mensajes y promociones solo para usuarios que no han comprado.
                             gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
                         #La lógica de crear un usuario nuevo debería estar afuera, aquí.
@@ -113,7 +118,8 @@ def precarga(arreglo):
                 mensaje2 = "Recarga la página si no puedes ver tus créditos." #Future,¿éste mensaje puede ser un link a login más que un texto?
         except Exception as e:
             f"Excepción: {e}"
-  
+        print("Display credits es: ", display_credits)
+        time.sleep(1)
         return uid, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False, visible=display_credits)  
 
 def visualizar_creditos(nuevos_creditos, usuario):

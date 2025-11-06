@@ -67,9 +67,9 @@ def precarga(arreglo):
                     #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                         print("Camino 1: Si hubo un usuario.") 
-                        display_banner = False
-                        display_credits = False
-                        if compro is False:
+                        display_banner = True
+                        display_credits = True
+                        if compro is False: #o sea si no ha comprado.
                             #Si no ha comprado, no le muestres cuantos créditos tiene.
                             print("Entró a compro is false")
                             display_credits = False

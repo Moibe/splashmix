@@ -39,14 +39,14 @@ def precarga(arreglo):
     uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
 
-    #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev.
+    uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev.
             
     if uid == None:
         #Aquí tenemos que hacer el redireccionamiento si no hay uid.
         mensaje = 'Necesitas loguearte al sistema.'
         mensaje2 = ''
         
-        return uid, gr.Accordion(label=mensaje, open=True), gr.Button(value="Login 👋🏻"), gr.Accordion(label=mensaje2, open=False)
+        return uid, gr.Accordion(label=mensaje, open=True, visible=True), gr.Button(value="Login 👋🏻"), gr.Accordion(label=mensaje2, open=False)
     
     else: #Si si hubo uid continuas el camino normal.       
         
@@ -66,7 +66,7 @@ def precarga(arreglo):
                     #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                         print("Camino 1: Si hubo un usuario.") 
-                        display_banner = True
+                        display_banner = False
                         display_credits = True
                         if compro is False:
                             #Si no hay comprado, no le muestres cuantos créditos tiene.
@@ -76,7 +76,7 @@ def precarga(arreglo):
                         #La lógica de crear un usuario nuevo debería estar afuera, aquí.
                         print(f"Tokens: {tokens}.")
                         mensaje = f"🐙Usuario: {email} "
-                        mensaje2 = f"💶Creditos Disponibles: {tokens}."
+                        mensaje2 = f"💶Créditos Disponibles: {tokens}."
                 
                 else: #Si no se encontró el documento significa que el usuario no existe en Firestore y deberíamos crear uno nuevo.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.

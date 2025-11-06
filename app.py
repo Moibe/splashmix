@@ -7,7 +7,6 @@ import sulkuFront
 import gradio as gr
 import firehead, fire, fuego
 
-
 def iniciar():    
     app_path = globales.app_path
     main.queue(max_size=globales.max_size)

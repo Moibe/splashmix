@@ -2,9 +2,11 @@
 lbl_username = "Usuario" 
 lbl_credits = "Creditos Disponibles"
 
+#Tienes 5 imágenes de regalo, prueba con diferentes fotos y diseños, si quieres después puedes comprar más créditos, felices trazos! 🎨
+
 #Bienvenida
 lbl_info_welcome = """
-Tienes 5 imágenes de regalo, prueba con diferentes fotos y diseños, si quieres después puedes comprar más créditos, felices trazos! 🎨
+<img src="https://splashmix.ink/export.png">
 """
 
 #labels: En cada app solo pon los de esa app.

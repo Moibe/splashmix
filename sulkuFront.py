@@ -40,8 +40,8 @@ def precarga(arreglo):
     uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
 
-    #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev.
-    uid = '6CFpq0b5GAUfD4VoknXRbEG3vR73'
+    #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev. (En local no se actualiza bien firesbase :(  ))
+    
     if uid == None:
         #Aquí tenemos que hacer el redireccionamiento si no hay uid.
         mensaje = 'Necesitas loguearte al sistema.'
@@ -65,13 +65,12 @@ def precarga(arreglo):
                 if documento_completo: #Si el documento existió...
                     tokens = documento_completo.get('tokens', None)
                     compro = documento_completo.get('compro', False)
-                    print("Adquiriendo compro es: ", compro)
                     #Y los tokens existieron....
                     #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
                         print("Camino 1: Si hubo un usuario.") 
                         display_banner = False
-                        display_credits = True
+                        display_credits = False
                         if compro is False:
                             #Si no hay comprado, no le muestres cuantos créditos tiene.
                             print("Entró a compro is false")

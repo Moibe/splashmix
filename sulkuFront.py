@@ -73,7 +73,7 @@ def precarga(arreglo):
                             #Si no ha comprado, no le muestres cuantos créditos tiene.
                             #Por alguna razón está como al revés, o aquí llega si no ha comprado :S 
                             display_credits = False
-                            display_banner = True
+                            display_banner = False
                             #Configura el banner de mensajes y promociones solo para usuarios que no han comprado.
                             gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
                         #La lógica de crear un usuario nuevo debería estar afuera, aquí.

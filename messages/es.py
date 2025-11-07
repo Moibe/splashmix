@@ -4,6 +4,17 @@ lbl_credits = "Creditos Disponibles"
 
 #Tienes 5 imágenes de regalo, prueba con diferentes fotos y diseños, si quieres después puedes comprar más créditos, felices trazos! 🎨
 
+#Los mensajes no solo pueden ser strings, si no también colecciones de strings.
+
+#lista de diferentes mensajes de bienvenida para rotar entre usuarios.
+mensajes_usuario = [
+    "¡Hola! Bienvenido a Splashmix IA. 🎉",
+    "¡Saludos! Listo para crear arte increíble con IA? 🚀",
+    "¡Bienvenido a bordo! Comencemos a mezclar imágenes. 🎨",
+    "¡Hola! Prepárate para transformar tus fotos con IA. 🤖",
+    "¡Bienvenido! Vamos a crear algo asombroso juntos. 🌟"
+]
+
 #Bienvenida
 lbl_info_welcome = """
 <img src="https://splashmix.ink/export.png">

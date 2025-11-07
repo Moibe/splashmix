@@ -17,7 +17,8 @@ html_credits = gr.HTML(visible=globales.credits_visibility)
 lbl_console = gr.Label(label="AI Terminal " + globales.version +  " messages", value="Hola", container=True)
 
 #Customizable Inputs and Outputs
-input1, gender, personaje, result = inputs.inputs_selector(globales.seto)    
+input1, gender, personaje, result = inputs.inputs_selector(globales.seto)
+boton_comprar = gr.Button("Comprar Créditos ⚡", variant="primary", visible=False)    
 
 #Otros Controles y Personalizaciones
 nombre_posicion = gr.Label(label="Posición", visible=globales.posicion_marker)
@@ -59,7 +60,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         demo = gr.Interface(
             fn=funciones.perform,
             inputs=[input1, gender, personaje, usuario_firebase], 
-            outputs=[result, lbl_console], 
+            outputs=[result, lbl_console, boton_comprar], 
             flagging_mode=globales.flag,
             js=fuego.js,        
             )        

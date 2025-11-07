@@ -1,4 +1,4 @@
-import time
+import random
 import kraken
 import tools
 import globales
@@ -39,7 +39,6 @@ def precarga(arreglo):
     
     uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
-
     #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev. (En local no se actualiza bien firesbase :(  ))
     
     if uid == None:
@@ -73,9 +72,11 @@ def precarga(arreglo):
                             #Si no ha comprado, no le muestres cuantos créditos tiene.
                             #Por alguna razón está como al revés, o aquí llega si no ha comprado :S 
                             display_credits = False
-                            display_banner = False
+                            display_banner = True
                             #Configura el banner de mensajes y promociones solo para usuarios que no han comprado.
-                            gr.Info(title="¡Bienvenido!", message=mensajes.lbl_info_welcome, duration=None, visible=display_banner)
+                            #Ahora los mensajes van a varias de forma random. Antes ->lbl_info_welcome  ahora-> 
+                            num_mensaje = random.randint(0, 5)
+                            gr.Info(title="¡Bienvenido!", message=mensajes.mensajes_usuario[num_mensaje], duration=None, visible=display_banner)
                         #La lógica de crear un usuario nuevo debería estar afuera, aquí.
                         print(f"Tokens: {tokens}.")
                         mensaje = f"🐙Usuario: {email} "

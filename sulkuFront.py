@@ -116,7 +116,7 @@ def precarga(arreglo):
                 mensaje = "Usuario inválido."
                 mensaje2 = "Recarga la página si no puedes ver tus créditos." #Future,¿éste mensaje puede ser un link a login más que un texto?
         except Exception as e:
-            f"Excepción: {e}"
+            print(f"Excepción: {e}")
         print("Display credits es: ", display_credits)
         return uid, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False, visible=display_credits)  
 

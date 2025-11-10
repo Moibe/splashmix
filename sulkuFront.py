@@ -86,7 +86,7 @@ def precarga(arreglo):
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.
                     print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.                    
                     datos_perfil = {
-                    'diplayName': displayName,
+                    'displayName': displayName,
                     'email': email,
                     'tokens': 5,
                     'fecha_registro': firestore.SERVER_TIMESTAMP, # Para un timestamp del servidor

@@ -147,6 +147,44 @@ def creaDatoMultiple(coleccion, dato, data_dict):
     except Exception as e:
         print(f"❌ Error al crear/sobrescribir documento '{dato}' en '{coleccion}': {e}")
 
+def creaDatoMultipleConMovimiento(coleccion, dato, data_dict):
+    """
+    Crea un nuevo documento y registra automáticamente su primer movimiento.
+    Ideal para crear usuarios por primera vez.
+
+    Args:
+        coleccion (str): El nombre de la colección (ej: 'usuarios').
+        dato (str): El ID del documento (ej: uid del usuario).
+        data_dict (dict): Diccionario con los datos del documento principal.
+    """
+    from datetime import date
+    
+    # Primero definimos la referencia al documento
+    doc_ref = db.collection(coleccion).document(dato)
+    
+    try:
+        # 1. Crea el documento principal
+        doc_ref.set(data_dict)
+        
+        print(f"✔️ Documento '{dato}' creado en la colección '{coleccion}' con los siguientes datos:")
+        for key, value in data_dict.items():
+            print(f"  - {key}: {value}")
+        
+        # 2. Obtiene la fecha actual en formato ISO
+        fecha_actual = date.today().isoformat()
+        
+        # 3. Crea el primer movimiento (creación del usuario)
+        movimiento_ref = doc_ref.collection('movimientos').document()
+        movimiento_ref.set({
+            'fecha': fecha_actual,
+            'movimiento': 'creación'
+        })
+        
+        print(f"✔️ Movimiento de 'creación' registrado en la subcolección 'movimientos' (fecha: {fecha_actual})")
+        
+    except Exception as e:
+        print(f"❌ Error al crear documento y movimiento: {e}")
+
 def verificar_token(id_token):
     """Verifica el token de ID de Firebase."""
     try:

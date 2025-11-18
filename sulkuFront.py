@@ -31,8 +31,7 @@ def displayTokens(usuario):
     
     result_from_displayTokens = display
 
-def precarga(arreglo):
-    
+def precarga(arreglo):    
     
     #Habrá casos en que regrese null porque entro a la app directo pero no había nadie logueado.
     print(f"En estos casos arreglo es: {arreglo} y su tipo es {type(arreglo)}.")
@@ -56,16 +55,15 @@ def precarga(arreglo):
             
             #Encontró un usuairo de firebase auth.
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
-                #tokens = fireWhale.obtenDato('usuarios', uid, 'tokens') #En firestore los usuarios estarán identificados por su uid de auth.
                 documento_completo = fireWhale.obtenDocumento('usuarios', uid)
-                #El usuario sii está en firestore.
+                #EL USUARIO SI EXISTE EN FIRESTORE.
                 if documento_completo: #Si el documento existió...
                     tokens = documento_completo.get('tokens', None)
                     compro = documento_completo.get('compro', True)
                     #Y los tokens existieron....
                     #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
-                        print("Camino 1: Si hubo un usuario.") 
+                        #print("Camino 1: Si hubo un usuario.") 
                         display_banner = False
                         display_credits = True
                         if compro is False: #o sea si no ha comprado.
@@ -77,12 +75,12 @@ def precarga(arreglo):
                             #Ahora los mensajes van a varias de forma random. Antes ->lbl_info_welcome  ahora-> 
                             num_mensaje = random.randint(0, 5)
                             gr.Info(title="¡Bienvenido!", message=mensajes.mensajes_usuario[num_mensaje], duration=None, visible=display_banner)
-                        #La lógica de crear un usuario nuevo debería estar afuera, aquí.
+                    
                         print(f"Tokens: {tokens}.")
                         mensaje = f"🐙Usuario: {email} "
                         mensaje2 = f"💶Créditos Disponibles: {tokens}."
                 
-                else: #Si no se encontró el documento significa que el usuario no existe en Firestore y deberíamos crear uno nuevo.
+                else: #USUARIO NO EXISTE EN FIRESTORE, HAY QUE CREARLO.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.
                     print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.                    
                     datos_perfil = {
@@ -92,7 +90,7 @@ def precarga(arreglo):
                     'fecha_registro': firestore.SERVER_TIMESTAMP, # Para un timestamp del servidor
                     'compro': False
                     }
-                    fireWhale.creaDatoMultiple('usuarios', uid, datos_perfil) #Ésta es la creación del usuario en Firestore.
+                    fireWhale.creaDatoMultipleConMovimiento('usuarios', uid, datos_perfil) #Ésta es la creación del usuario en Firestore.
                     ga4Analiticas.send_ga4_signup_event(gaClient)
                     mensaje = f"🐙Usuario: {email} "
                     mensaje2 = f"💶Creditos Disponibles: 5." #Analizar si está bien dejarlo fijo y todo funciona bien.

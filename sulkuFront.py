@@ -185,10 +185,6 @@ def evaluaResultadoUsuario(resultado, personaje):
 
 def actualizador_navbar(usuario, result, info_window):
     
-    # print("Ésto es usuario: ", usuario)
-    # print("Ésto es result: ", result)
-    # print("Ésto es info_window: ", info_window)
-    
     #Controla si se abre el botón de recargar créditos.
     if "no-credits" in result:
         apertura = True
@@ -199,7 +195,9 @@ def actualizador_navbar(usuario, result, info_window):
     #Cuando no hay imagen (Error directo de mass): error.png
     if "jpg" in result: #Cuando la imagen es correcta. El resultado es un archivo .jpg
         #Debita uno de la cuota de ese usuario y despliegalo.
-        fireWhale.incrementar_campo_numerico('usuarios', usuario, 'tokens', amount=-globales.costo_work)
+        fireWhale.cobrar_token('usuarios', usuario, 'tokens', amount=-globales.costo_work)
+        #NECESITAMOS ANOTAR DOCUMENTO DE USO DE TOKEN. CUANDO LA GENTE USE MÁS CRÉDITOS YA NO SERÁ FACTIBLE UN DOCUMENTO POR USO, PERO POR AHORA NOS SIRVE PARA GESTIONAR CONSUMO Y COMPORTAMIENTO DEL USUARIO.
+        fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token')
         tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #A pesar de la maniobra para obtener y restar, para poder desplegarlo de todas formas necesitaremos hacer otra lectura de firebase.
         print(f"Después de debitar tienes {tokens} tokens.")
     else: 
@@ -209,4 +207,4 @@ def actualizador_navbar(usuario, result, info_window):
         tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #obtienes
         print("Estos son los tokens que tiene actualmente el usuario:", tokens)
         #Por ahora no debites.
-    return gr.Accordion(label=f"💶Creditos Disponibles: {tokens}", open=apertura)
+    return gr.Accordion(label=f"💶Creditos Disponibles: {tokens}", open=apertura) 

@@ -15,9 +15,7 @@ mensajes, sulkuMessages = tools.get_mensajes(globales.mensajes_lang)
 btn_buy = gr.Button() #Usado para cuando activamos el botón inferior de comprar.
 
 def perform(input1, gender, personaje, usuario):
-
-    #print("En Perform Usuario es: ", usuario)
-        
+           
     gender = gender or "superhero" #default es superhero.
     #Los tokens se checan dentro de perform para estar seguros de que cuenta con los tokens para ejecutar esa operación en particular.
     tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens')
@@ -69,7 +67,6 @@ def perform(input1, gender, personaje, usuario):
 
 def mass(input1, gender, hero, api, usuario_proveedor):
 
-    print("Estoy dentro de mass y api es: ", api)
     #Aquí es donde se usará el server elegido.
     token_usuario = getattr(bridges, usuario_proveedor)
     client = gradio_client.Client(api, hf_token=token_usuario)

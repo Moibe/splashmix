@@ -175,6 +175,7 @@ def creaDatoMultipleConMovimiento(coleccion, dato, data_dict):
         
         # 3. Crea el primer movimiento (creación del usuario)
         movimiento_ref = doc_ref.collection('movimientos').document()
+        print("Cree la colección de movimientos.")
         movimiento_ref.set({
             'fecha': fecha_actual,
             'movimiento': 'creación'
@@ -184,6 +185,37 @@ def creaDatoMultipleConMovimiento(coleccion, dato, data_dict):
         
     except Exception as e:
         print(f"❌ Error al crear documento y movimiento: {e}")
+
+def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
+    """
+    Agrega un documento a la subcolección 'movimientos' de un documento existente.
+    Ideal para registrar acciones del usuario como consumo de tokens, compras, etc.
+
+    Args:
+        coleccion (str): El nombre de la colección (ej: 'usuarios').
+        documento_id (str): El ID del documento principal (ej: uid del usuario).
+        tipo_movimiento (str): Descripción del movimiento (ej: 'consumo de token', 'visito página compras', 'compro paquete 1').
+    """
+    from datetime import date
+    
+    try:
+        # Obtiene la referencia al documento principal
+        doc_ref = db.collection(coleccion).document(documento_id)
+        
+        # Obtiene la fecha actual en formato ISO
+        fecha_actual = date.today().isoformat()
+        
+        # Crea un nuevo documento en la subcolección 'movimientos'
+        movimiento_ref = doc_ref.collection('movimientos').document()
+        movimiento_ref.set({
+            'fecha': fecha_actual,
+            'movimiento': tipo_movimiento
+        })
+        
+        print(f"✔️ Movimiento '{tipo_movimiento}' registrado para el documento '{documento_id}' (fecha: {fecha_actual})")
+        
+    except Exception as e:
+        print(f"❌ Error al agregar movimiento: {e}")
 
 def verificar_token(id_token):
     """Verifica el token de ID de Firebase."""
@@ -197,7 +229,7 @@ def verificar_token(id_token):
         print(f"Token inválido: {e}")
         return None  # Retorna None si el token es inválido
 
-def incrementar_campo_numerico(collection_name, document_id, field_name, amount=1):
+def cobrar_token(collection_name, document_id, field_name, amount=1):
     """
     Incrementa un campo numérico en un documento de Firestore de forma atómica.
     Si el documento no existe, lo crea e inicializa el campo con el 'amount'.

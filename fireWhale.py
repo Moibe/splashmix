@@ -202,7 +202,7 @@ def creaDatoMultipleConMovimiento(coleccion, dato, data_dict):
     except Exception as e:
         print(f"❌ Error al crear documento y movimiento: {e}")
 
-def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
+def agregaMovimiento(coleccion, documento_id, tipo_movimiento, tokens):
     """
     Agrega un documento a la subcolección 'movimientos' de un documento existente.
     Ideal para registrar acciones del usuario como consumo de tokens, compras, etc.
@@ -211,6 +211,7 @@ def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
         coleccion (str): El nombre de la colección (ej: 'usuarios').
         documento_id (str): El ID del documento principal (ej: uid del usuario).
         tipo_movimiento (str): Descripción del movimiento (ej: 'consumo de token', 'visito página compras', 'compro paquete 1').
+        tokens (int): Número de tokens que el usuario tiene en ese momento.
     """
     from datetime import date, datetime
     import pytz
@@ -240,7 +241,8 @@ def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
         movimiento_ref = doc_ref.collection('movimientos').document(str(timestamp))
         movimiento_ref.set({
             'fecha': fecha_formateada,
-            'movimiento': tipo_movimiento
+            'movimiento': tipo_movimiento,
+            'tokens': tokens
         })
         
         print(f"✔️ Movimiento '{tipo_movimiento}' registrado para el documento '{documento_id}' (fecha: {fecha_formateada})")

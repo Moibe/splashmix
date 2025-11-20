@@ -196,10 +196,10 @@ def actualizador_navbar(usuario, result, info_window):
     if "jpg" in result: #Cuando la imagen es correcta. El resultado es un archivo .jpg
         #Debita uno de la cuota de ese usuario y despliegalo.
         fireWhale.cobrar_token('usuarios', usuario, 'tokens', amount=-globales.costo_work)
-        #NECESITAMOS ANOTAR DOCUMENTO DE USO DE TOKEN. CUANDO LA GENTE USE MÁS CRÉDITOS YA NO SERÁ FACTIBLE UN DOCUMENTO POR USO, PERO POR AHORA NOS SIRVE PARA GESTIONAR CONSUMO Y COMPORTAMIENTO DEL USUARIO.
-        fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token')
         tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #A pesar de la maniobra para obtener y restar, para poder desplegarlo de todas formas necesitaremos hacer otra lectura de firebase.
         print(f"Después de debitar tienes {tokens} tokens.")
+        fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token', tokens)
+        
     else: 
         #Lo demás debería ser un error.
         print("Resultado incorrecto e incobrable...")

@@ -189,8 +189,9 @@ def creaDatoMultipleConMovimiento(coleccion, dato, data_dict):
         
         timestamp = int(datetime.now(tz_mexico).timestamp() * 1000)  # Timestamp en milisegundos
         
-        # 3. Crea el primer movimiento (creación del usuario) con timestamp como ID
-        movimiento_ref = doc_ref.collection('movimientos').document(str(timestamp))
+        # 3. Crea el primer movimiento (creación del usuario) con ID: timestamp-creacion
+        doc_id = f"{timestamp}-creacion"
+        movimiento_ref = doc_ref.collection('movimientos').document(doc_id)
         print("Cree la colección de movimientos.")
         movimiento_ref.set({
             'fecha': fecha_formateada,
@@ -237,8 +238,13 @@ def agregaMovimiento(coleccion, documento_id, tipo_movimiento, tokens):
         
         timestamp = int(datetime.now(tz_mexico).timestamp() * 1000)  # Timestamp en milisegundos
         
-        # Crea un nuevo documento en la subcolección 'movimientos' con timestamp como ID
-        movimiento_ref = doc_ref.collection('movimientos').document(str(timestamp))
+        # Convierte el tipo_movimiento a una palabra única en minúsculas para el ID
+        # Ejemplos: "consumo de token" -> "consumo", "compra paquete 1" -> "compra"
+        accion = tipo_movimiento.split()[0].lower()
+        
+        # Crea un nuevo documento en la subcolección 'movimientos' con ID: timestamp-accion
+        doc_id = f"{timestamp}-{accion}"
+        movimiento_ref = doc_ref.collection('movimientos').document(doc_id)
         movimiento_ref.set({
             'fecha': fecha_formateada,
             'movimiento': tipo_movimiento,

@@ -183,11 +183,10 @@ def evaluaResultadoUsuario(resultado, personaje):
            
     return resultado, info_window
 
-def actualizador_navbar(usuario, result, info_window, sin_creditos):
+def actualizador_navbar(usuario, result, info_window):
     
     #Controla si se abre el botón de recargar créditos.
-    # Abre el acordeón si: 1) no hay créditos detectado en perform() O 2) resultado contiene "no-credits"
-    if sin_creditos or "no-credits" in result:
+    if "no-credits" in result:
         apertura = True
     else:
         apertura = False

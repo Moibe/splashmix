@@ -197,6 +197,8 @@ def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
         tipo_movimiento (str): Descripción del movimiento (ej: 'consumo de token', 'visito página compras', 'compro paquete 1').
     """
     from datetime import date
+
+    print("El document_id es: ", documento_id)
     
     try:
         # Obtiene la referencia al documento principal

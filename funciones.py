@@ -59,11 +59,11 @@ def perform(input1, gender, personaje, usuario):
     else: #Aquí es si no fue error y ya salimos del try más externo, es el else de si tuviste suficientes tokens.
         #Si no hubo autorización.
         resultado, info_window = sulkuFront.noCredit()
-        return resultado, info_window, btn_buy
+        return resultado, info_window, btn_buy, True  # True indica que no hay créditos
 
     #AQUÍ LLEGARA CUANDO NO ES ERROR DE SISTEMA Y ES DE USUARIO (O LOGRO LA IMAGEN O PUSO UNA SIN ROSTRO DETECTABLE)
     resultado, info_window = sulkuFront.evaluaResultadoUsuario(resultado, personaje) #No fue frenado por falta de crédito o or imagen vacía, paso a la API (se debita)
-    return resultado, info_window, btn_buy
+    return resultado, info_window, btn_buy, False  # False indica que sí hay créditos disponibles
 
 def mass(input1, gender, hero, api, usuario_proveedor):
 

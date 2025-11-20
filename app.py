@@ -16,6 +16,7 @@ def iniciar():
 #Credit Related Elements
 html_credits = gr.HTML(visible=globales.credits_visibility)
 lbl_console = gr.Label(label="AI Terminal " + globales.version +  " messages", value="Hola", container=True)
+sin_creditos_state = gr.State(value=False)  # Estado para pasar la bandera de sin créditos
 
 #Customizable Inputs and Outputs
 input1, gender, personaje, result = inputs.inputs_selector(globales.seto)
@@ -64,12 +65,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         demo = gr.Interface(
             fn=funciones.perform,
             inputs=[input1, gender, personaje, usuario_firebase], 
-            outputs=[result, lbl_console, boton_comprar], 
+            outputs=[result, lbl_console, boton_comprar, sin_creditos_state], 
             flagging_mode=globales.flag,
             js=fuego.js,        
             )        
     
-    result.change(sulkuFront.actualizador_navbar, [usuario_firebase, result, lbl_console], acordeon2)
+    result.change(sulkuFront.actualizador_navbar, [usuario_firebase, result, lbl_console, sin_creditos_state], acordeon2)
 
     btn_logout.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección

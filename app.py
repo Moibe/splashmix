@@ -79,7 +79,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             )
     compra.click(
             fn=welcome,  #Ya no anotamos el movimiento porque lo anotamos directo en la página de compras.
-            inputs=[usuario_firebase],
+            inputs=[],
             outputs=[],
             js=script_buy #Quizá aquí en el futuro necesite un reload con params.
             )

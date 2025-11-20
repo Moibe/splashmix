@@ -170,11 +170,13 @@ def creaDatoMultipleConMovimiento(coleccion, dato, data_dict):
         for key, value in data_dict.items():
             print(f"  - {key}: {value}")
         
-        # 2. Obtiene la fecha actual en formato ISO
+        # 2. Obtiene la fecha y timestamp actual
+        from datetime import datetime
         fecha_actual = date.today().isoformat()
+        timestamp = int(datetime.now().timestamp() * 1000)  # Timestamp en milisegundos
         
-        # 3. Crea el primer movimiento (creación del usuario)
-        movimiento_ref = doc_ref.collection('movimientos').document()
+        # 3. Crea el primer movimiento (creación del usuario) con timestamp como ID
+        movimiento_ref = doc_ref.collection('movimientos').document(str(timestamp))
         print("Cree la colección de movimientos.")
         movimiento_ref.set({
             'fecha': fecha_actual,
@@ -196,7 +198,7 @@ def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
         documento_id (str): El ID del documento principal (ej: uid del usuario).
         tipo_movimiento (str): Descripción del movimiento (ej: 'consumo de token', 'visito página compras', 'compro paquete 1').
     """
-    from datetime import date
+    from datetime import date, datetime
 
     #print("El document_id es: ", documento_id)
     
@@ -206,9 +208,10 @@ def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
         
         # Obtiene la fecha actual en formato ISO
         fecha_actual = date.today().isoformat()
+        timestamp = int(datetime.now().timestamp() * 1000)  # Timestamp en milisegundos
         
-        # Crea un nuevo documento en la subcolección 'movimientos'
-        movimiento_ref = doc_ref.collection('movimientos').document()
+        # Crea un nuevo documento en la subcolección 'movimientos' con timestamp como ID
+        movimiento_ref = doc_ref.collection('movimientos').document(str(timestamp))
         movimiento_ref.set({
             'fecha': fecha_actual,
             'movimiento': tipo_movimiento

@@ -6,6 +6,7 @@ import funciones
 import sulkuFront
 import gradio as gr
 import firehead, fire, fuego
+import fireWhale
 
 def iniciar():    
     app_path = globales.app_path
@@ -32,6 +33,9 @@ def welcome():
     pass
     #botones = ['huggingface', 'primary', 'secondary', 'stop']
     #return gr.Button(value="Cerrar Sesión", size='md', variant=random.choice(botones))
+
+def marca_click_compra(): 
+    fireWhale.agregaMovimiento('usuarios', 'uid123', 'visito página compras')
 
 #fire provee las partes de javascript que se requieren para correr el chequeo de firebase.
 with gr.Blocks(theme=globales.tema, title="Splashmix App", head=firehead.head, js=fire.js, css="footer {visibility: hidden}") as main:
@@ -74,8 +78,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             js=script_logout
             )
     compra.click(
-            fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección
-            inputs=[],
+            fn=marca_click_compra,  #Ahora la función anotará el movimiendo, revisar si lo hace antes de la redirección.
+            inputs=[usuario_firebase],
             outputs=[],
             js=script_buy #Quizá aquí en el futuro necesite un reload con params.
             )

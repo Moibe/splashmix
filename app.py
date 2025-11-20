@@ -78,7 +78,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             js=script_logout
             )
     compra.click(
-            fn=marca_click_compra,  #Ahora la función anotará el movimiendo, revisar si lo hace antes de la redirección.
+            fn=marca_click_compra,  #Ahora la función anotará el movimiento, revisar si lo hace antes de la redirección.
             inputs=[usuario_firebase],
             outputs=[],
             js=script_buy #Quizá aquí en el futuro necesite un reload con params.

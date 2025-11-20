@@ -185,6 +185,7 @@ def evaluaResultadoUsuario(resultado, personaje):
 
 def actualizador_navbar(usuario, result, info_window):
     
+    print("Estoy dentro de actualizador_navbar y result es:", result)
     #Controla si se abre el botón de recargar créditos.
     if "no-credits" in result:
         apertura = True

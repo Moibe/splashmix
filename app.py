@@ -34,8 +34,8 @@ def welcome():
     #botones = ['huggingface', 'primary', 'secondary', 'stop']
     #return gr.Button(value="Cerrar Sesión", size='md', variant=random.choice(botones))
 
-def marca_click_compra(): 
-    fireWhale.agregaMovimiento('usuarios', 'uid123', 'visito página compras')
+def marca_click_compra(usuario_firebase): 
+    fireWhale.agregaMovimiento('usuarios', usuario_firebase, 'visito página compras')
 
 #fire provee las partes de javascript que se requieren para correr el chequeo de firebase.
 with gr.Blocks(theme=globales.tema, title="Splashmix App", head=firehead.head, js=fire.js, css="footer {visibility: hidden}") as main:

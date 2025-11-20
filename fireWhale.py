@@ -198,7 +198,7 @@ def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
     """
     from datetime import date
 
-    print("El document_id es: ", documento_id)
+    #print("El document_id es: ", documento_id)
     
     try:
         # Obtiene la referencia al documento principal

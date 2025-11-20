@@ -172,18 +172,32 @@ def creaDatoMultipleConMovimiento(coleccion, dato, data_dict):
         
         # 2. Obtiene la fecha y timestamp actual
         from datetime import datetime
-        fecha_actual = date.today().isoformat()
-        timestamp = int(datetime.now().timestamp() * 1000)  # Timestamp en milisegundos
+        import pytz
+        
+        # Obtiene la zona horaria UTC-6
+        tz_mexico = pytz.timezone('America/Mexico_City')
+        ahora = datetime.now(tz_mexico)
+        
+        # Formatea la fecha en formato: 19 de noviembre de 2025, 8:54:14 p.m. UTC-6
+        meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+        mes_nombre = meses[ahora.month - 1]
+        am_pm = 'a.m.' if ahora.hour < 12 else 'p.m.'
+        hora_12 = ahora.hour if ahora.hour <= 12 else ahora.hour - 12
+        if hora_12 == 0:
+            hora_12 = 12
+        fecha_formateada = f"{ahora.day} de {mes_nombre} de {ahora.year}, {hora_12}:{ahora.minute:02d}:{ahora.second:02d} {am_pm} UTC-6"
+        
+        timestamp = int(datetime.now(tz_mexico).timestamp() * 1000)  # Timestamp en milisegundos
         
         # 3. Crea el primer movimiento (creación del usuario) con timestamp como ID
         movimiento_ref = doc_ref.collection('movimientos').document(str(timestamp))
         print("Cree la colección de movimientos.")
         movimiento_ref.set({
-            'fecha': fecha_actual,
+            'fecha': fecha_formateada,
             'movimiento': 'creación'
         })
         
-        print(f"✔️ Movimiento de 'creación' registrado en la subcolección 'movimientos' (fecha: {fecha_actual})")
+        print(f"✔️ Movimiento de 'creación' registrado en la subcolección 'movimientos' (fecha: {fecha_formateada})")
         
     except Exception as e:
         print(f"❌ Error al crear documento y movimiento: {e}")
@@ -199,6 +213,7 @@ def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
         tipo_movimiento (str): Descripción del movimiento (ej: 'consumo de token', 'visito página compras', 'compro paquete 1').
     """
     from datetime import date, datetime
+    import pytz
 
     #print("El document_id es: ", documento_id)
     
@@ -206,18 +221,29 @@ def agregaMovimiento(coleccion, documento_id, tipo_movimiento):
         # Obtiene la referencia al documento principal
         doc_ref = db.collection(coleccion).document(documento_id)
         
-        # Obtiene la fecha actual en formato ISO
-        fecha_actual = date.today().isoformat()
-        timestamp = int(datetime.now().timestamp() * 1000)  # Timestamp en milisegundos
+        # Obtiene la zona horaria UTC-6
+        tz_mexico = pytz.timezone('America/Mexico_City')
+        ahora = datetime.now(tz_mexico)
+        
+        # Formatea la fecha en formato: 19 de noviembre de 2025, 8:54:14 p.m. UTC-6
+        meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+        mes_nombre = meses[ahora.month - 1]
+        am_pm = 'a.m.' if ahora.hour < 12 else 'p.m.'
+        hora_12 = ahora.hour if ahora.hour <= 12 else ahora.hour - 12
+        if hora_12 == 0:
+            hora_12 = 12
+        fecha_formateada = f"{ahora.day} de {mes_nombre} de {ahora.year}, {hora_12}:{ahora.minute:02d}:{ahora.second:02d} {am_pm} UTC-6"
+        
+        timestamp = int(datetime.now(tz_mexico).timestamp() * 1000)  # Timestamp en milisegundos
         
         # Crea un nuevo documento en la subcolección 'movimientos' con timestamp como ID
         movimiento_ref = doc_ref.collection('movimientos').document(str(timestamp))
         movimiento_ref.set({
-            'fecha': fecha_actual,
+            'fecha': fecha_formateada,
             'movimiento': tipo_movimiento
         })
         
-        print(f"✔️ Movimiento '{tipo_movimiento}' registrado para el documento '{documento_id}' (fecha: {fecha_actual})")
+        print(f"✔️ Movimiento '{tipo_movimiento}' registrado para el documento '{documento_id}' (fecha: {fecha_formateada})")
         
     except Exception as e:
         print(f"❌ Error al agregar movimiento: {e}")

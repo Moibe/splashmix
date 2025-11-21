@@ -189,31 +189,31 @@ def actualizador_navbar(usuario, result, info_window):
     
     #Recibimos también a info_window porque el texto tmb puede dar claves para el futuro.
     print("Estoy dentro de actualizador_navbar y result es:", result)
-    #Controla si se abre el botón de recargar créditos.
-    if "no-credits" in result:
-        apertura = True
-        visibilidad = True
-    else:
-        apertura = False
-
+    
     #Dependiendo del resultado obtenido deberé debitar o no:     
     #Cuando no hay imagen (Error directo de mass): error.png
     if "jpg" in result: #Cuando la imagen es correcta. El resultado es un archivo .jpg
         #Debita uno de la cuota de ese usuario y despliegalo.
         fireWhale.cobrar_token('usuarios', usuario, 'tokens', amount=-globales.costo_work)
-        tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #A pesar de la maniobra para obtener y restar, para poder desplegarlo de todas formas necesitaremos hacer otra lectura de firebase.
+        #tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #A pesar de la maniobra para obtener y restar, para poder desplegarlo de todas formas necesitaremos hacer otra lectura de firebase.
+        #Pero ahora puedes traer todo el documento porque también necesitaras despliega_creditos.
         documento_completo = fireWhale.obtenDocumento('usuarios', usuario) 
-        print("Documento completo es:", documento_completo)
-        print("Tokens: ", documento_completo.get('tokens', None))
-        print("Despliega_creditos: ", documento_completo.get('despliega_creditos', None))
-        print(f"Después de debitar tienes {tokens} tokens.")
+        tokens = documento_completo.get('tokens', None)
+        despliega_creditos = documento_completo.get('despliega_creditos', None)
+        
         fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token', tokens)
         
     else: 
-        #Lo demás debería ser un error.
-        print("Resultado incorrecto e incobrable...")
-        #Future, también podrías no hacer la ida a firebase y obtenerlo de valor previo.
-        tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #obtienes
-        print("Estos son los tokens que tiene actualmente el usuario:", tokens)
+        #Controla si se abre el botón de recargar créditos.
+        if "no-credits" in result:
+            apertura = True
+            visibilidad = True
+            fireWhale.agregaMovimiento('usuarios', usuario, 'sin_credito', tokens)
+        else:
+            apertura = False
+            visibilidad = despliega_creditos #Si el asunto no fue de los créditos, despliega como indique el firestore del usuario. 
+        
+        # tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #obtienes
+        # print("Estos son los tokens que tiene actualmente el usuario:", tokens)
         #Por ahora no debites.
     return gr.Accordion(label=f"💶Creditos Disponibles: {tokens}", open=apertura, visible=visibilidad) 

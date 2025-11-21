@@ -199,7 +199,7 @@ def actualizador_navbar(usuario, result, info_window):
         documento_completo = fireWhale.obtenDocumento('usuarios', usuario) 
         tokens = documento_completo.get('tokens', None)
         despliega_creditos = documento_completo.get('despliega_creditos', None)
-        
+        visibilidad = despliega_creditos
         fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token', tokens)
         
     else: 

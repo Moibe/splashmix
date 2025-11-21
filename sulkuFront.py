@@ -185,10 +185,12 @@ def evaluaResultadoUsuario(resultado, personaje):
 
 def actualizador_navbar(usuario, result, info_window):
     
+    #Recibimos también a info_window porque el texto tmb puede dar claves para el futuro.
     print("Estoy dentro de actualizador_navbar y result es:", result)
     #Controla si se abre el botón de recargar créditos.
     if "no-credits" in result:
         apertura = True
+        visibilidad = True
     else:
         apertura = False
 
@@ -208,4 +210,4 @@ def actualizador_navbar(usuario, result, info_window):
         tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #obtienes
         print("Estos son los tokens que tiene actualmente el usuario:", tokens)
         #Por ahora no debites.
-    return gr.Accordion(label=f"💶Creditos Disponibles: {tokens}", open=apertura) 
+    return gr.Accordion(label=f"💶Creditos Disponibles: {tokens}", open=apertura, visible=visibilidad) 

@@ -202,6 +202,10 @@ def actualizador_navbar(usuario, result, info_window):
         #Debita uno de la cuota de ese usuario y despliegalo.
         fireWhale.cobrar_token('usuarios', usuario, 'tokens', amount=-globales.costo_work)
         tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #A pesar de la maniobra para obtener y restar, para poder desplegarlo de todas formas necesitaremos hacer otra lectura de firebase.
+        documento_completo = fireWhale.obtenDocumento('usuarios', usuario) 
+        print("Documento completo es:", documento_completo)
+        print("Tokens: ", documento_completo.get('tokens', None))
+        print("Despliega_creditos: ", documento_completo.get('despliega_creditos', None))
         print(f"Después de debitar tienes {tokens} tokens.")
         fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token', tokens)
         

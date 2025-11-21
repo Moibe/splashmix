@@ -60,14 +60,14 @@ def precarga(arreglo):
                 #EL USUARIO SI EXISTE EN FIRESTORE.
                 if documento_completo: #Si el documento existió...
                     tokens = documento_completo.get('tokens', None)
-                    compro = documento_completo.get('compro', True)
+                    despliego = documento_completo.get('despliega_creditos', True)
                     #Y los tokens existieron....
                     #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
-                        print("Camino 1: Si hubo un usuario.") 
+                        #print("Camino 1: Si hubo un usuario.") 
                         display_banner = False
                         display_credits = True
-                        if compro is False: #o sea si no ha comprado.
+                        if despliego is False: #o sea si no ha comprado.
                             #Si no ha comprado, no le muestres cuantos créditos tiene.
                             #Por alguna razón está como al revés, o aquí llega si no ha comprado :S 
                             display_credits = False
@@ -89,7 +89,8 @@ def precarga(arreglo):
                     'email': email,
                     'tokens': 5,
                     'fecha_registro': firestore.SERVER_TIMESTAMP, # Para un timestamp del servidor
-                    'compro': False
+                    'compro': False,
+                    'despliega_creditos': False,
                     }
                     fireWhale.creaDatoMultipleConMovimiento('usuarios', uid, datos_perfil) #Ésta es la creación del usuario en Firestore.
                     ga4Analiticas.send_ga4_signup_event(gaClient)

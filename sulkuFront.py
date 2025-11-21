@@ -198,6 +198,7 @@ def actualizador_navbar(usuario, result, info_window):
         #Pero ahora puedes traer todo el documento porque también necesitaras despliega_creditos.
         documento_completo = fireWhale.obtenDocumento('usuarios', usuario) 
         tokens = documento_completo.get('tokens', None)
+        print("Tokens después de debitar tralala:", tokens)
         despliega_creditos = documento_completo.get('despliega_creditos', None)
         visibilidad = despliega_creditos
         fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token', tokens)
@@ -207,7 +208,7 @@ def actualizador_navbar(usuario, result, info_window):
         if "no-credits" in result:
             apertura = True
             visibilidad = True
-            fireWhale.agregaMovimiento('usuarios', usuario, 'sin_credito', tokens)
+            fireWhale.agregaMovimiento('usuarios', usuario, 'sin_credito', 0)
         else:
             apertura = False
             visibilidad = despliega_creditos #Si el asunto no fue de los créditos, despliega como indique el firestore del usuario. 

@@ -187,8 +187,7 @@ def evaluaResultadoUsuario(resultado, personaje):
 
 def actualizador_navbar(usuario, result, info_window):
     
-    #Recibimos también a info_window porque el texto tmb puede dar claves para el futuro.
-    print("Estoy dentro de actualizador_navbar y result es:", result)
+    apertura = False #Cerrado es el valor default del acordeón.
     
     #Dependiendo del resultado obtenido deberé debitar o no:     
     #Cuando no hay imagen (Error directo de mass): error.png

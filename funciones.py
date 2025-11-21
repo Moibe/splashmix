@@ -57,7 +57,8 @@ def perform(input1, gender, personaje, usuario):
             else: #O sea si el error de la excepción no fue RUNTIME_ERROR (aun siendo error.)
                 return resultado, info_window, btn_buy          
     else: #Aquí es si no fue error y ya salimos del try más externo, es el else de si tuviste suficientes tokens.
-        #Si no hubo autorización.
+        #Si no hubo autorización. O sea que no hubo créditos.
+        fireWhale.editaDato('usuarios', usuario, 'despliega_creditos', True)
         resultado, info_window = sulkuFront.noCredit()
         return resultado, info_window, btn_buy
 

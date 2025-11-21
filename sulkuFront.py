@@ -55,6 +55,7 @@ def precarga(arreglo):
             
             #Encontró un usuairo de firebase auth.
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
+                print("Estoy dentro del IF de email o displayName...")
                 documento_completo = fireWhale.obtenDocumento('usuarios', uid)
                 #EL USUARIO SI EXISTE EN FIRESTORE.
                 if documento_completo: #Si el documento existió...
@@ -63,7 +64,7 @@ def precarga(arreglo):
                     #Y los tokens existieron....
                     #El usuario tiene tokens.
                     if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
-                        #print("Camino 1: Si hubo un usuario.") 
+                        print("Camino 1: Si hubo un usuario.") 
                         display_banner = False
                         display_credits = True
                         if compro is False: #o sea si no ha comprado.

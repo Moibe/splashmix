@@ -209,6 +209,7 @@ def actualizador_navbar(usuario, result, info_window):
             apertura = True
             visibilidad = True
             fireWhale.agregaMovimiento('usuarios', usuario, 'sin_credito', 0)
+            tokens = 0 
         else:
             apertura = False
             visibilidad = despliega_creditos #Si el asunto no fue de los créditos, despliega como indique el firestore del usuario. 

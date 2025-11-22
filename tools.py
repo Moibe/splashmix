@@ -319,3 +319,35 @@ def obtener_gclid_exacto(cadena):
     else:
         # Retornar None si el formato no es el esperado
         return None
+
+def deberia_registrar_visita_sitio(usuario):
+    """
+    Verifica si han pasado 3 horas desde la última visita registrada.
+    Si es la primera visita o ya pasaron 3 horas, retorna True.
+    
+    Args:
+        usuario (str): El UID del usuario.
+    
+    Returns:
+        bool: True si se debe registrar la visita, False si no.
+    """
+    from datetime import datetime, timedelta
+    import pytz
+    import fireWhale
+    
+    tz_mexico = pytz.timezone('America/Mexico_City')
+    ahora = datetime.now(tz_mexico)
+    timestamp_ahora = ahora.timestamp()
+    
+    # Obtén el último timestamp de visita
+    ultima_visita = fireWhale.obtenDato('usuarios', usuario, 'ultima_visita_sitio')
+    
+    if ultima_visita is None:
+        # Primera visita, registrarla
+        return True
+    
+    # Si han pasado 3 horas (10800 segundos)
+    if timestamp_ahora - ultima_visita >= 10800:
+        return True
+    
+    return False

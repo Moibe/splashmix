@@ -80,6 +80,16 @@ def precarga(arreglo):
                         print(f"Tokens: {tokens}.")
                         mensaje = f"🐙Usuario: {email} "
                         mensaje2 = f"💶Créditos Disponibles: {tokens}."
+                        
+                        # Registra movimiento de "visita al sitio" si han pasado 3 horas
+                        if tools.deberia_registrar_visita_sitio(uid):
+                            fireWhale.agregaMovimiento('usuarios', uid, 'visita al sitio', tokens)
+                            # Actualiza el timestamp de última visita
+                            from datetime import datetime
+                            import pytz
+                            tz_mexico = pytz.timezone('America/Mexico_City')
+                            timestamp_ahora = datetime.now(tz_mexico).timestamp()
+                            fireWhale.editaDato('usuarios', uid, 'ultima_visita_sitio', timestamp_ahora)
                 
                 else: #USUARIO NO EXISTE EN FIRESTORE, HAY QUE CREARLO.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.

@@ -209,7 +209,7 @@ def evaluaResultadoUsuario(resultado, personaje):
            
     return resultado, info_window
 
-def actualizador_navbar(usuario, result, info_window):
+def actualizador_navbar(usuario, result, info_window, genero=None, personaje=None):
     
     apertura = False #Cerrado es el valor default del acordeón.
     
@@ -225,7 +225,15 @@ def actualizador_navbar(usuario, result, info_window):
         print("Tokens después de debitar tralala:", tokens)
         despliega_creditos = documento_completo.get('despliega_creditos', None)
         visibilidad = despliega_creditos
-        fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token', tokens)
+        
+        # Agrega el movimiento de consumo de token con campos opcionales
+        kwargs_movimiento = {}
+        if genero:
+            kwargs_movimiento['genero'] = genero
+        if personaje:
+            kwargs_movimiento['personaje'] = personaje
+        
+        fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token', tokens, **kwargs_movimiento)
         
     else: 
         #Controla si se abre el botón de recargar créditos.

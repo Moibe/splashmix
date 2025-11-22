@@ -69,7 +69,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             js=fuego.js,        
             )        
     
-    result.change(sulkuFront.actualizador_navbar, [usuario_firebase, result, lbl_console], acordeon2)
+    result.change(sulkuFront.actualizador_navbar, [usuario_firebase, result, lbl_console, gender, personaje], acordeon2)
 
     btn_logout.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección

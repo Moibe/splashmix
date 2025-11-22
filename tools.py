@@ -320,13 +320,13 @@ def obtener_gclid_exacto(cadena):
         # Retornar None si el formato no es el esperado
         return None
 
-def deberia_registrar_visita_sitio(usuario):
+def deberia_registrar_visita_sitio(documento_id):
     """
     Verifica si han pasado 3 horas desde la última visita registrada.
     Si es la primera visita o ya pasaron 3 horas, retorna True.
     
     Args:
-        usuario (str): El UID del usuario.
+        documento_id (str): El ID del documento del usuario en Firestore.
     
     Returns:
         bool: True si se debe registrar la visita, False si no.
@@ -339,8 +339,8 @@ def deberia_registrar_visita_sitio(usuario):
     ahora = datetime.now(tz_mexico)
     timestamp_ahora = ahora.timestamp()
     
-    # Obtén el último timestamp de visita
-    ultima_visita = fireWhale.obtenDato('usuarios', usuario, 'ultima_visita_sitio')
+    # Obtén el último timestamp de visita usando documento_id
+    ultima_visita = fireWhale.obtenDato('usuarios', documento_id, 'ultima_visita_sitio')
     
     if ultima_visita is None:
         # Primera visita, registrarla

@@ -87,7 +87,7 @@ def precarga(arreglo):
                         mensaje2 = f"💶Créditos Disponibles: {tokens}."
                         
                         # Registra movimiento de "visita al sitio" si han pasado 3 horas
-                        if tools.deberia_registrar_visita_sitio(uid):
+                        if tools.deberia_registrar_visita_sitio(documento_id):
                             fireWhale.agregaMovimiento('usuarios', documento_id, 'visita al sitio', tokens)
                             # Actualiza el timestamp de última visita
                             from datetime import datetime

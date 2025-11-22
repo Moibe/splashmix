@@ -38,6 +38,7 @@ def precarga(arreglo):
     
     uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
+    documento_id = None  # Se asignará cuando se encuentre el documento del usuario
     #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev. (En local no se actualiza bien firesbase :(  ))
     
     if uid == None:
@@ -56,23 +57,27 @@ def precarga(arreglo):
             #Encontró un usuairo de firebase auth.
             if email or displayName: #Si encontró a cualquiera de los dos significa que si existe en firebase auth.  
                 print("Estoy dentro del IF de email o displayName...")
-                documento_completo = fireWhale.obtenDocumento('usuarios', uid)
-                #EL USUARIO SI EXISTE EN FIRESTORE.
-                if documento_completo: #Si el documento existió...
-                    tokens = documento_completo.get('tokens', None)
-                    despliego = documento_completo.get('despliega_creditos', True)
-                    #Y los tokens existieron....
-                    #El usuario tiene tokens.
-                    if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
-                        #print("Camino 1: Si hubo un usuario.") 
-                        display_banner = False
-                        display_credits = True
-                        if despliego is False: #o sea si no ha comprado.
-                            #Si no ha comprado, no le muestres cuantos créditos tiene.
-                            #Por alguna razón está como al revés, o aquí llega si no ha comprado :S 
-                            display_credits = False
-                            display_banner = True
-                            #Configura el banner de mensajes y promociones solo para usuarios que no han comprado.
+                # Obtiene el ID del documento del usuario (puede ser diferente al UID si se creó con timestamp-uid-email)
+                documento_id = fireWhale.obtenerDocumentoIDPorUID('usuarios', uid)
+                
+                if documento_id:  # Si encontró el documento
+                    documento_completo = fireWhale.obtenDocumento('usuarios', documento_id)
+                    #EL USUARIO SI EXISTE EN FIRESTORE.
+                    if documento_completo: #Si el documento existió...
+                        tokens = documento_completo.get('tokens', None)
+                        despliego = documento_completo.get('despliega_creditos', True)
+                        #Y los tokens existieron....
+                        #El usuario tiene tokens.
+                        if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
+                            #print("Camino 1: Si hubo un usuario.") 
+                            display_banner = False
+                            display_credits = True
+                            if despliego is False: #o sea si no ha comprado.
+                                #Si no ha comprado, no le muestres cuantos créditos tiene.
+                                #Por alguna razón está como al revés, o aquí llega si no ha comprado :S 
+                                display_credits = False
+                                display_banner = True
+                                #Configura el banner de mensajes y promociones solo para usuarios que no han comprado.
                             #Ahora los mensajes van a varias de forma random. Antes ->lbl_info_welcome  ahora-> 
                             num_mensaje = random.randint(0, 5)
                             gr.Info(title="¡Bienvenido!", message=mensajes.mensajes_usuario[num_mensaje], duration=None, visible=display_banner)
@@ -83,17 +88,22 @@ def precarga(arreglo):
                         
                         # Registra movimiento de "visita al sitio" si han pasado 3 horas
                         if tools.deberia_registrar_visita_sitio(uid):
-                            fireWhale.agregaMovimiento('usuarios', uid, 'visita al sitio', tokens)
+                            fireWhale.agregaMovimiento('usuarios', documento_id, 'visita al sitio', tokens)
                             # Actualiza el timestamp de última visita
                             from datetime import datetime
                             import pytz
                             tz_mexico = pytz.timezone('America/Mexico_City')
                             timestamp_ahora = datetime.now(tz_mexico).timestamp()
-                            fireWhale.editaDato('usuarios', uid, 'ultima_visita_sitio', timestamp_ahora)
+                            fireWhale.editaDato('usuarios', documento_id, 'ultima_visita_sitio', timestamp_ahora)
                 
                 else: #USUARIO NO EXISTE EN FIRESTORE, HAY QUE CREARLO.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.
-                    print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.                    
+                    print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.
+                    
+                    # Genera el ID del documento con formato: timestamp-uid-correo
+                    id_documento = tools.generar_id_documento_usuario(uid, email)
+                    documento_id = id_documento  # Asigna el nuevo ID para retornarlo después
+                    
                     datos_perfil = {
                     'displayName': displayName,
                     'email': email,
@@ -101,8 +111,9 @@ def precarga(arreglo):
                     'fecha_registro': firestore.SERVER_TIMESTAMP, # Para un timestamp del servidor
                     'compro': False,
                     'despliega_creditos': False,
+                    'uid': uid,  # Agregamos el UID como campo para referencia
                     }
-                    fireWhale.creaDatoMultipleConMovimiento('usuarios', uid, datos_perfil) #Ésta es la creación del usuario en Firestore.
+                    fireWhale.creaDatoMultipleConMovimiento('usuarios', id_documento, datos_perfil) #Ésta es la creación del usuario en Firestore con el nuevo ID.
                     ga4Analiticas.send_ga4_signup_event(gaClient)
                     mensaje = f"🐙Usuario: {email} "
                     mensaje2 = f"💶Creditos Disponibles: 5." #Analizar si está bien dejarlo fijo y todo funciona bien.
@@ -120,7 +131,8 @@ def precarga(arreglo):
                         pass #Al parecer si le da tiempo suficiente de prender. 
                         #Checar si al hacer compra se vuelve a crear el usuario.    
                     customer_id = respuesta.get('customer_id')
-                    fireWhale.editaDato('usuarios', uid, 'cus', customer_id)
+                    # Actualiza el campo 'cus' con el ID del cliente de Stripe usando id_documento (usuario nuevo)
+                    fireWhale.editaDato('usuarios', id_documento, 'cus', customer_id)
                     # print("cus agregado")
             else: #Si no existe en FIREBASE AUTH, es un usuario inválido. FutureImportante: ¿Debería regresarlo a login? 
                 mensaje = "Usuario inválido."
@@ -128,7 +140,9 @@ def precarga(arreglo):
         except Exception as e:
             print(f"Excepción: {e}")
         print("Display credits es: ", display_credits)
-        return uid, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False, visible=display_credits)  
+        # Retorna documento_id si existe (para usuarios existentes), sino uid (para usuarios nuevos o inválidos)
+        usuario_a_retornar = documento_id if documento_id else uid
+        return usuario_a_retornar, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False, visible=display_credits)  
 
 def visualizar_creditos(nuevos_creditos, usuario):
 

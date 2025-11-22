@@ -351,3 +351,23 @@ def deberia_registrar_visita_sitio(usuario):
         return True
     
     return False
+
+def generar_id_documento_usuario(uid, email):
+    """
+    Genera un ID legible para el documento del usuario en formato: timestamp-uid-correo
+    
+    Args:
+        uid (str): El UID de Firebase del usuario.
+        email (str): El email del usuario.
+    
+    Returns:
+        str: ID formateado como timestamp-uid-correo (ej: 1732068450123-uid123-usuario@correo.com)
+    """
+    from datetime import datetime
+    import pytz
+    
+    tz_mexico = pytz.timezone('America/Mexico_City')
+    ahora = datetime.now(tz_mexico)
+    timestamp = int(ahora.timestamp() * 1000)  # Timestamp en milisegundos
+    
+    return f"{timestamp}-{uid}-{email}"

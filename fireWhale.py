@@ -46,6 +46,34 @@ def obtenDatosUIDFirebase(uid):
         print(f"❌ Error al verificar usuario con UID '{uid}': {e}")
         return None, None    
 
+def obtenerDocumentoIDPorUID(coleccion, uid):
+    """
+    Busca y retorna el ID del documento que contiene el UID especificado.
+    Útil cuando el ID del documento es diferente al UID de Firebase.
+    
+    Args:
+        coleccion (str): El nombre de la colección (ej: 'usuarios').
+        uid (str): El UID de Firebase a buscar.
+    
+    Returns:
+        str: El ID del documento si lo encuentra, None si no existe.
+    """
+    try:
+        # Busca en la colección documentos que tengan el campo 'uid' igual al UID especificado
+        query = db.collection(coleccion).where('uid', '==', uid).limit(1)
+        resultados = query.stream()
+        
+        for doc in resultados:
+            return doc.id  # Retorna el ID del documento encontrado
+        
+        # Si no encontró nada
+        print(f"❌ No se encontró documento con UID '{uid}' en la colección '{coleccion}'")
+        return None
+        
+    except Exception as e:
+        print(f"❌ Error al buscar documento por UID: {e}")
+        return None
+
 def obtenDato(coleccion, dato, info):
     
     #Primero debemos definir la referencia al documento, o sea a la hoja de usuario.

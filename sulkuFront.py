@@ -235,6 +235,22 @@ def actualizador_navbar(usuario, result, info_window, genero=None, personaje=Non
         
         fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token', tokens, **kwargs_movimiento)
         
+    elif "error.png" in result:
+        # Error en la generación de imagen - registrar movimiento de error
+        documento_completo = fireWhale.obtenDocumento('usuarios', usuario)
+        tokens = documento_completo.get('tokens', None)
+        despliega_creditos = documento_completo.get('despliega_creditos', None)
+        visibilidad = despliega_creditos
+        
+        # Agrega el movimiento de error con el mensaje
+        kwargs_error = {'mensaje_error': info_window}
+        if genero:
+            kwargs_error['genero'] = genero
+        if personaje:
+            kwargs_error['personaje'] = personaje
+        
+        fireWhale.agregaMovimiento('usuarios', usuario, 'error', tokens, **kwargs_error)
+        
     else: 
         #Controla si se abre el botón de recargar créditos.
         if "no-credits" in result:

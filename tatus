@@ -1,0 +1,759 @@
+[33mc6460b4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m Ubica documento tralala
+[33m804b020[m EditaDatoMultiple de fireWhale listo
+[33m5b3161f[m Print country debugs
+[33ma8330bd[m All countries obtained
+[33m71823c6[m Country IP a Firestore
+[33m7e7afb7[m Fuego obtiene country ip
+[33m3b35ead[m End Lab
+[33mf08c54c[m Country IP Lab
+[33m648f74d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Loguea error como movimiento
+[33mc3e6466[m Loguear personaje y genero
+[33me676e60[m Fix mark visita
+[33mded11ee[m Nueva forma de usuario
+[33maa1d5f2[m Registra movimiento visita sitio
+[33mf92276b[m Tokens 0 t no credit
+[33m2318a9d[m Debug tokens obtenidos
+[33mdcce6fa[m Fix visibilidad
+[33m5875d21[m Fix apertura
+[33mcb230d3[m Acomódo de lógica de despliegue de créditos
+[33md4a24a1[m Todo el diccionario en una vuelta
+[33m005ddfd[m Compro >> Despliego
+[33me028ea5[m Debbuging display credits
+[33m912ca41[m Despliega créditos cuando se acaban
+[33m01b9fa0[m Control sobre visibilidad de compra
+[33me3f2c17[m Estuadiar comportamiento actualizador navbar
+[33m6ba142d[m Back to normal + Detect btn_buy
+[33mc480089[m Detección de créditos en 0
+[33mee17c0e[m Los nombres de documento son más descriptivos
+[33m358c02b[m Movimientos registran token
+[33m7331066[m Fecha formato completo
+[33mbd2e461[m Fix input click compra
+[33m9d920bf[m Remove anota compra
+[33m06756b7[m Check doc_id
+[33mafe5ab8[m Parámetros correctos hacia click compra
+[33m63214cb[m Update
+[33mcb2067c[m Marca visita a compras
+[33m45eefe9[m Registro de todo tipo de movimientos en subcolección de usuario
+[33m835247f[m Agregar Usuario Nuevo con Subcolección Movimientos
+[33mb29d6e1[m Diplay-->Display
+[33md54deaa[m Print sulkufront exception
+[33mfb6579d[m Mensajes En.py
+[33m9088519[m Mensajes aleatorios
+[33m5df1c26[m Banner wait
+[33m79a3224[m Encontrados
+[33mf57630c[m Al revés
+[33m0983ae9[m Todo False
+[33mdc93ed8[m Compró default is true
+[33m3f3399b[m Banner y credits igual
+[33mc880c0d[m Test dato compro
+[33m469a75f[m Back to normal
+[33m4e936c5[m Debug latencia firestore
+[33mfd83fd5[m Display and Undisplay credits
+[33md56dba2[m Créditos no se despliegan si aún no compra
+[33mc56a52e[m Refactorización de noción de usuario nuevo
+[33m8574bdb[m Test tokens sin doc
+[33mbbae632[m Nuevo usuario firebase alta test
+[33m1f93710[m Implementación Lista
+[33m3f2c8f0[m Manejo correcto de diccionarios
+[33m608f36f[m Ahorro en firebase, todo en un llamado!
+[33m15d4f55[m Banner @ nu
+[33mcd638af[m Info @ non-user
+[33m44cd3ae[m Condicionalidad de mensaje de Bienvenida
+[33m327563e[m Mensaje de Bienvenida .info
+[33mcfcba31[m Fix no face error
+[33m36aa707[m Strip Error
+[33m6b0ad98[m Surround error
+[33m93769e2[m Error alone is no face detection
+[33m209c553[m 401 texts
+[33m778ddf7[m Ordenar evaluación de excepciones
+[33m237b43b[m Orden final de proveedores de poder
+[33m71c928f[m Verbose Thanks
+[33m3f78578[m Print url total also
+[33mf3b50f4[m Verbose for user_signup
+[33m658c80b[m Corrección de prod base url
+[33m5997da4[m Avoid error when gaClient don't exist
+[33m7514d44[m null is none in js
+[33m16cf448[m Fix send arreglo on firebase null
+[33m7d98c79[m Aun así se regresa gaClient
+[33m6830fb6[m App when user not logged
+[33mf049d26[m Tituliza correctamente no face
+[33mbaefcf4[m PowerWhale
+[33m99b835e[m Habilitar powehwale
+[33mb960944[m Inhabilitar servidor si hay problema de quota
+[33m9e40736[m Quota listed in sulku messages
+[33m3088620[m Ahorrar recortador quota
+[33m36d88b7[m Intermitenia IA
+[33mc50e143[m Hugging por requested vs. - para mensaje de quota
+[33meeb5108[m Evalua recortador quota
+[33m5faf780[m Evalua texto quota
+[33m1a6b500[m Pruebas sobre nuevos servidores
+[33mc236b46[m Ambiente - Globales
+[33m8c9ffa7[m Original html
+[33m60ca2a3[m ftstring es texto var
+[33m63f8e7a[m html is fstring
+[33m9600738[m Welcome sin parámetros
+[33m3f35d8c[m Welcome pass
+[33m0a1290a[m Remove debug mode
+[33m2e66dca[m My Terms
+[33m074da05[m One and only
+[33m004b639[m Google caps
+[33m1ad77f0[m Google con mins cap!
+[33m4a77672[m Google
+[33m2f68fe8[m Print glid exacto
+[33m084e169[m Back to email
+[33m92244c2[m Caps on method google
+[33mc426553[m Clean print
+[33me83a24a[m method signup event is google
+[33m6b0f3d1[m Evento signUp Listo!
+[33m886b2eb[m Extracción exacta del gclid
+[33mbf5f588[m Verbose for g4
+[33ma2054e2[m GaClient goes to Analytics
+[33m8b3357d[m Not reflow
+[33mbe10152[m Step 19
+[33me4bae41[m Debug steps
+[33mee7e8b3[m Si entré a perform
+[33md411cb9[m Perform receives arreglo
+[33m691879a[m Particulariza cachar uid del dict original
+[33mc3892f3[m Dict read as in python
+[33mc59a095[m Send as JSON object
+[33m7427c06[m Regresa en formato json
+[33m1645f49[m gr.JSON para recibir resultado en arreglo
+[33mca28453[m Switch values
+[33mb8ea939[m Prevarializa arreglo
+[33m76232ee[m Print arreglo completo
+[33m6e1423f[m Regresar parámetros precarga como arreglo
+[33m1637316[m Procesa solo gaclient
+[33m7ac18c1[m Send dos valores to precarga
+[33mdad41f8[m Window con gaclient a fuego
+[33m84b48cc[m Fuego reports resultado
+[33m4c1adb0[m Add extractor code
+[33m2606b65[m Restore tag manager
+[33m9d569a0[m Double bracket tag manager
+[33m4e7468c[m Display gaClient
+[33mc8555c6[m Fix test
+[33m107e162[m 3rd
+[33m7cf59e2[m 2nd Try Más texto desde firehead
+[33m6f19b2e[m Texto desde firehead
+[33m85faa9d[m Función procesa cookie
+[33me111dbb[m Add Event Layer for User SignUp
+[33m7bf7632[m GA4 event user_signup
+[33me7ddd2a[m GA4 Analytics
+[33mc9df758[m Merge branch 'dev'
+[33m332aa6b[m Test Synchrony
+[33m8c639a5[m update
+[33mbaf5385[m Nuevos servidores al rol
+[33m13d78ce[m Remove noción de acceso libre
+[33m49222f8[m Título para Analytics y Orden de Servidores
+[33me7f4579[m Título para Analytics y Orden de Servidores
+[33m03fef17[m Merge branch 'dev' DEV>>>>MAIN FUSION
+[33m7f123db[m No translate @ head
+[33m9a4f3d6[m Fix if
+[33md6c7ad9[m Last update
+[33m67a2271[m Fix e
+[33m7bfee09[m use e not resultado
+[33mc23cbfc[m Eval resultado @ excep
+[33m27f8d28[m 2nd verbose
+[33mb2643dc[m Verbose of 2nd try
+[33md7f9b04[m API ZERO BACKUP ONLINE
+[33m4990300[m Define and print excepciones titulizables
+[33m4bc3a16[m Test Api Down
+[33m4b22fec[m Try InstantID backup
+[33m4965a1e[m Ajuste de segundos para encendido preventivo
+[33m23faa6a[m Verbose Encendido Preventivo
+[33m09d007e[m Welcome InstantID2-Turbo
+[33mf9b36fa[m Reload works on direct URL too
+[33me300e85[m Check obtención hf usuario_proveedor
+[33mf8074f9[m acheteemeele
+[33m00cac97[m TAG MANAGER
+[33mdb4b1de[m All quota is power
+[33m2de27af[m Quota now points to power
+[33m7420e20[m Handle of Kraken Ok
+[33m719f46c[m Fix test
+[33m7b7fc31[m Kraken is dev and prod
+[33m9117369[m Kraken Debugging
+[33m40b6679[m Add app instance to auth too
+[33m7ef15b7[m All app instances ready
+[33mee78978[m Remove if not check
+[33m765189e[m check app name before correctly
+[33mbc80d47[m Db verbose
+[33m569b076[m App as INstance Not String
+[33mfc8d351[m name for app
+[33m941f728[m Try splashmix.ink
+[33md054936[m Try with splashmix-web
+[33mf79359c[m All Correct
+[33m2b55c82[m Fix db names from splashmix
+[33m6f3b057[m Exact names
+[33mb1d92ca[m App names
+[33m84e4866[m DB is (default)
+[33m838dbc7[m Sin check de base
+[33mb6d3f7d[m Check default db
+[33ma96328c[m App name not needed
+[33mb1badb5[m Globales version y proveedores
+[33m48126a0[m Manejo de coexistencia de FireWhale y PowerWhale
+[33ma309f56[m Flux out via gitignore
+[33mf047486[m Add powerWhale
+[33m4291582[m Update
+[33mfb36270[m Merge pull request #2 from Moibe/dev
+[33m318361d[m Merge branch 'main' into dev
+[33meb6d684[m Keep Alive Prod @ 7878
+[33mfca3982[m Fix dev bug
+[33m77715db[m Fix double slash
+[33mdefeb42[m Remove Verbose
+[33m8198f15[m Quotations Fix
+[33m2ff7fdf[m Verbose Buttons Definition
+[33md97a20a[m Define Env
+[33m5933c58[m Dev Prod Button Definition
+[33m6a1dca4[m Var fix
+[33mc8a4c08[m rom outside
+[33me0e91ee[m Add script as string
+[33m9f824b6[m Locations
+[33ma5e40dc[m Fix remoción de magma, aire y tierra
+[33mc49051d[m Aire, magma y tierra gone
+[33m93f6276[m Work Logout
+[33mac79d6e[m Fix Pull
+[33mfba4976[m Test básico sh
+[33mff27381[m Push mode
+[33m8f85a33[m SUperheroes is now Splashmix
+[33m5995941[m Keepalive Dev
+[33mf5de32e[m Merge pull request #1 from Moibe/dev
+[33m7690086[m DEV BRANCH
+[33m8cdee66[m Supersplit Dev Prod
+[33m20ea751[m Version Outside, Add Emoji
+[33mf4dfcfb[m DEV PROD
+[33m0ae1558[m Bad token good message
+[33m09c3753[m Prod ready multi provider
+[33mff7873a[m Obtención de proveedor antes de mass, reducir cuota después.
+[33m697cfef[m Fix values unpacked for revisorQuotas
+[33ma50ee89[m Inhabilitar usuario proveedor si hay fallo de token de acceso
+[33m94773f3[m Unauthorized handled by Sulkufront
+[33m317725b[m Handle 401 due lack of token
+[33m325f693[m Irina
+[33mc5686e7[m Process Margin
+[33m923aa31[m Reducción de quota aplica a usuario_proveedor.
+[33m4cf8611[m Múltiples proveedores de poder de procesamiento.
+[33mb2b814d[m PresentacionFinal en desuso, gracias
+[33m8774558[m Debita en un paso para ahorro
+[33m5f26cf0[m Medio Segundo para Reload
+[33m0380924[m Fix comment
+[33mc053a75[m Remove ? y reduce a 2 segundos
+[33m9ee0760[m Remove urlParams at reload
+[33m99ca59d[m Reload if reload is true
+[33mf6a0480[m Print URL params
+[33m22694b7[m Dev Ready
+[33m9da1332[m Dev Ready
+[33mf8f883c[m �Visual Aid �
+[33md6ea282[m Check Quantum
+[33mf86d4ca[m Direct text on buttons
+[33m89aa9a1[m Clear button none
+[33mc6487c3[m Submit Test
+[33m3da2354[m Fixed submit button
+[33m404edf1[m Fix fuego change
+[33m8bd61c0[m Login Test
+[33m09f5616[m Fuego inicia cuando input1 cambia
+[33mcf33d6b[m Vibe
+[33m9fb6a7b[m usuario_firebase.value
+[33m7b5187c[m Fix accordeon labels
+[33m5697168[m Label acordeons
+[33m451684d[m Fix print 2
+[33m6fb4f42[m Fix print
+[33m866d443[m Print document load
+[33mf05b1c8[m Sessión es ahora local storage
+[33m3e5d248[m Supesolución
+[33mbe7523c[m Remove comment
+[33mbe5f934[m pagehide instead of onload
+[33m929cfe8[m Destroy reload
+[33m09b469e[m CHeck if null
+[33m2dae98e[m Head marca reload en false
+[33m3142b48[m Reload cambia reload a true
+[33mb6c300f[m Recarga si false
+[33m4af9a69[m TRue as string
+[33mfcb288a[m If recargado is true
+[33m39414cc[m Fix show brand
+[33m096a003[m Brand Reloaded
+[33m8513b9b[m Set reload
+[33m0479345[m Solo Print Aviso
+[33m12de7c1[m Restore
+[33m7ce36b0[m Add Reload
+[33m75b219d[m Inician Tests
+[33m748825d[m Return Resultado
+[33m1f27594[m From outside fire
+[33m7c94176[m From outside fire
+[33m7de032c[m Just Display
+[33m1b9c2fa[m A check
+[33m7106f55[m Intercambia fuego por fire
+[33mdade63b[m Able to print usuario_firebase.value
+[33m62e8b88[m Hardcode uid
+[33m6b03412[m Fire to Dev
+[33m437a848[m Fire Auth for front ready
+[33mcf47ae6[m Firebase Auth con Dev y Prod
+[33m231439f[m Nuevo Firebase sincronizado
+[33m5e0bfcf[m blank spaces
+[33mfb67988[m config.js y config.json
+[33m24a482f[m Logout
+[33mbb93280[m Remove credentials from app at logout
+[33mf8071ff[m Botones superiores usan js
+[33mce83171[m Fix Link
+[33m049c7f5[m Apertura Recarga
+[33m4ba6ca4[m Fin de Créditos Recargar Listo
+[33mb2e4681[m Redireccionamiento a Login cuando deslogueado
+[33me03fee7[m Depplink and pwa test
+[33m35d4239[m Tierra y Magma
+[33m4e5f848[m Test at prod
+[33m7178bab[m Verbose for user creation
+[33m3ee651c[m Stripe On!
+[33m4cb7127[m Despliegue correcto de información cuando el usuario es nuevo
+[33m77ac85d[m Procesos de nuevo usuario listos
+[33m2c47a55[m Hardcode new user
+[33m938bb48[m Unhardcode uid
+[33m88a4fbc[m Nueva creación de usuario nuevo
+[33md776c0c[m Depuración de obtención de tokens
+[33m98fc621[m Links para cerrar sesión y comprar
+[33mf12135b[m Link ahora a splashmix.ink/buy
+[33m71a6e0d[m Obtención correcta de display_name
+[33m5430fe9[m Revisión de todos los datos en auth de firebase.
+[33m359711d[m Fix datos auth
+[33md466676[m Recibe todos los datos auth
+[33m30e57f2[m Store Whole User
+[33mc2f6319[m Store Whole User
+[33m907008b[m Nuevo botón cerrar
+[33m63ba2f3[m Google user is email
+[33m5a41425[m Navbars fix
+[33m7e41f6d[m Status Navbars Ready
+[33m3cf5693[m Mesaje de créditos de usuario
+[33m3ed8f7f[m Checado y listo
+[33mc9dc8c1[m Horizons
+[33m0cc5770[m Curiosity
+[33ma7332e5[m Remove While Loop
+[33m42889ec[m Singularity
+[33m44858a6[m Scripts @ Locations
+[33m4d09512[m Remove delay head
+[33mc40fcdf[m Remove storage item loaded
+[33m89c0a5e[m Delay 300
+[33me3f9f22[m Head timeout
+[33m47f1913[m 3 Scripts
+[33m6171cfe[m Almost there
+[33mad279fd[m Continuo debug de obtenDato
+[33m8d5d042[m Debug obtenDato
+[33m46b1627[m While loop
+[33m7d61339[m Remove consoles
+[33mbfa033f[m  ;)
+[33m4b1603f[m Deslogueo y redirect
+[33m029fdad[m Signout test
+[33m1e6e2cf[m Dato es documento
+[33mf315833[m Perfect Front
+[33m9de3d87[m Pruebas de aire
+[33mee576d4[m Back to standard
+[33mb8c3425[m Fireconfig
+[33me300fe5[m Loading test in prod
+[33m27dcc33[m Named logout button
+[33mec813f9[m Redirect con fuego
+[33m813cdfc[m Redirect
+[33m698f291[m Behavior on prod
+[33mcd8435d[m Verbose on user prescence
+[33meb14c0f[m Back to track
+[33m25ad691[m Display iframe
+[33md016f46[m Auth Helper test
+[33m79dd4ca[m Fire debug and flow test
+[33m8a5fd83[m Gradio Back to Newest
+[33m7dbe733[m 7800 en KeepAlive
+[33m283bde7[m Ports Ready Original
+[33mbd28ca0[m Pydantic problem version solved
+[33m6fff6a6[m Test Action Fix
+[33m74e52dc[m Actions Test 💶
+[33mb437f5a[m Ports Ready
+[33maa5ee77[m Github Actions Ready 🏛️
+[33m4cf5b4f[m New repo name test
+[33m9191ada[m Repo rename test
+[33m4099e4b[m Quotas Control Perfected
+[33m32cf915[m Credit Debit Ready!
+[33m03d7eab[m Independencia cobro - resultados.
+[33maad4bd2[m Perfeccionamiento de Perform
+[33mb422e9f[m NAVBAR
+[33mad6fc8d[m First standalone git
+[33m5e37876[m Rebranch to firebase exclusive
+[33m86406ef[m Firebase Auth Check Ready
+[33m63e3491[m Firebase Test
+[33m4dc7afb[m Mantis Fixed
+[33m1dc911a[m #Minor Fixes, remove js y html y reubicación de parámetros en globales. Remove cryptography, remove envs dev o prod for user check.
+[33mf87e000[m Se agregaron Avispa, Gamora y Mantis.
+[33m06d5b94[m Process cost from 30 to 18
+[33md6e1505[m Final Selection
+[33mb695c9a[m Detach: login, metrado, libre
+[33m775afad[m Mejoras preProducción
+[33m968821a[m Heroes Testing
+[33m3288163[m Heroes List
+[33mfa2a25b[m Image format jpg and naming
+[33m29d4b72[m All Heroes
+[33m5129ee7[m FireWhale!
+[33m3e29604[m Heroes Selector!
+[33m112b2fe[m Correct no_face handling
+[33m2bdaa69[m Cartriges Ready
+[33m9da76a1[m Clean Prints
+[33m438396d[m Checking nombre_posicion
+[33m43d03d1[m Printemps
+[33m8c4efe2[m Versión Correcta
+[33m2c47ce0[m Versión Correcta
+[33m51e600f[m Fix NO_POSITION message
+[33m09ad5f6[m Js Ready
+[33m5eb51db[m Position Superlabel for classification
+[33m60cbaa1[m Superheroes Multilanguage
+[33me2cbc7d[m Major Change Multilanguage
+[33ma146d0e[m Creación para Multiples Objetos y Selector
+[33m0b220f8[m Update
+[33m741ca4a[m Add Quota Type
+[33m7700051[m API Selection Big Change
+[33m847cc95[m API Selection Process
+[33mc65f22f[m Paused aparte y minor changes
+[33m5a189d5[m Encendido anticipado de API
+[33md802122[m Quota debits only on Zero
+[33m91ad715[m Big Update Quota Measures
+[33m756c863[m Static Banks
+[33m6cd4ed6[m Posix Fix
+[33m791aec6[m Posix handle
+[33m6c4d482[m Object Creation Perfection
+[33ma9d0d6c[m Atributos son randomNull
+[33m96e97f8[m Simplificación de prompter
+[33mea2e5d8[m Config a splashmix
+[33m57eed09[m Config a splashmix
+[33me7f42f2[m Separación de Splashmix y General
+[33mfeeb8a5[m Separación de Splashmix y General
+[33m3f2de07[m SulkuMessages
+[33m9cd501c[m Destuplador es general
+[33m82d9027[m Reincluide HF message dissapear.
+[33m68a56c2[m Puliendo el misil
+[33m21b4a5c[m InitAPI dettached
+[33m559d136[m File absence management
+[33m7d529da[m External Api Status Management
+[33m21b3cfc[m Source Result
+[33m8f09299[m Heroes Path
+[33m250b15f[m Tests on path and cut
+[33m704414c[m Images paths both for local and remote
+[33md78541a[m Remove traceback
+[33mfbdd089[m Better traceback
+[33m4719364[m Traceback exceps
+[33me2c5c0a[m Rename for better understanding
+[33m213d45e[m Super Upgrade
+[33me43fcd2[m First Commit
+[33m02382f9[m Flag as global
+[33m2ec8ebb[m .gradio no prod
+[33m269baeb[m Test auto
+[33mdbf7ae9[m Update README.md
+[33m9103373[m README.md on python is for Linux
+[33m28ce4e9[m Medium fix en keepalive.sh
+[33m533f96b[m Cambio major manejo de errores en Sulku
+[33m228ffdd[m Fix on error return at Sulku
+[33mfe33e7d[m Ordenamiento de funciones en sulkuFront
+[33mf47e24a[m Comment on commit name for future on keepalive
+[33mdedd2cd[m Keepalive Deluxe
+[33m9721ba8[m Comments on Deployer
+[33m9a40a39[m Terminal Versioning
+[33m0e7c4c1[m Testing Default Theme
+[33m03b30d5[m Port 7860 for boilerplate at keepalive
+[33m607dbde[m README.md on create logs
+[33mccc3402[m README.md importante set globales.py
+[33m6eaeb1d[m Update README.md
+[33ma6381a0[m README.md on KeepAlive
+[33mb843fe9[m Comment on Future Action
+[33mdfdb8c4[m README.md on venv on server
+[33mb483d0c[m Action to git pull origin main since genesis
+[33m5b34002[m README.md git instrucctions
+[33m4d0912c[m Bridges
+[33m8aed168[m SulkuFront ready
+[33m2ecb9d4[m sulkuFront.py Saved from ocean-devo-astroblend
+[33mdeed66b[m Deleted Sulkufront.py
+[33m8898833[m SulkuPypi ready
+[33mccc003e[m Adaptación de Sulku a cambios en api
+[33m68615c9[m Rediseño de conexión con api
+[33m4fe4c4c[m Improve getData
+[33m3b8066c[m Improve encripta
+[33m88dc4fd[m Keepalive back to 7860
+[33mdefd3af[m Deployer back to 7860
+[33m9046524[m Boilerplate is 7860 again
+[33m630fdd0[m venv on README.md
+[33mff9fb8d[m Autorizador improvements
+[33mc4c6f2a[m Optimización tiempo autorización: remove prints
+[33m4f4681c[m Fix invisibility
+[33m714613b[m Api Invisible
+[33m8484c47[m Upload Keepalive
+[33md78a929[m Fixes in Sulkufront and keepalive
+[33md4aa80d[m Keepalive Perfeccionado
+[33m4e65c55[m deployer.sh
+[33m60513b2[m Prepare deployer.
+[33ma4d955c[m KEEPALIVE
+[33m6613361[m Big change deploy just checks living
+[33mef219d5[m No debita fix get tokens
+[33m4a9e1b7[m Deploy: Process existance checking
+[33ma7014eb[m Deploy now on 7861
+[33m619e89f[m Boilerplate now is port 7861
+[33m2cf6403[m Deploy: display reinit time.
+[33ma9f371b[m Identificando al proceso iniciado
+[33m6d70936[m Deploy @ BG
+[33m8d6f1d4[m Deploy test
+[33m428d5f4[m Gradio-Standalone is oficially /boilerplate!
+[33m125c0ce[m Clean Action
+[33m4415df2[m README.md fix symlink
+[33m82d2a71[m Gradio-Standalone-do Pack Ready
+[33md651d22[m Zhi Succeed!
+[33me7b7ac3[m Ahorro en auth no longer va a traer usuario para guardar.
+[33m67c1e00[m Picswap to Globales
+[33m2d9bd29[m Seto globals
+[33m37f0a85[m README.md about landing pages
+[33m51f1b0f[m Charset for emojis at index
+[33m23d237f[m index edit
+[33m002edca[m Index
+[33mf6fcb40[m No procedió, back to normal
+[33m6fe7033[m Fix Try
+[33mf344553[m Another try
+[33mecf61d3[m Fix Run
+[33ma4bd577[m Run from Action Return!
+[33m90610b9[m Revisión labels front
+[33m1e0fd6a[m Depuración y test
+[33mf6a17f9[m Dynamic inputs ready to prod
+[33m2798d44[m Catálogo de apps e inputs dinámicos Ok!
+[33m3be9507[m Dynamic Inputs
+[33m10e50a0[m Flag fixed
+[33m4fa2198[m Reubicación no-cred a imagenes
+[33mefb18a4[m Theme Selector
+[33m9a89856[m Port via Global
+[33m7400e29[m Reorder perform
+[33m9a53b2e[m Path as global
+[33mb417696[m Readme Amplificado
+[33m507ab82[m Requirements installation via actions
+[33m693f342[m Fix action on venv
+[33m19a448c[m Activa venv vía actions
+[33m00d86f5[m Multiples líneas para action
+[33m008e54e[m Work as Global
+[33m9b44b2e[m Preparando café
+[33me7cde2c[m Display Based on Novelty
+[33m4075bc7[m Flag detection ready!
+[33m17e5c7d[m Fix call Novelty instead Flag
+[33mc3ad1bc[m Novelty check
+[33madc36ea[m Autorización Ok!, no credits Ok!
+[33ma1314ef[m Working on autorización correcta...
+[33mcfce10a[m Debit Ok
+[33mc6f620a[m Dev MVP
+[33m29dcc19[m Supergeneralización
+[33m6c38e13[m Generalización
+[33mb4bcb00[m Actualizado totalmente
+[33m42a9fb1[m Reestructura de Módulos
+[33m8a38c99[m Testing app2
+[33m41f4f68[m Saving
+[33m2679aa2[m Resultado obtenido de la API OK!
+[33md774834[m ¡Primer contacto con mi api de HF establecido! Ok.
+[33mc0a2b1c[m Add requirements and funciones
+[33mde7323c[m Instrucciones 100%
+[33m1628695[m Instructions Ready!
+[33m46b5452[m Keep cleaning actions
+[33m1a5e56b[m Explicación Vars
+[33m4d88384[m Instrucciones Vars
+[33m371ec1a[m Instrucciones 2 y 3
+[33m49079e0[m Delete gato.png
+[33m59ddf7f[m Instruccion 1
+[33m199f923[m Remove Launcher
+[33me9b2058[m Update README.md
+[33m130d705[m Add files via upload
+[33mcf4a72f[m Delete gato.avif
+[33m36ffa9e[m Gato.avif
+[33ma5c11e1[m Add files via upload
+[33md8cd6d6[m Pruebas Markdown
+[33m45bdbeb[m Salto de línea resuelto
+[33me9e34a8[m Readme tests
+[33me5dbb4b[m Update README.md
+[33m38a4189[m Create README.md
+[33m3921cc0[m Tests froms server
+[33m981e29c[m Delete ssl_renew.sh
+[33m7c99ca5[m Remove Killer
+[33m9a59b03[m YML Clean
+[33m57d86c4[m Include deploy
+[33m1fbfaf4[m Delete hola.py
+[33m0abdf6f[m Delete killer.sh
+[33meb19cee[m Delete .github/actions/start-server/action.yml
+[33m9b22374[m Delete launcher.sh
+[33m26efc73[m From Server
+[33mdcfea66[m Remove llave load
+[33m66aeddd[m Doble Entrecomillado
+[33me0a4887[m "Entrecomillado"
+[33m62a6f3f[m Refix Quote S
+[33m19b00e4[m Fix Quote S
+[33mb83dc79[m Quote S
+[33m76822fe[m Escape Quotes
+[33m8652f28[m Hola llave
+[33mbf701c5[m Double Quotes
+[33m0aa5617[m Quote Var
+[33m3438da7[m Fix param
+[33m1c021b9[m Import llave
+[33mb26c806[m Llavepy
+[33m7c5fa16[m Recreate llave
+[33m787e1e9[m CREA
+[33m64b6490[m iave
+[33m074fef2[m Reedit Hola
+[33ma1e3f11[m chmod llave
+[33mcdef364[m Run Llave
+[33m548f889[m Llaveternina
+[33me0fd3d4[m Hola Adiós
+[33m61b1c36[m ignore deploy
+[33m479c0f6[m Update .gitignore
+[33mb4d3701[m Write S
+[33m4636117[m Oneliner
+[33m312c235[m echo Hola Mundo
+[33m9e8bbb4[m Point WorkDir
+[33m217c695[m fix ls
+[33m18951f6[m cd scripts and ls
+[33mcd5ba8c[m Back to Normal
+[33md2cefe1[m Launch with wait
+[33m2a99356[m The Launch
+[33m04220a2[m Clean yml
+[33mee5eddf[m Remove Changes
+[33m2e37373[m Test HF Change
+[33md38ce1d[m DEPLOY
+[33m7fdf49b[m Depuración Action
+[33m03a2320[m ECHO VAR
+[33md720585[m Back to echo
+[33m0155dc0[m ECHO RESULT
+[33m823c464[m Test Simple Echo
+[33mf51558e[m Simple Set Env
+[33m1e214dd[m GradioFish Ready
+[33m7f1b988[m Suspend Var Send
+[33me677295[m Reprint
+[33m56280e9[m Fix App
+[33m77fc29a[m Fix Hola
+[33md79bc73[m Hola Tester
+[33mc5296b3[m Fix api call
+[33m059ad49[m Fix tkn display
+[33ma0f0c78[m Importing OS
+[33m432c6a8[m hfonktok
+[33m5f09c62[m 3rd Print
+[33m979f641[m Idempotencia
+[33m9b2be7b[m Addenv
+[33ma310993[m Golden Test
+[33mf9b5e05[m Remove Killer and Launcher: Cron Ready!
+[33me7b9faf[m Tmux complete
+[33maaae1d1[m -TT
+[33mbf420b3[m Hostname -t
+[33m8a44273[m Just tmux
+[33m6a8ae6f[m Tmux Check
+[33m17f4dc1[m Verbose
+[33mdde99c9[m Sesión Royal
+[33m2aec754[m Killer works sin kill?
+[33m32267ed[m Nothing
+[33m6a1d193[m Background No Escape
+[33ma492fe7[m Por renglón
+[33m3aba784[m Escape &
+[33m059dbe2[m Revive Killer y Launcher
+[33m962061d[m Just checkout
+[33mfd9a930[m Update main.ymlemporalmente remueve own action
+[33md002090[m Uses action checkout
+[33m0821970[m Fix Action Path
+[33m46d5855[m My Action First Attempt
+[33m0e60432[m BG RUN
+[33m06a64ff[m OR COMMAND FAILED
+[33m577eadb[m Remove kill from app.py
+[33m8f39ad4[m Upload Killer
+[33m4fb47a3[m Killer Reconstructed
+[33m11e90d5[m Rekill Relaunch
+[33me5bcc3c[m Fix Kill
+[33m444b8dd[m Port releaser
+[33m3d405d4[m Cambio con --autoreload
+[33me2827a8[m Cambio con Reload
+[33mc00acca[m Slight Change
+[33mefb61a7[m Clean
+[33m142c4e5[m 2C 2do Reorder
+[33md6057f1[m 2do Reorder
+[33mdaa7969[m Reordenamiento
+[33m3431391[m 2C 60
+[33m814136c[m Gone in 60 Seconds
+[33mff1e15b[m Enough time to close 60
+[33mfa5c96d[m 2C Under Sleep
+[33m4740bd0[m Change Under Sleep
+[33m2674dce[m Sleep after Close
+[33md796551[m Second Under Bool
+[33mce32aaa[m Cambio 84
+[33m34232e5[m Bool Demo Close
+[33ma4911eb[m Royal Test Reorder
+[33m023057b[m Test Observador Reordenado
+[33m3160c90[m Reorder Observer
+[33m1064a0e[m Cambio 80
+[33mfead913[m 2ndo Shift
+[33mabbb7b4[m Under Recursivo
+[33mdc1cc24[m Observer Recursivo
+[33mcead252[m Royal Test
+[33m9680ac6[m 3ero
+[33ma97a6cd[m Segundo Cambio desde Hola.py
+[33m00193a0[m Cambio desde python.app
+[33mf672a56[m Reestructurar Observer
+[33md52900c[m Otro cambio
+[33mc21ff60[m Little Change
+[33md65dc4f[m Just Detect
+[33m234e2bd[m 4T
+[33ma24db40[m Tercer cambio hola
+[33m93ea957[m Reestructura Watch
+[33me69378e[m Blocks Before
+[33m0f9f26f[m Segundo Cambio Hola
+[33m5a25864[m Primer cambio hola
+[33me574089[m Create hola.py
+[33m73a771f[m Redirect to hola
+[33m6658fb1[m Otro cambio
+[33mca8e989[m Add all words test
+[33m62140c9[m Observación al observer
+[33mb944e9d[m Remove All Words Test
+[33m9048523[m Remove Slow Echo
+[33m5e7f179[m Add Path Demo to Observer
+[33m381781a[m Remove Spasiva Test
+[33mc1bd2bb[m Verbose Watchdog
+[33m9452b1d[m Fix Commit
+[33m6e43d60[m After Demo
+[33mb14c0c4[m Add Spasiva Test
+[33mfd41430[m Close instead of stop
+[33mfc5a64e[m Console.log Stop
+[33me64678e[m Add Danke Test
+[33mb1695d8[m Add Tervetuloa
+[33mba03444[m Demo Fixxed
+[33mac7cadd[m Remove tervetuloa test
+[33m1aff75f[m Durmiendo 5 segundos...
+[33mc70c3e0[m Import time
+[33m7f290cf[m Normal Logging
+[33me89c72d[m Firetest remove Cheers
+[33m0a3c6a5[m WATCHDOG
+[33m57e5c07[m Remove Danke Test
+[33mc290cd5[m Any Change
+[33mdda5a52[m Add route
+[33mce6cd4f[m New Greet
+[33m490c189[m Raise Error
+[33ma397528[m Demo var
+[33m796092f[m Remove Spasiva
+[33m74aca42[m Spasiva Test
+[33ma6ae042[m Remove Demo Name
+[33m1b64836[m Demo Name = Demo
+[33mc5b9c52[m Test Python Autoreload
+[33mdd9bd2f[m No Kill No Launch
+[33m845b533[m Remove iface
+[33mf4782d0[m Back to basic
+[33m82f5bb0[m Which Python
+[33mbfb114a[m Fix Killing
+[33m535e062[m Verbose Killer
+[33m2547472[m Deploy no bg
+[33me6ad235[m Echoed
+[33m5387ba7[m Go verbose
+[33m45710ee[m Exit is last
+[33m7374d46[m Trilayered
+[33mf69dcd9[m Several Layers
+[33m4f98c4d[m 2 layers
+[33m81c9e8d[m Launcher @ correct path
+[33m127da13[m Test with LS!
+[33m99a5ddb[m Fix launcher path
+[33mbb9fd98[m Fix launcher.sh
+[33mf4e3a03[m Killer Launcher
+[33m8a72518[m Create launcher.sh
+[33m4525055[m Killer Bash Fixed
+[33m0793621[m Killer Bash
+[33m3aca840[m Create killer.sh
+[33mdac09c8[m Sweet Scape
+[33mae914b4[m Run at Background
+[33m476660b[m Activate and Run
+[33m0618570[m Fix action
+[33meb4fb3c[m Github Actions!
+[33m326d437[m Push Test
+[33m828b148[m Push desde DoFish!
+[33mc756333[m Create .gitignore
+[33m2ddbb6c[m Create hola.py
+[33mb6deffa[m Initial commit

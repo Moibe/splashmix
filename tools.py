@@ -372,27 +372,48 @@ def generar_id_documento_usuario(uid, email):
     
     return f"{timestamp}-{uid}-{email}"
 
-def countryChecker(uid, country_ip='', country_geolocation='', country_header=''):
+def countryChecker(id_documento, country_ip='', country_geolocation='', country_header=''):
     """
     Verifica si el documento del usuario tiene los campos country_ip, country_geolocation y country_header.
-    Si alguno de estos campos falta, los agrega con valores vacíos.
+    Si alguno de estos campos falta, está nulo o vacío, los agrega/actualiza con valores proporcionados.
     
     Args:
-        documento_completo (dict): El documento completo del usuario desde Firestore.
+        id_documento (str): ID del documento del usuario en la colección 'usuarios'
+        country_ip (str): Valor para el campo country_ip (por defecto vacío)
+        country_geolocation (str): Valor para el campo country_geolocation (por defecto vacío)
+        country_header (str): Valor para el campo country_header (por defecto vacío)
     """
     import fireWhale
 
     print("Estoy en countryChecker...")
     
-    campos_necesarios = ['country_ip', 'country_geolocation', 'country_header']
-    actualizar = False
+    # Obtiene el documento completo del usuario
+    documento_completo = fireWhale.obtenDocumento('usuarios', id_documento)
+    
+    if not documento_completo:
+        print(f"Documento no encontrado: {id_documento}")
+        return
+    
+    campos_necesarios = {
+        'country_ip': country_ip,
+        'country_geolocation': country_geolocation,
+        'country_header': country_header
+    }
+    
     datos_a_actualizar = {}
     
-    for campo in campos_necesarios:
-        if campo not in documento_completo:
-            datos_a_actualizar[campo] = ""  # O algún valor predeterminado
-            actualizar = True
+    # Verifica cada campo: si no existe, está nulo o vacío, lo agrega/actualiza
+    for campo, valor_default in campos_necesarios.items():
+        valor_actual = documento_completo.get(campo)
+        
+        # Si el campo no existe, está None o está vacío (string vacío)
+        if valor_actual is None or valor_actual == "":
+            datos_a_actualizar[campo] = valor_default
+            print(f"Campo '{campo}' será actualizado a: '{valor_default}'")
     
-    if actualizar:
-        id_documento = documento_completo.get('id')  # Asegúrate de tener el ID del documento
+    # Si hay campos que actualizar, los actualiza
+    if datos_a_actualizar:
         fireWhale.editaDatoMultiple('usuarios', id_documento, datos_a_actualizar)
+        print(f"Campos actualizados en documento {id_documento}: {datos_a_actualizar}")
+    else:
+        print(f"Todos los campos country existen y tienen valores en documento {id_documento}")

@@ -70,7 +70,7 @@ def precarga(arreglo):
                     #EL USUARIO SI EXISTE EN FIRESTORE.
                     #Si el usuario si existe en Firestore aquí debería checar si tiene las vars country_ip y demás, si no las tiene agrégaselas.
                     print("Chequeando country vars...")
-                    tools.countryChecker(uid, country_ip, country_geolocation, country_header)
+                    tools.countryChecker(documento_id, country_ip, country_geolocation, country_header)
                     if documento_completo: #Si el documento existió...
                         tokens = documento_completo.get('tokens', None)
                         despliego = documento_completo.get('despliega_creditos', True)

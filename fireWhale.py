@@ -147,6 +147,7 @@ def editaDatoMultiple(coleccion, dato, datos_dict):
         dato (str): ID del documento a actualizar
         datos_dict (dict): Diccionario con los campos a actualizar {campo: valor, campo2: valor2}
     """
+    print("Estoy en editaDatoMultiple con los datos: ", datos_dict)
     doc_ref = db.collection(coleccion).document(dato)
     doc_ref.update(datos_dict)
 

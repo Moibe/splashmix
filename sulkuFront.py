@@ -38,6 +38,7 @@ def precarga(arreglo):
     
     uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
+    country_ip = arreglo.get('country_ip', '')
     documento_id = None  # Se asignará cuando se encuentre el documento del usuario
     #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev. (En local no se actualiza bien firesbase :(  ))
     
@@ -98,8 +99,7 @@ def precarga(arreglo):
                 
                 else: #USUARIO NO EXISTE EN FIRESTORE, HAY QUE CREARLO.
                     #Crear usuario nuevo en firestore, con 5 tokens y guarda su info de email y displayname.
-                    print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4.
-                    
+                    print("Camino 2: Usuario Nuevo:") #Aquí tmb registraremos el evento de ga4 y ahora country_ip.                 
                     # Genera el ID del documento con formato: timestamp-uid-correo
                     id_documento = tools.generar_id_documento_usuario(uid, email)
                     documento_id = id_documento  # Asigna el nuevo ID para retornarlo después
@@ -112,6 +112,7 @@ def precarga(arreglo):
                     'compro': False,
                     'despliega_creditos': False,
                     'uid': uid,  # Agregamos el UID como campo para referencia
+                    'country_ip': country_ip  # Agregamos country_ip como campo para referencia
                     }
                     fireWhale.creaDatoMultipleConMovimiento('usuarios', id_documento, datos_perfil) #Ésta es la creación del usuario en Firestore con el nuevo ID.
                     ga4Analiticas.send_ga4_signup_event(gaClient)

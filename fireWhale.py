@@ -138,6 +138,18 @@ def editaDato(coleccion, dato, info, contenido):
         info: contenido,
     })
 
+def editaDatoMultiple(coleccion, dato, datos_dict):
+    """
+    Actualiza múltiples campos en un documento de Firestore.
+    
+    Args:
+        coleccion (str): Nombre de la colección (ej: 'usuarios')
+        dato (str): ID del documento a actualizar
+        datos_dict (dict): Diccionario con los campos a actualizar {campo: valor, campo2: valor2}
+    """
+    doc_ref = db.collection(coleccion).document(dato)
+    doc_ref.update(datos_dict)
+
 def creaDato(coleccion, dato, info, contenido):
 
     #Primero debemos definir la referencia al documento, o sea a la hoja de usuario.

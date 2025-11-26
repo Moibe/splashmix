@@ -372,7 +372,7 @@ def generar_id_documento_usuario(uid, email):
     
     return f"{timestamp}-{uid}-{email}"
 
-def countryChecker(documento_completo, country_ip='', country_geolocation='', country_header=''):
+def countryChecker(uid, country_ip='', country_geolocation='', country_header=''):
     """
     Verifica si el documento del usuario tiene los campos country_ip, country_geolocation y country_header.
     Si alguno de estos campos falta, los agrega con valores vacíos.

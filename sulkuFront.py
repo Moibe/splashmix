@@ -31,10 +31,12 @@ def displayTokens(usuario):
     
     result_from_displayTokens = display
 
-def precarga(arreglo):    
+def precarga(arreglo, country_ip=None):    
     
     #Habrá casos en que regrese null porque entro a la app directo pero no había nadie logueado.
     print(f"En estos casos arreglo es: {arreglo} y su tipo es {type(arreglo)}.")
+    if country_ip:
+        print(f"Country IP obtenido del cliente: {country_ip}")
     
     uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
@@ -69,7 +71,7 @@ def precarga(arreglo):
                         #Y los tokens existieron....
                         #El usuario tiene tokens.
                         if tokens is not None: #Significa que el usuario si tiene un registro previo en firebase.
-                            #print("Camino 1: Si hubo un usuario.") 
+                            print("Camino 1: Si hubo un usuario.") 
                             display_banner = False
                             display_credits = True
                             if despliego is False: #o sea si no ha comprado.

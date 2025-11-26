@@ -371,3 +371,28 @@ def generar_id_documento_usuario(uid, email):
     timestamp = int(ahora.timestamp() * 1000)  # Timestamp en milisegundos
     
     return f"{timestamp}-{uid}-{email}"
+
+def countryChecker(documento_completo, country_ip='', country_geolocation='', country_header=''):
+    """
+    Verifica si el documento del usuario tiene los campos country_ip, country_geolocation y country_header.
+    Si alguno de estos campos falta, los agrega con valores vacíos.
+    
+    Args:
+        documento_completo (dict): El documento completo del usuario desde Firestore.
+    """
+    import fireWhale
+
+    print("Estoy en countryChecker...")
+    
+    campos_necesarios = ['country_ip', 'country_geolocation', 'country_header']
+    actualizar = False
+    datos_a_actualizar = {}
+    
+    for campo in campos_necesarios:
+        if campo not in documento_completo:
+            datos_a_actualizar[campo] = ""  # O algún valor predeterminado
+            actualizar = True
+    
+    if actualizar:
+        id_documento = documento_completo.get('id')  # Asegúrate de tener el ID del documento
+        fireWhale.editaDatoMultiple('usuarios', id_documento, datos_a_actualizar)

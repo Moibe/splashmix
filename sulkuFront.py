@@ -68,6 +68,8 @@ def precarga(arreglo):
                     documento_completo = fireWhale.obtenDocumento('usuarios', documento_id)
                     #EL USUARIO SI EXISTE EN FIRESTORE.
                     #Si el usuario si existe en Firestore aquí debería checar si tiene las vars country_ip y demás, si no las tiene agrégaselas.
+                    print("Chequeando country vars...")
+                    tools.countryChecker(documento_completo, country_ip, country_geolocation, country_header)
                     if documento_completo: #Si el documento existió...
                         tokens = documento_completo.get('tokens', None)
                         despliego = documento_completo.get('despliega_creditos', True)
@@ -229,7 +231,6 @@ def actualizador_navbar(usuario, result, info_window, genero=None, personaje=Non
         #Pero ahora puedes traer todo el documento porque también necesitaras despliega_creditos.
         documento_completo = fireWhale.obtenDocumento('usuarios', usuario) 
         tokens = documento_completo.get('tokens', None)
-        print("Tokens después de debitar tralala:", tokens)
         despliega_creditos = documento_completo.get('despliega_creditos', None)
         visibilidad = despliega_creditos
         

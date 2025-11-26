@@ -41,7 +41,6 @@ def marca_click_compra(usuario_firebase):
 with gr.Blocks(theme=globales.tema, title="Splashmix App", head=firehead.head, js=fire.js, css="footer {visibility: hidden}") as main:
     
     arreglo = gr.JSON(visible=False) #Espacio para almacenar el usuario de firebase 
-    country_ip = gr.Text(visible=False) #Almacena country_ip desde localStorage
     usuario_firebase = gr.Text(visible=False)
     
     acheteemeele = gr.HTML("""
@@ -84,16 +83,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             outputs=[],
             js=script_buy #Quizá aquí en el futuro necesite un reload con params.
             )
-    # JavaScript para capturar country_ip del localStorage
-    js_country_ip = """
-    function() {
-        const country = localStorage.getItem('country_ip') || 'desconocido';
-        console.log("Country IP desde localStorage:", country);
-        return country;
-    }
-    """
-    
-    main.load(sulkuFront.precarga, [arreglo, country_ip], [usuario_firebase, acordeon, btn_logout, acordeon2], js=fuego.js)
-    # Captura country_ip del localStorage usando JavaScript
-    main.load(fn=lambda: None, outputs=country_ip, js="() => localStorage.getItem('country_ip') || 'desconocido'")
+    main.load(sulkuFront.precarga, arreglo, [usuario_firebase, acordeon, btn_logout, acordeon2], js=fuego.js)
 iniciar()

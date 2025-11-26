@@ -39,6 +39,8 @@ def precarga(arreglo):
     uid = arreglo.get('uid')
     gaClient = arreglo.get('gaClient', '')
     country_ip = arreglo.get('country_ip', '')
+    country_geolocation = arreglo.get('country_geolocation', '')
+    country_header = arreglo.get('country_header', '')
     documento_id = None  # Se asignará cuando se encuentre el documento del usuario
     #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev. (En local no se actualiza bien firesbase :(  ))
     
@@ -50,7 +52,8 @@ def precarga(arreglo):
         return uid, gr.Accordion(label=mensaje, open=True), gr.Button(value="Login 👋🏻"), gr.Accordion(label=mensaje2, open=False)
     
     else: #Si si hubo uid continuas el camino normal.       
-        
+        #Agrega que cuando si haya uid, y cheque el user agrege el country_ip y demás si no los tenía
+        #porque puede haber obtenido esos valores posteriormente.
         try:
             email, displayName = fireWhale.obtenDatosUIDFirebase(uid)
             print(f"Email: {email}, displayName: {displayName}.")
@@ -64,6 +67,7 @@ def precarga(arreglo):
                 if documento_id:  # Si encontró el documento
                     documento_completo = fireWhale.obtenDocumento('usuarios', documento_id)
                     #EL USUARIO SI EXISTE EN FIRESTORE.
+                    #Si el usuario si existe en Firestore aquí debería checar si tiene las vars country_ip y demás, si no las tiene agrégaselas.
                     if documento_completo: #Si el documento existió...
                         tokens = documento_completo.get('tokens', None)
                         despliego = documento_completo.get('despliega_creditos', True)
@@ -112,7 +116,9 @@ def precarga(arreglo):
                     'compro': False,
                     'despliega_creditos': False,
                     'uid': uid,  # Agregamos el UID como campo para referencia
-                    'country_ip': country_ip  # Agregamos country_ip como campo para referencia
+                    'country_ip': country_ip,  # Agregamos country_ip como campo para referencia
+                    'country_geolocation': country_geolocation,  # Agregamos country_geolocation como campo para referencia
+                    'country_header': country_header  # Agregamos country_header como campo para referencia
                     }
                     fireWhale.creaDatoMultipleConMovimiento('usuarios', id_documento, datos_perfil) #Ésta es la creación del usuario en Firestore con el nuevo ID.
                     ga4Analiticas.send_ga4_signup_event(gaClient)

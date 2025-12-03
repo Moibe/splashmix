@@ -320,34 +320,60 @@ def obtener_gclid_exacto(cadena):
         # Retornar None si el formato no es el esperado
         return None
 
-def deberia_registrar_visita_sitio(documento_id):
+def registrar_visita_sitio(documento_id, tokens):
     """
-    Verifica si han pasado 3 horas desde la última visita registrada.
-    Si es la primera visita o ya pasaron 3 horas, retorna True.
+    Registra la visita al sitio si han pasado 3 horas desde la última vez.
+    Guarda la fecha en formato legible (YYYY-MM-DD HH:MM:SS).
     
     Args:
         documento_id (str): El ID del documento del usuario en Firestore.
+        tokens (int): Cantidad de tokens actuales (para el registro del movimiento).
     
     Returns:
-        bool: True si se debe registrar la visita, False si no.
+        bool: True si se registró la visita, False si no.
     """
-    from datetime import datetime, timedelta
+    from datetime import datetime
     import pytz
     import fireWhale
     
     tz_mexico = pytz.timezone('America/Mexico_City')
     ahora = datetime.now(tz_mexico)
-    timestamp_ahora = ahora.timestamp()
     
     # Obtén el último timestamp de visita usando documento_id
     ultima_visita = fireWhale.obtenDato('usuarios', documento_id, 'ultima_visita_sitio')
     
-    if ultima_visita is None:
-        # Primera visita, registrarla
-        return True
+    registrar = False
     
-    # Si han pasado 3 horas (10800 segundos)
-    if timestamp_ahora - ultima_visita >= 10800:
+    if ultima_visita is None:
+        registrar = True
+    else:
+        # Verificar tipo de dato para compatibilidad con registros anteriores (float)
+        if isinstance(ultima_visita, (int, float)):
+            # Es un timestamp antiguo
+            if ahora.timestamp() - ultima_visita >= 10800:
+                registrar = True
+        elif isinstance(ultima_visita, str):
+            # Es una fecha en string formato YYYY-MM-DD HH:MM:SS
+            try:
+                fecha_ultima = datetime.strptime(ultima_visita, "%Y-%m-%d %H:%M:%S")
+                # Localizar la fecha (asumiendo que se guardó en hora México)
+                fecha_ultima = tz_mexico.localize(fecha_ultima)
+                
+                diferencia = ahora - fecha_ultima
+                if diferencia.total_seconds() >= 10800:
+                    registrar = True
+            except ValueError:
+                # Si falla el formato, registramos para corregir
+                registrar = True
+        else:
+            # Tipo desconocido, registrar por si acaso
+            registrar = True
+            
+    if registrar:
+        fireWhale.agregaMovimiento('usuarios', documento_id, 'visita al sitio', tokens)
+        # Guardar fecha legible
+        fecha_legible = ahora.strftime("%Y-%m-%d %H:%M:%S")
+        fireWhale.editaDato('usuarios', documento_id, 'ultima_visita_sitio', fecha_legible)
         return True
     
     return False

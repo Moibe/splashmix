@@ -41,6 +41,7 @@ def precarga(arreglo):
     country_ip = arreglo.get('country_ip', '')
     country_geolocation = arreglo.get('country_geolocation', '')
     country_header = arreglo.get('country_header', '')
+    traffic_source = arreglo.get('traffic_source', '')
     documento_id = None  # Se asignará cuando se encuentre el documento del usuario
     #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev. (En local no se actualiza bien firesbase :(  ))
     
@@ -114,7 +115,8 @@ def precarga(arreglo):
                     'uid': uid,  # Agregamos el UID como campo para referencia
                     'country_ip': country_ip,  # Agregamos country_ip como campo para referencia
                     'country_geolocation': country_geolocation,  # Agregamos country_geolocation como campo para referencia
-                    'country_header': country_header  # Agregamos country_header como campo para referencia
+                    'country_header': country_header,  # Agregamos country_header como campo para referencia
+                    'traffic_source': traffic_source # Agregamos traffic_source como campo para referencia
                     }
                     fireWhale.creaDatoMultipleConMovimiento('usuarios', id_documento, datos_perfil) #Ésta es la creación del usuario en Firestore con el nuevo ID.
                     ga4Analiticas.send_ga4_signup_event(gaClient)

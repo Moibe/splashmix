@@ -116,7 +116,8 @@ def precarga(arreglo):
                     'country_ip': country_ip,  # Agregamos country_ip como campo para referencia
                     'country_geolocation': country_geolocation,  # Agregamos country_geolocation como campo para referencia
                     'country_header': country_header,  # Agregamos country_header como campo para referencia
-                    'traffic_source': traffic_source # Agregamos traffic_source como campo para referencia
+                    'traffic_source': traffic_source, # Agregamos traffic_source como campo para referencia
+                    'gaClient': gaClient # Agregamos gaClient como campo para referencia
                     }
                     fireWhale.creaDatoMultipleConMovimiento('usuarios', id_documento, datos_perfil) #Ésta es la creación del usuario en Firestore con el nuevo ID.
                     ga4Analiticas.send_ga4_signup_event(gaClient)

@@ -81,13 +81,16 @@ def precarga(arreglo):
                             print("Camino 1: Si hubo un usuario.") 
                             display_banner = False
                             display_credits = True
+                            print("Por evaluuar despliego que es: ", despliego)
                             if despliego is False: #o sea si no ha comprado.
+                                print("Despliego es False.")
                                 #Si no ha comprado, no le muestres cuantos créditos tiene.
                                 #Por alguna razón está como al revés, o aquí llega si no ha comprado :S 
                                 display_credits = False
                                 display_banner = True
                                 #Configura el banner de mensajes y promociones solo para usuarios que no han comprado.
                             #Ahora los mensajes van a varias de forma random. Antes ->lbl_info_welcome  ahora-> 
+                            print("Por poner num_mensaje...")
                             num_mensaje = random.randint(0, 5)
                             gr.Info(title="¡Bienvenido!", message=mensajes.mensajes_usuario[num_mensaje], duration=None, visible=display_banner)
                     

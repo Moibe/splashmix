@@ -67,6 +67,7 @@ def precarga(arreglo):
                 print("Documento ID TRALALALA obtenido es: ", documento_id)
                 
                 if documento_id:  # Si encontró el documento
+                    print("Si hubo documento_id... y es: ", documento_id)
                     documento_completo = fireWhale.obtenDocumento('usuarios', documento_id)
                     #EL USUARIO SI EXISTE EN FIRESTORE.
                     #Si el usuario si existe en Firestore aquí debería checar si tiene las vars country_ip y demás, si no las tiene agrégaselas.

@@ -55,6 +55,9 @@ def precarga(arreglo):
     else: #Si si hubo uid continuas el camino normal.       
         #Agrega que cuando si haya uid, y cheque el user agrege el country_ip y demás si no los tenía
         #porque puede haber obtenido esos valores posteriormente.
+        #Inicialización de mensajes en éste punto. 
+        mensaje = 'VOID.'
+        mensaje2 = ''
         try:
             email, displayName = fireWhale.obtenDatosUIDFirebase(uid)
             print(f"Email: {email}, displayName: {displayName}.")
@@ -152,6 +155,7 @@ def precarga(arreglo):
         print("Display credits es: ", display_credits)
         # Retorna documento_id si existe (para usuarios existentes), sino uid (para usuarios nuevos o inválidos)
         usuario_a_retornar = documento_id if documento_id else uid
+        print("A punto de terminar, mensaje es:", mensaje)
         return usuario_a_retornar, gr.Accordion(label=mensaje, open=False), gr.Button(), gr.Accordion(label=mensaje2, open=False, visible=display_credits)  
 
 def visualizar_creditos(nuevos_creditos, usuario):

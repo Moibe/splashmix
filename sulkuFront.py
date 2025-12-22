@@ -67,7 +67,6 @@ def precarga(arreglo):
                 print("Estoy dentro del IF de email o displayName...")
                 # Obtiene el ID del documento del usuario (puede ser diferente al UID si se creó con timestamp-uid-email)
                 documento_id = fireWhale.obtenerDocumentoIDPorUID('usuarios', uid)
-                print("Documento ID TRALALALA obtenido es: ", documento_id)
                 
                 if documento_id:  # Si encontró el documento
                     print("Si hubo documento_id... y es: ", documento_id)
@@ -223,7 +222,7 @@ def evaluaResultadoUsuario(resultado, personaje):
            
     return resultado, info_window
 
-def actualizador_navbar(usuario, result, info_window, genero=None, personaje=None):
+def actualizador_navbar(usuario, result, info_window, genero=None, personaje=None, api_tipo=None):
     
     apertura = False #Cerrado es el valor default del acordeón.
     
@@ -232,8 +231,6 @@ def actualizador_navbar(usuario, result, info_window, genero=None, personaje=Non
     if "jpg" in result: #Cuando la imagen es correcta. El resultado es un archivo .jpg
         #Debita uno de la cuota de ese usuario y despliegalo.
         fireWhale.cobrar_token('usuarios', usuario, 'tokens', amount=-globales.costo_work)
-        #tokens = fireWhale.obtenDato('usuarios', usuario, 'tokens') #A pesar de la maniobra para obtener y restar, para poder desplegarlo de todas formas necesitaremos hacer otra lectura de firebase.
-        #Pero ahora puedes traer todo el documento porque también necesitaras despliega_creditos.
         documento_completo = fireWhale.obtenDocumento('usuarios', usuario) 
         tokens = documento_completo.get('tokens', None)
         despliega_creditos = documento_completo.get('despliega_creditos', None)
@@ -245,6 +242,8 @@ def actualizador_navbar(usuario, result, info_window, genero=None, personaje=Non
             kwargs_movimiento['genero'] = genero
         if personaje:
             kwargs_movimiento['personaje'] = personaje
+        if api_tipo:
+            kwargs_movimiento['api_usada'] = api_tipo
         
         fireWhale.agregaMovimiento('usuarios', usuario, 'consumo de token', tokens, **kwargs_movimiento)
         
@@ -261,6 +260,8 @@ def actualizador_navbar(usuario, result, info_window, genero=None, personaje=Non
             kwargs_error['genero'] = genero
         if personaje:
             kwargs_error['personaje'] = personaje
+        if api_tipo:
+            kwargs_error['api_usada'] = api_tipo
         
         fireWhale.agregaMovimiento('usuarios', usuario, 'error', tokens, **kwargs_error)
         

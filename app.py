@@ -42,6 +42,7 @@ with gr.Blocks(theme=globales.tema, title="Splashmix App", head=firehead.head, j
     
     arreglo = gr.JSON(visible=False) #Espacio para almacenar el usuario de firebase 
     usuario_firebase = gr.Text(visible=False)
+    api_usada = gr.State(value='') #Guarda el tipo de API usada en la última petición
     
     acheteemeele = gr.HTML("""
 <!-- Google Tag Manager (noscript) -->
@@ -67,9 +68,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             outputs=[result, lbl_console, boton_comprar], 
             flagging_mode=globales.flag,
             js=fuego.js,        
-            )        
+            )
     
-    result.change(sulkuFront.actualizador_navbar, [usuario_firebase, result, lbl_console, gender, personaje], acordeon2)
+    def actualizar_api_y_navbar(usuario, resultado, console, gen, pers):
+        # Obtiene la API usada desde la variable global de funciones
+        api_tipo = funciones.api_usada_actual if hasattr(funciones, 'api_usada_actual') else ''
+        # Actualiza el estado con la API usada
+        api_usada.value = api_tipo
+        # Llama a actualizador_navbar
+        return sulkuFront.actualizador_navbar(usuario, resultado, console, gen, pers, api_tipo)
+    
+    result.change(actualizar_api_y_navbar, [usuario_firebase, result, lbl_console, gender, personaje], acordeon2)
 
     btn_logout.click(
             fn=welcome,  # Una función Python, aunque no haga nada relevante para la redirección

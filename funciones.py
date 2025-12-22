@@ -13,8 +13,10 @@ import splashmix.configuracion as configuracion
 mensajes, sulkuMessages = tools.get_mensajes(globales.mensajes_lang)
 
 btn_buy = gr.Button(value="Run") #Usado para cuando activamos el botón inferior de comprar.
+api_usada_actual = ''  # Variable global para almacenar la API usada
 
 def perform(input1, gender, personaje, usuario):
+    global api_usada_actual
            
     gender = gender or "superhero" #default es superhero.
     #Los tokens se checan dentro de perform para estar seguros de que cuenta con los tokens para ejecutar esa operación en particular.
@@ -24,7 +26,8 @@ def perform(input1, gender, personaje, usuario):
     if tokens >= globales.costo_work: #Lo hará solo si tiene el crédito suficiente.
         try:
             #La API se elige ahora afuera de mass.
-            api, tipo_api, usuario_proveedor = tools.eligeAPI(globales.seleccion_api) #Aquí ya elegiste al usuario proveedor pero no haz elegido su hf token.             
+            api, tipo_api, usuario_proveedor = tools.eligeAPI(globales.seleccion_api) #Aquí ya elegiste al usuario proveedor pero no haz elegido su hf token.
+            api_usada_actual = tipo_api  # Guardar el tipo de API usada
             resultado = mass(input1, gender, personaje, api, usuario_proveedor)
             #Importante: La cuota solo se debita aquí, después de hacer el client.predict.
             #Importante, la quota si se debita porque el proceso la consume aunque marque error (excepto quota).

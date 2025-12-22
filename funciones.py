@@ -27,7 +27,7 @@ def perform(input1, gender, personaje, usuario):
         try:
             #La API se elige ahora afuera de mass.
             api, tipo_api, usuario_proveedor = tools.eligeAPI(globales.seleccion_api) #Aquí ya elegiste al usuario proveedor pero no haz elegido su hf token.
-            api_usada_actual = tipo_api  # Guardar el tipo de API usada
+            api_usada_actual = api  # Guardar el nombre de la API usada (ej: "Moibe/InstantID2")
             resultado = mass(input1, gender, personaje, api, usuario_proveedor)
             #Importante: La cuota solo se debita aquí, después de hacer el client.predict.
             #Importante, la quota si se debita porque el proceso la consume aunque marque error (excepto quota).

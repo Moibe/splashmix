@@ -56,7 +56,7 @@ def precarga(arreglo):
         #Agrega que cuando si haya uid, y cheque el user agrege el country_ip y demás si no los tenía
         #porque puede haber obtenido esos valores posteriormente.
         #Inicialización de mensajes en éste punto. 
-        mensaje = 'VOID.'
+        mensaje = 'Refresca la página con F5 por favor.'
         mensaje2 = ''
         try:
             email, displayName = fireWhale.obtenDatosUIDFirebase(uid)

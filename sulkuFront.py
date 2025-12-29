@@ -42,6 +42,8 @@ def precarga(arreglo):
     country_geolocation = arreglo.get('country_geolocation', '')
     country_header = arreglo.get('country_header', '')
     traffic_source = arreglo.get('traffic_source', '')
+    ads_gclid = arreglo.get('ads_gclid', 'organico')
+    ads_adgroupid = arreglo.get('ads_adgroupid', 'n/a')
     documento_id = None  # Se asignará cuando se encuentre el documento del usuario
     #uid = '3iKefol3ZWc7ypsseFKRmXsbDAA3' #Sebas Dev. (En local no se actualiza bien firesbase :(  ))
     
@@ -75,6 +77,7 @@ def precarga(arreglo):
                     #Si el usuario si existe en Firestore aquí debería checar si tiene las vars country_ip y demás, si no las tiene agrégaselas.
                     print("Chequeando country vars...")
                     tools.countryChecker(documento_id, country_ip, country_geolocation, country_header)
+                    tools.adsChecker(documento_id, ads_gclid, ads_adgroupid)
                     if documento_completo: #Si el documento existió...
                         tokens = documento_completo.get('tokens', None)
                         despliego = documento_completo.get('despliega_creditos', True)
@@ -123,7 +126,9 @@ def precarga(arreglo):
                     'country_geolocation': country_geolocation,  # Agregamos country_geolocation como campo para referencia
                     'country_header': country_header,  # Agregamos country_header como campo para referencia
                     'traffic_source': traffic_source, # Agregamos traffic_source como campo para referencia
-                    'gaClient': gaClient # Agregamos gaClient como campo para referencia
+                    'gaClient': gaClient, # Agregamos gaClient como campo para referencia
+                    'ads_gclid': ads_gclid,  # Google Click ID (parámetro de Google Ads)
+                    'ads_adgroupid': ads_adgroupid  # Ad Group ID (parámetro de Google Ads)
                     }
                     fireWhale.creaDatoMultipleConMovimiento('usuarios', id_documento, datos_perfil) #Ésta es la creación del usuario en Firestore con el nuevo ID.
                     ga4Analiticas.send_ga4_signup_event(gaClient)

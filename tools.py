@@ -381,13 +381,14 @@ def registrar_visita_sitio(documento_id, tokens):
 def generar_id_documento_usuario(uid, email):
     """
     Genera un ID legible para el documento del usuario en formato: timestamp-uid-correo
+    Con timestamp invertido para que documentos más nuevos aparezcan primero en orden natural.
     
     Args:
         uid (str): El UID de Firebase del usuario.
         email (str): El email del usuario.
     
     Returns:
-        str: ID formateado como timestamp-uid-correo (ej: 1732068450123-uid123-usuario@correo.com)
+        str: ID formateado como timestamp_invertido-uid-correo (ej: 8267931549877-uid123-usuario@correo.com)
     """
     from datetime import datetime
     import pytz
@@ -395,8 +396,9 @@ def generar_id_documento_usuario(uid, email):
     tz_mexico = pytz.timezone('America/Mexico_City')
     ahora = datetime.now(tz_mexico)
     timestamp = int(ahora.timestamp() * 1000)  # Timestamp en milisegundos
+    timestamp_invertido = 9999999999999 - timestamp  # Invertir para orden descendente natural
     
-    return f"{timestamp}-{uid}-{email}"
+    return f"{timestamp_invertido}-{uid}-{email}"
 
 def countryChecker(id_documento, country_ip='', country_geolocation='', country_header=''):
     """
@@ -443,3 +445,47 @@ def countryChecker(id_documento, country_ip='', country_geolocation='', country_
         print(f"Campos actualizados en documento {id_documento}: {datos_a_actualizar}")
     else:
         print(f"Todos los campos country existen y tienen valores en documento {id_documento}")
+
+def adsChecker(id_documento, ads_gclid='organico', ads_adgroupid='n/a'):
+    """
+    Verifica si el documento del usuario tiene los campos ads_gclid y ads_adgroupid.
+    Si alguno de estos campos falta, está nulo o vacío, los agrega/actualiza con valores proporcionados.
+    
+    Args:
+        id_documento (str): ID del documento del usuario en la colección 'usuarios'
+        ads_gclid (str): Valor para el campo ads_gclid (por defecto 'organico')
+        ads_adgroupid (str): Valor para el campo ads_adgroupid (por defecto 'n/a')
+    """
+    import fireWhale
+
+    print("Estoy en adsChecker...")
+    
+    # Obtiene el documento completo del usuario
+    documento_completo = fireWhale.obtenDocumento('usuarios', id_documento)
+    
+    if not documento_completo:
+        print(f"Documento no encontrado: {id_documento}")
+        return
+    
+    campos_necesarios = {
+        'ads_gclid': ads_gclid,
+        'ads_adgroupid': ads_adgroupid
+    }
+    
+    datos_a_actualizar = {}
+    
+    # Verifica cada campo: si no existe, está nulo o vacío, lo agrega/actualiza
+    for campo, valor_default in campos_necesarios.items():
+        valor_actual = documento_completo.get(campo)
+        
+        # Si el campo no existe, está None o está vacío (string vacío)
+        if valor_actual is None or valor_actual == "":
+            datos_a_actualizar[campo] = valor_default
+            print(f"Campo '{campo}' será actualizado a: '{valor_default}'")
+    
+    # Si hay campos que actualizar, los actualiza
+    if datos_a_actualizar:
+        fireWhale.editaDatoMultiple('usuarios', id_documento, datos_a_actualizar)
+        print(f"Campos actualizados en documento {id_documento}: {datos_a_actualizar}")
+    else:
+        print(f"Todos los campos ads existen y tienen valores en documento {id_documento}")

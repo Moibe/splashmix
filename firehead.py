@@ -17,10 +17,10 @@ window.dataLayer.push = (function(originalPush) {
       return function() {
         for (var i = 0; i < arguments.length; i++) {
           var event = arguments[i];
-          if (event.event === 'clientIDLoaded' && event.gaClientID) {
-            // Guarda el Client ID en una variable global
-            window.gaClientID = event.gaClientID;
-            console.log('Client ID guardado en la variable global:', window.gaClientID);
+          if (event.event === 'clientIDLoaded' && event.gaGlobal) {
+            // Guarda el vid desde gaGlobal en una variable global
+            window.gaGlobal = event.gaGlobal;
+            console.log('GA Global guardado en la variable global:', window.gaGlobal);
           }
         }
         return originalPush.apply(this, arguments);
@@ -29,9 +29,9 @@ window.dataLayer.push = (function(originalPush) {
 
     for (var i = 0; i < window.dataLayer.length; i++) {
       var event = window.dataLayer[i];
-      if (event && event.event === 'clientIDLoaded' && event.gaClientID) {        
-        window.gaClientID = extraeClienteID(event.gaClientID);
-        console.log('Client ID encontrado en dataLayer:', window.gaClientID);
+      if (event && event.event === 'clientIDLoaded' && event.gaGlobal) {        
+        window.gaGlobal = event.gaGlobal;
+        console.log('GA Global encontrado en dataLayer:', window.gaGlobal);
         break;
       }
     }

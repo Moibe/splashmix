@@ -13,14 +13,22 @@ function funcion() {{
         ga_vid = window.gaGlobal.vid;
     }}
     
-    // Extrae los parámetros de Google Ads (gclid y adgroupid)
-    ads_gclid = '';
-    ads_adgroupid = '';
-    if (window.marketing_gclid) {{
-        ads_gclid = window.marketing_gclid;
-    }}
-    if (window.marketing_adgroupid) {{
-        ads_adgroupid = window.marketing_adgroupid;
+    // Extrae los parámetros de Google Ads de localStorage
+    ads_gclid = 'organico';
+    ads_adgroupid = 'n/a';
+    const adsParamsStr = localStorage.getItem('splashmix_ads_params');
+    if (adsParamsStr) {{
+        try {{
+            const adsParams = JSON.parse(adsParamsStr);
+            if (adsParams.gclid) {{
+                ads_gclid = adsParams.gclid;
+            }}
+            if (adsParams.adgroupid) {{
+                ads_adgroupid = adsParams.adgroupid;
+            }}
+        }} catch (e) {{
+            console.log('Error parsing splashmix_ads_params:', e);
+        }}
     }}
     
     console.log("Éste es el usuario que obtuvo fuego: ", usuario_firebase)
